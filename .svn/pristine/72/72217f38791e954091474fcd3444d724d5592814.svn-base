@@ -1,0 +1,94 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
+ERROR - 2012-09-19 00:47:15 --> Severity: Warning  --> unlink(D:\wamp\www\Projeler\alexander-framework\application-alexander\controllers\admin\city.xlsx) [<a href='function.unlink'>function.unlink</a>]: Permission denied D:\wamp\www\Projeler\alexander-framework\application-alexander\libraries\phpExcel\Writer\Excel2007.php 243
+ERROR - 2012-09-19 09:37:20 --> Severity: Notice  --> mysql_pconnect() [<a href='function.mysql-pconnect'>function.mysql-pconnect</a>]: send of 5 bytes failed with errno=10053 Kurulan bir baðlantý, ana bilgisayarýnýzdaki yazýlým tarafýndan iptal edildi.
+ D:\wamp\www\Projeler\alexander-framework\system-alexander\database\drivers\mysql\mysql_driver.php 91
+ERROR - 2012-09-19 09:48:18 --> Severity: Notice  --> mysql_pconnect() [<a href='function.mysql-pconnect'>function.mysql-pconnect</a>]: send of 5 bytes failed with errno=10053 Kurulan bir baðlantý, ana bilgisayarýnýzdaki yazýlým tarafýndan iptal edildi.
+ D:\wamp\www\Projeler\alexander-framework\system-alexander\database\drivers\mysql\mysql_driver.php 91
+ERROR - 2012-09-19 14:12:11 --> 404 Page Not Found --> city/details
+ERROR - 2012-09-19 14:12:50 --> 404 Page Not Found --> city/details
+ERROR - 2012-09-19 14:13:14 --> 404 Page Not Found --> city/details
+ERROR - 2012-09-19 14:13:18 --> 404 Page Not Found --> city/details
+ERROR - 2012-09-19 14:13:30 --> 404 Page Not Found --> city/details
+ERROR - 2012-09-19 14:13:37 --> 404 Page Not Found --> city/details
+ERROR - 2012-09-19 14:36:11 --> Severity: Warning  --> require(D:\wamp\www\Projeler\alexander-framework\application-alexander\libraries\phpExcel/PHPExcel/Autoloader.php) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory D:\wamp\www\Projeler\alexander-framework\application-alexander\libraries\phpExcel\PHPExcel.php 32
+ERROR - 2012-09-19 14:36:39 --> Severity: Warning  --> require(D:\wamp\www\Projeler\alexander-framework\application-alexander\libraries\phpExcel/PHPExcel/Autoloader.php) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory D:\wamp\www\Projeler\alexander-framework\application-alexander\libraries\phpExcel\PHPExcel.php 32
+ERROR - 2012-09-19 14:36:40 --> Severity: Warning  --> require(D:\wamp\www\Projeler\alexander-framework\application-alexander\libraries\phpExcel/PHPExcel/Autoloader.php) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory D:\wamp\www\Projeler\alexander-framework\application-alexander\libraries\phpExcel\PHPExcel.php 32
+ERROR - 2012-09-19 14:37:18 --> Severity: Warning  --> require(D:\wamp\www\Projeler\alexander-framework\application-alexander\libraries\phpExcel/PHPExcel/Autoloader.php) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory D:\wamp\www\Projeler\alexander-framework\application-alexander\libraries\phpExcel\PHPExcel.php 32
+ERROR - 2012-09-19 14:37:19 --> Severity: Warning  --> require(D:\wamp\www\Projeler\alexander-framework\application-alexander\libraries\phpExcel/PHPExcel/Autoloader.php) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory D:\wamp\www\Projeler\alexander-framework\application-alexander\libraries\phpExcel\PHPExcel.php 32
+ERROR - 2012-09-19 14:55:01 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 92
+ERROR - 2012-09-19 14:55:01 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 93
+ERROR - 2012-09-19 14:55:01 --> Severity: Notice  --> Undefined property: stdClass::$module_name D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 94
+ERROR - 2012-09-19 14:55:01 --> Severity: Notice  --> Undefined property: stdClass::$module_single_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 95
+ERROR - 2012-09-19 14:55:01 --> Severity: Notice  --> Undefined property: stdClass::$module_plural_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 96
+ERROR - 2012-09-19 14:55:01 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 92
+ERROR - 2012-09-19 14:55:01 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 93
+ERROR - 2012-09-19 14:55:01 --> Severity: Notice  --> Undefined property: stdClass::$module_name D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 94
+ERROR - 2012-09-19 14:55:01 --> Severity: Notice  --> Undefined property: stdClass::$module_single_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 95
+ERROR - 2012-09-19 14:55:01 --> Severity: Notice  --> Undefined property: stdClass::$module_plural_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 96
+ERROR - 2012-09-19 14:55:01 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 92
+ERROR - 2012-09-19 14:55:01 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 93
+ERROR - 2012-09-19 14:55:01 --> Severity: Notice  --> Undefined property: stdClass::$module_name D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 94
+ERROR - 2012-09-19 14:55:01 --> Severity: Notice  --> Undefined property: stdClass::$module_single_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 95
+ERROR - 2012-09-19 14:55:01 --> Severity: Notice  --> Undefined property: stdClass::$module_plural_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 96
+ERROR - 2012-09-19 14:55:01 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 92
+ERROR - 2012-09-19 14:55:01 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 93
+ERROR - 2012-09-19 14:55:01 --> Severity: Notice  --> Undefined property: stdClass::$module_name D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 94
+ERROR - 2012-09-19 14:55:01 --> Severity: Notice  --> Undefined property: stdClass::$module_single_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 95
+ERROR - 2012-09-19 14:55:01 --> Severity: Notice  --> Undefined property: stdClass::$module_plural_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 96
+ERROR - 2012-09-19 14:55:01 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 92
+ERROR - 2012-09-19 14:55:01 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 93
+ERROR - 2012-09-19 14:55:01 --> Severity: Notice  --> Undefined property: stdClass::$module_name D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 94
+ERROR - 2012-09-19 14:55:01 --> Severity: Notice  --> Undefined property: stdClass::$module_single_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 95
+ERROR - 2012-09-19 14:55:01 --> Severity: Notice  --> Undefined property: stdClass::$module_plural_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 96
+ERROR - 2012-09-19 14:55:21 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 92
+ERROR - 2012-09-19 14:55:21 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 93
+ERROR - 2012-09-19 14:55:21 --> Severity: Notice  --> Undefined property: stdClass::$module_name D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 94
+ERROR - 2012-09-19 14:55:21 --> Severity: Notice  --> Undefined property: stdClass::$module_single_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 95
+ERROR - 2012-09-19 14:55:21 --> Severity: Notice  --> Undefined property: stdClass::$module_plural_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 96
+ERROR - 2012-09-19 14:55:21 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 92
+ERROR - 2012-09-19 14:55:21 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 93
+ERROR - 2012-09-19 14:55:21 --> Severity: Notice  --> Undefined property: stdClass::$module_name D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 94
+ERROR - 2012-09-19 14:55:21 --> Severity: Notice  --> Undefined property: stdClass::$module_single_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 95
+ERROR - 2012-09-19 14:55:21 --> Severity: Notice  --> Undefined property: stdClass::$module_plural_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 96
+ERROR - 2012-09-19 14:55:21 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 92
+ERROR - 2012-09-19 14:55:21 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 93
+ERROR - 2012-09-19 14:55:21 --> Severity: Notice  --> Undefined property: stdClass::$module_name D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 94
+ERROR - 2012-09-19 14:55:21 --> Severity: Notice  --> Undefined property: stdClass::$module_single_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 95
+ERROR - 2012-09-19 14:55:21 --> Severity: Notice  --> Undefined property: stdClass::$module_plural_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 96
+ERROR - 2012-09-19 14:55:21 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 92
+ERROR - 2012-09-19 14:55:21 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 93
+ERROR - 2012-09-19 14:55:21 --> Severity: Notice  --> Undefined property: stdClass::$module_name D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 94
+ERROR - 2012-09-19 14:55:21 --> Severity: Notice  --> Undefined property: stdClass::$module_single_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 95
+ERROR - 2012-09-19 14:55:21 --> Severity: Notice  --> Undefined property: stdClass::$module_plural_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 96
+ERROR - 2012-09-19 14:55:21 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 92
+ERROR - 2012-09-19 14:55:21 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 93
+ERROR - 2012-09-19 14:55:21 --> Severity: Notice  --> Undefined property: stdClass::$module_name D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 94
+ERROR - 2012-09-19 14:55:21 --> Severity: Notice  --> Undefined property: stdClass::$module_single_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 95
+ERROR - 2012-09-19 14:55:21 --> Severity: Notice  --> Undefined property: stdClass::$module_plural_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 96
+ERROR - 2012-09-19 14:55:22 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 92
+ERROR - 2012-09-19 14:55:22 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 93
+ERROR - 2012-09-19 14:55:22 --> Severity: Notice  --> Undefined property: stdClass::$module_name D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 94
+ERROR - 2012-09-19 14:55:22 --> Severity: Notice  --> Undefined property: stdClass::$module_single_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 95
+ERROR - 2012-09-19 14:55:22 --> Severity: Notice  --> Undefined property: stdClass::$module_plural_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 96
+ERROR - 2012-09-19 14:55:22 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 92
+ERROR - 2012-09-19 14:55:22 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 93
+ERROR - 2012-09-19 14:55:22 --> Severity: Notice  --> Undefined property: stdClass::$module_name D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 94
+ERROR - 2012-09-19 14:55:22 --> Severity: Notice  --> Undefined property: stdClass::$module_single_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 95
+ERROR - 2012-09-19 14:55:22 --> Severity: Notice  --> Undefined property: stdClass::$module_plural_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 96
+ERROR - 2012-09-19 14:55:22 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 92
+ERROR - 2012-09-19 14:55:22 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 93
+ERROR - 2012-09-19 14:55:22 --> Severity: Notice  --> Undefined property: stdClass::$module_name D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 94
+ERROR - 2012-09-19 14:55:22 --> Severity: Notice  --> Undefined property: stdClass::$module_single_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 95
+ERROR - 2012-09-19 14:55:22 --> Severity: Notice  --> Undefined property: stdClass::$module_plural_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 96
+ERROR - 2012-09-19 14:55:22 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 92
+ERROR - 2012-09-19 14:55:22 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 93
+ERROR - 2012-09-19 14:55:22 --> Severity: Notice  --> Undefined property: stdClass::$module_name D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 94
+ERROR - 2012-09-19 14:55:22 --> Severity: Notice  --> Undefined property: stdClass::$module_single_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 95
+ERROR - 2012-09-19 14:55:22 --> Severity: Notice  --> Undefined property: stdClass::$module_plural_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 96
+ERROR - 2012-09-19 14:55:22 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 92
+ERROR - 2012-09-19 14:55:22 --> Severity: Notice  --> Undefined property: stdClass::$module_code D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 93
+ERROR - 2012-09-19 14:55:22 --> Severity: Notice  --> Undefined property: stdClass::$module_name D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 94
+ERROR - 2012-09-19 14:55:22 --> Severity: Notice  --> Undefined property: stdClass::$module_single_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 95
+ERROR - 2012-09-19 14:55:22 --> Severity: Notice  --> Undefined property: stdClass::$module_plural_label D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Config.php 96
+ERROR - 2012-09-19 15:09:12 --> Severity: Notice  --> Trying to get property of non-object D:\wamp\www\Projeler\alexander-framework\application-alexander\libraries\Excel.php 19

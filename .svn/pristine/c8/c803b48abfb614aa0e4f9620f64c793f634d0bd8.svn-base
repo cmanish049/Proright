@@ -1,0 +1,32 @@
+<div class="section corners">
+    <div class="row">
+        <div class="span12">
+            <h2 class ="ico-mug"><?php echo $page_title; ?>
+                <?php echo anchor($edit_url, __('Add New'), 
+                        'title="'.('Add New').'" class="btn btn-primary btn-small modal-for-grid" 
+                            data-modal-size="max-max" data-modal-name="{single_name}Modal" data-update-grid="{single_name}Grid"'); ?>
+            </h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span12">
+            <div class="section-padding">
+                <table class="table" id="{single_name}Grid">
+                    <thead>
+                        <tr>           
+                            <th><?php _e('Processes'); ?></th>
+                            {index_columns}
+                        </tr>
+                    </thead>
+                    <tbody></tbody>    
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

@@ -1,0 +1,117 @@
+<div class="section">
+    <div class="row">
+        <div class="span12">
+            <div class="box">
+                <div class="box-header-container">
+                    <h1 class="box-header">
+                        <?php echo $page_title; ?>                        
+                    </h1>                    
+                </div>
+
+                <div class="box-content">
+                    <div class="section-top-padding">
+                        
+                        <?php
+                        echo flash_data_alert_admin();
+                        echo form_alert_admin();
+                        foreach($messages as $e)
+                        {
+                            echo alert_admin($e, 'info');
+                        }
+                        ?>
+                        
+                        <?php echo form_open_multipart($form_action, 'id="" class="form form-horizontal"'); //Form başlangıcı  ?>
+
+                        <?php //echo form_hidden('redirect', $redirect); ?>
+
+                        <div class="row">
+                            <div class="span12">
+                                <div class="section-padding">
+                                    <div class="control-group">
+                                        <label class="control-label form-lbl">Database Table Name</label> 
+                                        <div class="controls">
+                                            <input type="text" name="table_name" class="validate[required]" tabindex="1" id="table_name" 
+                                                   placeholder="tablo adı" value='<?php echo set_value('table_name'); ?>' />
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label form-lbl">Tekil Adı</label> 
+                                        <div class="controls">
+                                            <?php echo form_input('single_name', '', ' tabindex="2" class="validate[required]" id="single_name"'); ?>
+                                        </div>                
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label form-lbl">Search Fields</label> 
+                                        <div class="controls">
+                                            <?php echo form_input('search_fields', '', ' tabindex="3" class="validate[]" id="search_fields"'); ?>
+                                        </div>                
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label form-lbl">Controller</label> 
+                                        <div class="controls">
+                                            <?php echo form_checkbox('controller', 'true', TRUE, ' tabindex="4"'); ?>
+                                        </div>                
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label form-lbl">Model</label> 
+                                        <div class="controls">
+                                            <?php echo form_checkbox('model', 'true', TRUE, ' tabindex="5"'); ?>
+                                        </div>                
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label form-lbl">View</label> 
+                                        <div class="controls">
+                                            <?php echo form_checkbox('views', 'true', TRUE, ' tabindex="6"'); ?>
+                                        </div>                
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label form-lbl">Overrite</label> 
+                                        <div class="controls">
+                                            <?php echo form_checkbox('overwrite', 'true', FALSE, ' tabindex="7"'); ?>
+                                        </div>                
+                                    </div>
+                                    
+                                    <div class="control-group">
+                                        <label class="control-label form-lbl">Joins</label> 
+                                        <div class="controls">
+                                            <?php echo form_textarea(array('name' => 'joins', 'rows' => '5'), '', 'class="input-xxlarge" id="joins"'); ?>
+                                            <p class="help-block">
+                                                table_name@country_id,country_id@COUNTRIES.*
+                                            </p>
+                                        </div>                
+                                    </div>
+                                    
+                                    <div class="control-group">
+                                        <label class="control-label form-lbl">Join Search Fields</label>
+                                        <div class="controls">
+                                            <?php echo form_textarea(array('name' => 'extra_join_fields', 'rows' => '5'), '', 
+                                                    'class="input-xxlarge" id="extra_join_fields"'); ?>
+                                            <p class="help-block">
+                                                'country_name' => 'COUNTRIES.country_name'
+                                            </p>
+                                        </div>                
+                                    </div>
+
+                                    <div class="form-actions">
+                                        <?php echo form_submit(array('name' => 'button', 'value' => 'Kaydet', 'id' => 'save', 'class' => 'btn btn-primary btn-large')); ?>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <?php echo form_close(); ?>
+                        </div>
+                    </div>
+
+                    <div class="box-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>

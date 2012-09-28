@@ -1,0 +1,127 @@
+<div class="section corners">
+    <div class="row">
+        <div class="span12">
+            <div class="box">
+                <div class="box-header-container">
+                    <h1 class="box-header">
+                        <?php echo $page_title; ?>
+                    </h1>
+                </div>
+
+                <div class="box-content">
+                    <div class="section-padding">
+                        <div class="grid-container">
+                            <div id="{single_name}Grid"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box-footer"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php 
+$this->template->view('templates/kendo_grid_toolbar_template',array(
+    'edit_modal_size' => 'max-max',
+    'grid_name' => 'city'
+)); 
+?>
+
+<script type="text/x-kendo-template" id="{single_name}-toolbar-template">
+    <div class="btn-toolbar">
+        <a href="<?php echo $edit_url ?>" class="modal-for-grid btn modal-iframe btn-grid-toolbar" title="<?php _e('New'); ?>"
+            data-modal-size="max-max" data-modal-name="{single_name}Modal" data-grid-selector="\#{single_name}Grid">
+             <i class="icon-plus-sign"></i> <span><?php _e('New'); ?></span>
+         </a>
+    </div>
+            
+    <div class="btn-toolbar pull-right">
+        <a href="<?php echo admin_url("$controller/grid"); ?>" class="btn pull-right action-reset-grid btn-grid-toolbar basic-tooltip" 
+            data-modal-name="{single_name}Modal" 
+            data-grid-selector="\#{single_name}Grid"
+            title="<?php _e('Clear Filters'); ?>">
+             <i class="icon-refresh"></i> <span><?php _e('Clear Filters'); ?></span>
+         </a> 
+    </div>           
+</script>
+
+<script type="text/x-kendo-template" id="{single_name}-actions-template">
+    
+    <div class="btn-group grid-row-action-menu">
+        <a href="<?php echo admin_url("$controller/details/id/#= id #") ?>" 
+                       class="action-quickview btn btn-mini basic-tooltip"
+                       data-grid-selector="\#{single_name}Grid" data-modal-size="800-max" data-modal-name="{single_name}Modal"
+                       data-quickview-template-selector="\#{single_name}-quickview-template"
+                        title="<?php _e('Quick View'); ?>">
+                        <i class="icon-list-alt"></i> <span><?php _e('Quick View'); ?></span></a>
+    
+        <a href="<?php echo admin_url("$controller/edit/id/#= id #" . '?window=modal') ?>" 
+                           class="modal-for-grid action-edit btn btn-mini basic-tooltip" 
+                           data-grid-selector="\#{single_name}Grid" data-modal-size="max-max" data-modal-name="{single_name}Modal"
+                            title="<?php _e('Edit'); ?>">
+                            <i class="icon-edit"></i> <span><?php _e('Edit'); ?></span></a>
+
+        <a href="<?php echo admin_url("$controller/delete/id/#= id #") ?>" 
+                           class="action-ajax action-delete show-confirm btn btn-mini basic-tooltip" 
+                           data-grid-selector="\#{single_name}Grid"
+                            title="<?php _e('Delete'); ?>">
+                            <i class="icon-remove"></i> <span><?php _e('Delete'); ?></span></a>
+    </div>         
+</script>
+
+
+<script type="text/x-kendo-template" id="{single_name}-quickview-template">
+    <div id="quickview-container">
+        <table class="quickview-grid">
+            <thead>
+                <tr>
+                    <th><?php _e('Label'); ?></th>
+                    <th><?php _e('Value'); ?></th>
+                </tr>
+            </thead>
+            <tbody>  
+                {quick_view_rows}
+            </tbody>
+        </table>        
+    </div>
+</script>
+
+
+<script type="text/javascript">
+    var {single_name}Grid;
+    
+    $(function() {
+        grid(
+            $('#{single_name}Grid'),
+            {
+                url : '<?php echo admin_url("$controller/grid"); ?>',
+                model : {
+                    id:'{primary_key}',
+                    fields: {
+                        actions:{},{grid_models_script}
+                    }
+                },
+                gridOptions : {
+                    toolbar: [{template:$('#{single_name}-toolbar-template').html()}],
+                    columns: [
+                        {
+                            title:'<?php _e('Actions') ?>',
+                            template: $('#{single_name}-actions-template').html(),
+                            filterable:false,
+                            groupable:false,
+                            sortable:false,
+                            width:150,
+                            encoded: false
+                        },
+                        {grid_columns_script}
+                    ]
+                }
+
+            }
+        );      
+        {single_name}Grid = $('#{single_name}Grid').data('kendoGrid');
+
+    });
+</script>

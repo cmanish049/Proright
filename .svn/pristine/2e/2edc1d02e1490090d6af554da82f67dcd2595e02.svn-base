@@ -1,0 +1,49 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
+ERROR - 2012-08-31 12:18:23 --> Severity: Notice  --> Undefined variable: dropdown_country_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\state\form_view.php 41
+ERROR - 2012-08-31 12:18:23 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-08-31 12:20:01 --> Severity: Notice  --> Undefined property: State::$country_model D:\wamp\www\Projeler\alexander-framework\application-alexander\controllers\admin\state.php 175
+ERROR - 2012-08-31 12:46:25 --> Severity: Notice  --> Trying to get property of non-object D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 253
+ERROR - 2012-08-31 12:46:25 --> Severity: Notice  --> Trying to get property of non-object D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 254
+ERROR - 2012-08-31 12:46:25 --> Severity: Notice  --> Trying to get property of non-object D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 253
+ERROR - 2012-08-31 12:46:25 --> Severity: Notice  --> Trying to get property of non-object D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 254
+ERROR - 2012-08-31 12:47:13 --> Severity: Notice  --> Trying to get property of non-object D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 256
+ERROR - 2012-08-31 12:47:13 --> Severity: Notice  --> Trying to get property of non-object D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 257
+ERROR - 2012-08-31 12:47:13 --> Severity: Notice  --> Trying to get property of non-object D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 256
+ERROR - 2012-08-31 12:47:13 --> Severity: Notice  --> Trying to get property of non-object D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 257
+ERROR - 2012-08-31 12:47:14 --> Severity: Notice  --> Trying to get property of non-object D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 256
+ERROR - 2012-08-31 12:47:14 --> Severity: Notice  --> Trying to get property of non-object D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 257
+ERROR - 2012-08-31 12:47:14 --> Severity: Notice  --> Trying to get property of non-object D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 256
+ERROR - 2012-08-31 12:47:14 --> Severity: Notice  --> Trying to get property of non-object D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 257
+ERROR - 2012-08-31 14:42:00 --> Severity: Notice  --> Undefined variable: options D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 253
+ERROR - 2012-08-31 14:57:05 --> Severity: Notice  --> Undefined variable: array D:\wamp\www\Projeler\alexander-framework\application-alexander\helpers\MY_string_helper.php 17
+ERROR - 2012-08-31 14:57:05 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\application-alexander\helpers\MY_string_helper.php 17
+ERROR - 2012-08-31 15:31:05 --> Severity: Notice  --> Undefined variable: dropdown_states D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\city\index_view.php 98
+ERROR - 2012-08-31 15:31:05 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\application-alexander\helpers\MY_string_helper.php 17
+ERROR - 2012-08-31 15:31:50 --> Query error: Unknown column 'state_id' in 'field list'
+ERROR - 2012-08-31 18:23:34 --> Query error: Unknown column 'COUNTRIES.country_name__like' in 'where clause'
+ERROR - 2012-08-31 18:27:30 --> Severity: Notice  --> Undefined variable: a D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 527
+ERROR - 2012-08-31 18:27:30 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 527
+ERROR - 2012-08-31 18:27:30 --> Severity: Notice  --> Undefined variable: a D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 527
+ERROR - 2012-08-31 18:27:30 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 527
+ERROR - 2012-08-31 18:27:30 --> Severity: Notice  --> Undefined variable: a D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 527
+ERROR - 2012-08-31 18:27:30 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 527
+ERROR - 2012-08-31 18:27:30 --> Severity: Notice  --> Undefined variable: a D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 527
+ERROR - 2012-08-31 18:27:30 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 527
+ERROR - 2012-08-31 18:27:30 --> Severity: Notice  --> Undefined variable: a D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 527
+ERROR - 2012-08-31 18:27:30 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 527
+ERROR - 2012-08-31 18:27:32 --> Severity: Notice  --> Undefined variable: a D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 527
+ERROR - 2012-08-31 18:27:32 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 527
+ERROR - 2012-08-31 18:27:32 --> Severity: Notice  --> Undefined variable: a D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 527
+ERROR - 2012-08-31 18:27:32 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 527
+ERROR - 2012-08-31 18:27:49 --> Query error: Unknown column 'COUNTRIES.COUNTRY_NAME' in 'where clause'
+ERROR - 2012-08-31 18:42:25 --> Query error: Column 'STATE_ID' specified twice
+ERROR - 2012-08-31 18:49:39 --> Query error: Unknown column 'user_id,username,email,' in 'field list'
+ERROR - 2012-08-31 18:49:40 --> Query error: Unknown column 'user_id,username,email,' in 'field list'
+ERROR - 2012-08-31 18:50:09 --> Query error: Unknown column 'user_id,username,email,' in 'field list'
+ERROR - 2012-08-31 18:50:10 --> Query error: Unknown column 'user_id,username,email,' in 'field list'
+ERROR - 2012-08-31 18:51:19 --> Severity: Notice  --> Undefined index: select D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 423
+ERROR - 2012-08-31 18:51:19 --> Severity: Notice  --> Undefined index: select D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 423
+ERROR - 2012-08-31 18:51:19 --> Severity: Notice  --> Undefined index: select D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 423
+ERROR - 2012-08-31 18:51:19 --> Query error: Unknown column 'country_id,' in 'field list'
+ERROR - 2012-08-31 18:51:31 --> Query error: Unknown column 'country_id,' in 'field list'

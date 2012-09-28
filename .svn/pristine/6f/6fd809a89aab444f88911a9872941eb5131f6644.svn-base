@@ -1,0 +1,17 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
+ERROR - 2012-09-05 16:55:34 --> 404 Page Not Found --> city/class_generator
+ERROR - 2012-09-05 16:55:38 --> 404 Page Not Found --> city/classgenerator
+ERROR - 2012-09-05 13:55:41 --> 404 Page Not Found --> admin/classgenerator
+ERROR - 2012-09-05 14:35:39 --> 404 Page Not Found --> admin/cityy
+ERROR - 2012-09-05 17:41:44 --> Query error: Unknown column 'COUNTRIES.COUNTRY_ID' in 'on clause'
+ERROR - 2012-09-05 17:42:23 --> Query error: Unknown column 'COUNTRIES.COUNTRY_ID' in 'on clause'
+ERROR - 2012-09-05 17:46:11 --> Severity: Notice  --> Undefined variable: dropdown_country_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\citty\form_view.php 41
+ERROR - 2012-09-05 17:46:11 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-05 17:46:11 --> Severity: Notice  --> Undefined variable: dropdown_state_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\citty\form_view.php 52
+ERROR - 2012-09-05 17:46:11 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-05 17:51:52 --> Severity: Notice  --> Undefined property: State::$countries D:\wamp\www\Projeler\alexander-framework\system-alexander\core\Model.php 51
+ERROR - 2012-09-05 17:51:54 --> Severity: Notice  --> Undefined property: State::$countries D:\wamp\www\Projeler\alexander-framework\system-alexander\core\Model.php 51
+ERROR - 2012-09-05 17:51:54 --> Query error: Incorrect table name ' COUNTRIES ON '
+ERROR - 2012-09-05 17:53:07 --> Query error: Incorrect table name ' COUNTRIES ON '
+ERROR - 2012-09-05 17:53:25 --> Query error: Incorrect table name ' COUNTRIES ON '

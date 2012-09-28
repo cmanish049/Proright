@@ -1,0 +1,418 @@
+var dialogs = {};        
+function uiDialog(options){
+    
+    var _o = {
+        varName : 'dialog',
+        type : 'iframe',
+        tagAttrs : {},
+        dialog :{}
+    };  
+    $.extend(_o, options);
+    
+	var width = $(window).width() - 100;
+	var height = $(window).height() -  100;	
+	
+    var uiDialogOptions = {
+        autoOpen: false,
+        width: width,
+        height: height,
+        title: '',
+        modal:true,
+        bgiframe: true,
+        overlay: { 
+            opacity: 1, 
+            background: 'black'
+        },
+        close: function(ev, ui) {
+            $(this).remove();
+        }  
+    };
+    $.extend(uiDialogOptions, _o.dialog);
+        
+    var _modalType = (_o.type != undefined)?_o.type:'iframe';
+    var _attrsStr = '';
+    $.each(_o.tagAttrs,function(i,e){
+        _attrsStr += i + '="' + e +'"'; 
+    });
+    
+    dialogs[_o.varName] = $('<div></div>');
+    if (_modalType=='iframe') { 
+        dialogs[_o.varName].html('<iframe '+ _attrsStr +' frameborder="0" scrolling="auto" hspace="0" width="100%" height="99%"></iframe>')
+        dialogs[_o.varName].dialog(uiDialogOptions);
+    }                
+    dialogs[_o.varName].dialog('open');
+}
+
+function closeDialog(dialogName)
+{
+    window.parent.dialogs[dialogName].dialog('close');    
+}
+
+function setOrderInputValue(params){
+    var _params = {
+        idReplaceString : 'id-',
+        hiddenInputSelector : '#sira_no',
+        sortableUlSelector  : '.sortable'
+    };
+    $.extend(_params, params);
+    
+    var hiddenInputObj = $(_params.hiddenInputSelector);
+    var sortableUlObj = $(_params.sortableUlSelector);
+    
+    var id_list = new Array();  
+    sortableUlObj.find('li').each(function(i){               
+        var order = i+1;
+        var id = $(this).attr('id');                    
+        id_list[i] = id.replace(_params.idReplaceString,'') + '-' + order;
+    });      
+
+    var id_string = id_list.join('|');
+    hiddenInputObj.val(id_string);
+}
+
+/**
+ * Pencere kapatılsınmı sorusu
+ */
+function bindAlertClosingWindow()
+{
+    jQuery(window).bind("beforeunload", function(){
+        return "Sayfadan ayrılmak istediğinize eminmisiniz";
+    });
+}
+function unbindAlertClosingWindow(selector,event)
+{
+    jQuery(selector).bind(event,function() {
+        jQuery(window).unbind("beforeunload");
+    });
+}
+
+function autosave(selector,target)
+{
+    return false;
+    var t = setTimeout("autosave('"+selector+"', '"+target+"')", 20000); 
+    
+    var e = $(selector);
+    var options = {  
+        type:'POST',
+        url: e.attr('action'),
+        data:{
+            'islem':'autosave'
+        },
+        dataType: 'html',
+        success:    function(cevap){
+            var element = $(target);
+            if (element.is('input')) {
+                element.val(cevap);
+            }
+            else{
+                element.html(val);
+            }
+        }
+    }; 
+    e.ajaxSubmit(options);
+    
+//var queryString = e.formSerialize(); 
+//$.post(e.attr('action'), queryString+'&islem=autosave'); 
+}
+
+function clean_autocomplete(selector, target)
+{
+    var element = $(selector);
+    if (element.is('input')) {
+        element.val('');
+    }
+    else{
+        element.html('');
+    }
+    
+    element = $(target);
+    if (element.is('input')) {
+        element.val('');
+    }
+    else{
+        element.html('');
+    }
+    
+    return false;
+}
+
+function bindSelect(selector, target, url)
+{
+    $(selector).on('change',function(){
+        $.ajax({
+            type: 'GET',
+            url: url,
+            dataType:'json',
+            data: {
+                value :$(this).find('option:selected').attr('value')
+            },
+            success : function(json){
+                $(target).html('');
+                var op = [];
+                $.each(json,function(i,o){
+                    op[i] = '<option value="'+o.value+'">'+o.text+'</option>';
+                });
+                $(target).append(op.join(''));
+                $(target).change();
+            }
+        });
+    });   
+}
+
+$(function(){  
+    
+    $('.date').datepicker({ 
+        dateFormat: 'yy-mm-dd',
+        changeMonth: true,
+        changeYear: true,
+        yearRange: '1900'
+    });
+    
+    $('.datetime').datetimepicker({ 
+        dateFormat: 'yy-mm-dd',
+        changeMonth: true,
+        changeYear: true,
+        yearRange: '1900',
+        timeFormat : 'hh:mm'
+    });
+        
+   /*if ($.datetimepicker !=undefined) {
+    }*/
+    
+    if ($.timepicker !=undefined) {
+        $('.time').timepicker({ 
+            changeMonth: true,
+            changeYear: true,
+            yearRange: '1900',
+            timeFormat : 'hh:mm'
+        });
+    }    
+    
+    $('.tooltip-resim').popover({});
+    
+    
+	$('[rel="tooltip"]').tooltip({
+        placement : 'top'
+    });
+    
+    /**
+     * Delete butonuna tıklandığında çalışır
+     */
+    $('body').on('click','.action-delete',function() {
+        if(!confirm("Silmek istediğinizden eminmisiniz ?"))
+            return false;
+        var obj =$(this);
+        var url = $(this).attr("href")+ '?rnd=' + Math.floor(Math.random() * 11);
+        $.getJSON(url, function(data) {
+			if(data != undefined && data !=null && data.error == 'yes'){
+				alert(data.message);
+				return false;
+			} 
+		
+            obj.closest('table').closest('.grid-overflow-container').find('.grid-page-loading').click();
+        });
+        return false;
+    });
+    
+    $('body').on('click','.action-confirm',function() {
+        if(!confirm("Devam Etmek İstiyor musunuz ?"))
+            return false;
+        var obj =$(this);
+        var url = $(this).attr("href")+ '?rnd=' + Math.floor(Math.random() * 11);
+        $.get(url, function(data) {
+            obj.closest('table').closest('.grid-overflow-container').find('.grid-page-loading').click();
+        });
+        return false;
+    });
+
+    $('body').on('click','.action-cop, .aciton-aktif',function() {
+        //var parent = $(this).closest("tr");
+        var obj =$(this);
+        var url = $(this).attr("href")+ '?rnd=' + Math.floor(Math.random() * 11);
+        $.get(url, function(data) {
+            obj.closest('table').closest('.grid-overflow-container').find('.grid-page-loading').click();
+        });
+        return false;
+    });
+    
+    $('body').on('click','.ajax-action',function() {
+        var obj =$(this);
+        var kontrol = $(this).hasClass('confirm');
+        if(kontrol==true && !confirm("Devam Etmek İstiyor musunuz ?"))
+            return false;
+        var url = $(this).attr("href")+ '?rnd=' + Math.floor(Math.random() * 11);
+        $.getJSON(url, function(data) {
+			if(data != undefined && data !=null && data.error == 'yes'){
+				alert(data.message);
+				return false;
+			}
+		
+            obj.closest('table').closest('.grid-overflow-container').find('.grid-page-loading').click();
+        }); 
+        return false;
+    });
+
+    $(".hepsini-sec").click(function(){
+        $(this).closest('table').find('th :checkbox').attr('checked', this.checked)
+    });
+
+    $('.button-toplu-islem').click(function() {
+        if (!confirm("Devam etmek istiyormusunuz ?"))
+            return false;
+        return true;
+    });
+
+    
+    $('form').submit(function(){
+        var validation = jQuery('.form').validationEngine('validate');
+        
+        if (validation) {
+            $('input[type=submit]', this).attr('disabled', 'disabled');
+        }
+        else{
+            $('input[type=submit]', this).attr('disabled', false);
+        }  
+        
+    });  
+    
+    if (jQuery().supersubs != undefined) {        
+    $("ul.sf-menu").supersubs({ 
+            minWidth:    15,   // minimum width of sub-menus in em units 
+            maxWidth:    30,   // maximum width of sub-menus in em units 
+            extraWidth:  1     // extra width can ensure lines don't sometimes turn over 
+                               // due to slight rounding differences and font-family 
+        }).superfish();  // call supersubs first, then superfish, so that subs are 
+                         // not display:none when measuring. Call before initialising 
+                         // containing tabs for same reason.                         
+    }
+    
+    
+    jQuery('.form').validationEngine({
+        promptPosition : "topLeft"
+    });    
+        
+    $('body').on('click','.btn-cancel-form',function(){
+        var thisObj = $(this);
+        var dataWindow = thisObj.attr('data-window');
+        var dataModalName = thisObj.attr('data-modal-name');
+        if (dataWindow=='modal') {
+            closeDialog(dataModalName);
+            return false;
+        }
+    });
+        
+    $(document).on('click','.modal-for-grid',function(){
+        var dataModalSize = $(this).attr('data-modal-size');
+        var dataUpdateGridId = $(this).attr('data-update-grid');
+        var dataModalName = $(this).attr('data-modal-name');
+        
+        var _dialog = {
+            title : $(this).attr('title'),
+            close:function(){
+                eval("if("+dataUpdateGridId+" != 'undefined')" + dataUpdateGridId + ".g.reloadButton.trigger('click');");
+                $(this).remove();
+            }
+        };
+        
+        if (dataModalSize) {
+            dataModalSize = dataModalSize.split('-');
+            var width = dataModalSize[0];
+            var height = dataModalSize[1];
+            
+            if (width=='max') {
+                width = $(window).width() - 100;
+            }
+            
+            if (height=='max') {
+                height = $(window).height() -  100;
+            }
+            
+            _dialog.width = width;
+            _dialog.height = height;
+        }        
+        
+        uiDialog({
+            varName : dataModalName,
+            tagAttrs : {
+                src : $(this).attr('href')
+            },
+            dialog : _dialog
+        });
+        return false;
+        
+    });
+    
+    $(document).on('click','.open-modal',function(){
+        var dataModalSize = $(this).attr('data-modal-size');
+        var dataModalName = $(this).attr('data-modal-name');
+
+        var _dialog = {
+            title : $(this).attr('title')
+        };
+        
+        if (dataModalSize) {
+            dataModalSize = dataModalSize.split('-');
+            var width = dataModalSize[0];
+            var height = dataModalSize[1];
+            
+            if (width=='max') {
+                width = $(window).width() - 100;
+            }
+            
+            if (height=='max') {
+                height = $(window).height() -  100;
+            }
+            
+            _dialog.width = width;
+            _dialog.height = height;
+        }
+        
+        uiDialog({
+            varName : dataModalName,
+            tagAttrs : {
+                src : $(this).attr('href')
+            },
+            dialog : _dialog
+        });
+        return false;
+        
+    });
+ 
+});
+
+//Tinymce
+function myCustomOnChangeHandler(inst) {
+    var text = $(inst.getContent()).text();
+    var text_len = text.length;
+       
+    if (text_len>4500) { 
+        var error_text = 'Girdiğiniz karakter uzunluğu = ' + text.length;
+        jQuery('#'+inst.id +'_tbl').validationEngine('hide');
+        jQuery('#'+inst.id +'_tbl').validationEngine('showPrompt',error_text +  '<br/>Maksimum 4500 karakter girebilirsiniz!', 'error', true);
+    }
+}
+
+function validateTime(field, rules, i, options){
+    if (!isValidTime(field.val())) {
+        // this allows to use i18 for the error msgs
+        return '*Saati hh:mm Formatında Giriniz!';
+    }
+}
+
+function isValidTime(value) {
+   var hasMeridian = false;
+   var re = /^\d{1,2}[:]\d{2}([:]\d{2})?( [aApP][mM]?)?$/;
+   if (!re.test(value)) {return false;}
+   if (value.toLowerCase().indexOf("p") != -1) {hasMeridian = true;}
+   if (value.toLowerCase().indexOf("a") != -1) {hasMeridian = true;}
+   var values = value.split(":");
+   if ( (parseFloat(values[0]) < 0) || (parseFloat(values[0]) > 23) ) {return false;}
+   if (hasMeridian) {
+      if ( (parseFloat(values[0]) < 1) || (parseFloat(values[0]) > 12) ) {return false;}
+   }
+   if ( (parseFloat(values[1]) < 0) || (parseFloat(values[1]) > 59) ) {return false;}
+   if (values.length > 2) {
+      if ( (parseFloat(values[2]) < 0) || (parseFloat(values[2]) > 59) ) {return false;}
+   }
+   return true;
+}

@@ -1,0 +1,113 @@
+<div class="section corners">
+    <div class="row">
+        <div class="span12">
+            <div class="page-header-container">
+                <h1 class="page-header">
+                    <?php echo $page_title; ?>
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span12">
+            <div class="section-padding">
+                <div class="grid-container">
+                    <div id="{single_name}Grid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/x-kendo-template" id="{single_name}-toolbar-template">
+    <a href="<?php echo $edit_url ?>" class="modal-for-grid k-button" title="<?php _e('New'); ?>"
+       data-modal-size="max-max" data-modal-name="{single_name}Modal" data-grid-name="{single_name}Grid">
+        <span class="k-icon k-add"></span> <?php _e('New'); ?></a>
+
+</script>
+
+
+<script type="text/x-kendo-template" id="{single_name}-actions-template">
+    <ul class="grid-action-menu">
+        <li><i class="icon-cog"></i>
+            <ul>                
+                <li>
+                    <a href="<?php echo admin_url('{single_name}/details/id/#= id #') ?>" 
+                       class="action-quickview" title="<?php _e('Quick View'); ?>"
+                       data-grid-name="{single_name}Grid" data-modal-size="800-max" data-modal-name="{single_name}Modal"
+                       data-quickview-template-selector="\#{single_name}-quickview-template">
+                        <i class="icon-list-alt"></i> <?php _e('Quick View'); ?></a></li>
+
+                <li><a href="<?php echo admin_url('{single_name}/edit/window/modal/id/#= id #') ?>" 
+                       class="modal-for-grid action-edit" 
+                       title="<?php _e('Edit'); ?>"
+                       data-modal-size="max-max" data-modal-name="{single_name}Modal" data-grid-name="{single_name}Grid">
+                        <i class="icon-edit"></i> <?php _e('Edit'); ?></a>
+                </li>
+
+                <li>
+                    <a href="<?php echo admin_url('{single_name}/delete/id/#= id #') ?>" 
+                       class="action-ajax action-delete show-confirm" data-grid-name="{single_name}Grid">
+                        <i class="icon-remove"></i> <?php _e('Delete'); ?></a></li>
+
+            </ul>
+        </li>
+    </ul>
+</script>
+
+
+<script type="text/x-kendo-template" id="{single_name}-quickview-template">
+    <div id="quickview-container">
+        <table class="quickview-grid">
+            <thead>
+                <tr>
+                    <th><?php _e('Label'); ?></th>
+                    <th><?php _e('Value'); ?></th>
+                </tr>
+            </thead>
+            <tbody>  
+                {quick_view_rows}
+            </tbody>
+        </table>        
+    </div>
+</script>
+
+
+<script type="text/javascript">
+    var {single_name}Grid;
+    
+    $(function() {
+        grid(
+            $('#{single_name}Grid'),
+            {
+                url : '<?php echo admin_url('{single_name}/grid'); ?>',
+                model : {
+                    id:'{primary_key}',
+                    fields: {
+                        actions:{},
+                        {grid_models_script}}
+                    }
+                },
+                gridOptions : {
+                    toolbar: kendo.template($('#{single_name}-toolbar-template').html()),
+                    columns: [
+                        {
+                            title:'<?php _e('Actions') ?>',
+                            template: $('#{single_name}-actions-template').html(),
+                            filterable:false,
+                            groupable:false,
+                            sortable:false,
+                            width:60,
+                            encoded: false
+                        },
+                        {grid_columns_script}
+                    ]
+                }
+
+            }
+        );      
+        {single_name}Grid = $('#{single_name}Grid').data('kendoGrid');
+
+    });
+</script>

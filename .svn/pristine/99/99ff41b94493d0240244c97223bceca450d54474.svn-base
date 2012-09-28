@@ -1,0 +1,93 @@
+$(function(){
+	$('.left-sidebar-menu').each(function(i,e){
+		
+		var a = $(this).find('a').width()+8;
+		$(this).find('.icon').css('left',a);
+	});
+
+	$('.left-sidebar-menu a').hover(function(){
+		var thisObj = $(this);
+	
+		thisObj.find('.arrow').animate(
+			{width:'39px'}
+		);					
+		thisObj.find('.text').animate({marginLeft:'+=34px'});		
+		thisObj.find('.icon').animate({width:'35px'});
+		
+	},function(){
+		var thisObj = $(this);
+		thisObj.find('.arrow').animate(
+			{width:'0'}
+		);			
+		thisObj.find('.text').animate({marginLeft:'0'});
+		thisObj.find('.icon').animate({width:'0'});	
+	});
+});
+
+
+var $el, leftPos, newWidth, $magicLine;
+$(function(){
+	$('a[data-toggle="tab"]').on('show', function (e) {						
+		$(e.target).closest('li').addClass('current_page_item');
+		$(e.relatedTarget).closest('li').removeClass('current_page_item');
+		var currentLiObj = $('.current_page_item');
+		
+		$magicLine
+			.width(currentLiObj.width())
+			.css("left", currentLiObj.position().left)
+			.data("origLeft", $magicLine.position().left)
+			.data("origWidth", $magicLine.width());
+	});
+});
+
+$(function(){
+	$('[rel="popover"]').popover({
+		trigger : 'hover',
+		placement : 'right'
+	});
+})
+
+	
+	
+	$(function(){	
+		
+		slideMenu();
+	});
+	
+function slideMenu(){
+	
+	var ulObj = $("#example-one");
+	
+	if(ulObj.length<1) return false;
+	
+	var magicLineContainerObj = $('<li class="magic-line-container"></li>');
+	magicLineContainerObj.width(ulObj.width());
+	ulObj.append(
+		magicLineContainerObj.append("<div id='magic-line'></div>")		
+	);
+	
+	/* Cache it */
+	$magicLine = $("#magic-line");
+	
+	$magicLine
+		.width($(".current_page_item").width())
+		.css("left", $(".current_page_item a").position().left)
+		.data("origLeft", $magicLine.position().left)
+		.data("origWidth", $magicLine.width());
+		
+	$("#example-one li").find("a").hover(function() {
+		$el = $(this);
+		leftPos = $el.position().left;
+		newWidth = $el.parent().width();
+		
+		$magicLine.stop().animate({
+			left: leftPos,
+			width: newWidth
+		});
+	}, function() {
+		$magicLine.stop().animate({
+			left: $magicLine.data("origLeft"),
+			width: $magicLine.data("origWidth")
+		});    
+	});
+}

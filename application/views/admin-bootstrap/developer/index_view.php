@@ -1,0 +1,32 @@
+<div class="section corners">
+    <div class="row">
+        <div class="span12">
+            <div class="box">
+                <div class="box-header-container">
+                    <h1 class="box-header">
+                        <?php echo $page_title; ?>
+                    </h1>
+                </div>
+
+                <div class="box-content">
+                    <div class="section-padding">
+                        <?php echo flash_data_alert_admin(); ?>
+                        
+                        <ul class="nav nav-tabs nav-stacked">
+                            <?php foreach($functions as $key => $e): ?>
+                                <li><?php echo anchor(admin_url("developer/$key"), $e, 'class=""'); ?></li>
+                            <?php endforeach; ?>               
+                            <li><?php echo anchor(admin_url('auth_module/index/parola/bilmiyorum'), __('Modules'), 'target="_blank"'); ?></li>
+                            <li><?php echo anchor(admin_url('class_generator/index'), __('Class Generator'), 'target="_blank"'); ?></li>
+                       </ul>
+                    </div>
+                </div>
+
+                <div class="box-footer"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

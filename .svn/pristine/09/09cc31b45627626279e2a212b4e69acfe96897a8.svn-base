@@ -1,0 +1,8 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
+ERROR - 2012-08-30 14:18:13 --> Severity: Notice  --> Undefined variable: dropdown_country_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\city\form_view.php 41
+ERROR - 2012-08-30 14:18:13 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-08-30 14:18:13 --> Severity: Notice  --> Undefined variable: dropdown_state_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\city\form_view.php 52
+ERROR - 2012-08-30 14:18:13 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-08-30 14:30:17 --> Query error: Unknown column 'X.COUNTRY_NAME' in 'order clause'
+ERROR - 2012-08-30 14:30:35 --> Query error: Unknown column 'X.COUNTRY_NAME' in 'order clause'

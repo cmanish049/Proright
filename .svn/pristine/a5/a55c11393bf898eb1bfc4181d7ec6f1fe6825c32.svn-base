@@ -1,0 +1,63 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
+ERROR - 2012-09-20 10:46:16 --> 404 Page Not Found --> themes
+ERROR - 2012-09-20 10:46:16 --> 404 Page Not Found --> themes
+ERROR - 2012-09-20 10:46:16 --> 404 Page Not Found --> themes
+ERROR - 2012-09-20 11:21:51 --> 404 Page Not Found --> class_generator
+ERROR - 2012-09-20 14:38:19 --> Severity: Notice  --> Undefined variable: dropdown_country_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\zip_code\form_view.php 50
+ERROR - 2012-09-20 14:38:19 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-20 14:38:19 --> Severity: Notice  --> Undefined variable: dropdown_state_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\zip_code\form_view.php 61
+ERROR - 2012-09-20 14:38:19 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-20 14:38:19 --> Severity: Notice  --> Undefined variable: dropdown_city_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\zip_code\form_view.php 72
+ERROR - 2012-09-20 14:38:19 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-20 14:40:07 --> Severity: Notice  --> Undefined property: Zip_code::$country_model D:\wamp\www\Projeler\alexander-framework\application-alexander\controllers\admin\zip_code.php 220
+ERROR - 2012-09-20 14:40:34 --> Severity: Notice  --> Undefined variable: dropdown_city_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\zip_code\form_view.php 72
+ERROR - 2012-09-20 14:40:34 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-20 14:41:47 --> Query error: Unknown column 'city_id' in 'field list'
+ERROR - 2012-09-20 14:43:52 --> Query error: Unknown column 'city_id' in 'field list'
+ERROR - 2012-09-20 14:44:28 --> Query error: Unknown column 'city_id' in 'field list'
+ERROR - 2012-09-20 14:44:50 --> Severity: Notice  --> Undefined variable: column D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 446
+ERROR - 2012-09-20 14:44:50 --> Severity: Notice  --> Undefined variable: column D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 446
+ERROR - 2012-09-20 14:44:50 --> Severity: Notice  --> Undefined variable: column D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 446
+ERROR - 2012-09-20 14:44:50 --> Severity: Notice  --> Undefined variable: column D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 446
+ERROR - 2012-09-20 14:44:50 --> Severity: Notice  --> Undefined variable: column D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 446
+ERROR - 2012-09-20 14:44:50 --> Severity: Notice  --> Undefined variable: column D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 446
+ERROR - 2012-09-20 14:44:50 --> Severity: Notice  --> Undefined variable: column D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 446
+ERROR - 2012-09-20 14:44:50 --> Severity: Notice  --> Undefined variable: column D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 446
+ERROR - 2012-09-20 14:44:50 --> Severity: Notice  --> Undefined variable: column D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 446
+ERROR - 2012-09-20 14:44:50 --> Severity: Notice  --> Undefined variable: column D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 446
+ERROR - 2012-09-20 14:44:51 --> Severity: Notice  --> Undefined variable: column D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 446
+ERROR - 2012-09-20 14:44:51 --> Severity: Notice  --> Undefined variable: column D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 446
+ERROR - 2012-09-20 14:44:51 --> Severity: Notice  --> Undefined variable: column D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 446
+ERROR - 2012-09-20 14:44:51 --> Severity: Notice  --> Undefined variable: column D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 446
+ERROR - 2012-09-20 14:44:51 --> Severity: Notice  --> Undefined variable: column D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 446
+ERROR - 2012-09-20 14:44:51 --> Severity: Notice  --> Undefined variable: column D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 446
+ERROR - 2012-09-20 14:44:51 --> Severity: Notice  --> Undefined variable: column D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 446
+ERROR - 2012-09-20 14:44:51 --> Severity: Notice  --> Undefined variable: column D:\wamp\www\Projeler\alexander-framework\application-alexander\core\MY_Model.php 446
+ERROR - 2012-09-20 14:45:29 --> Query error: Unknown column 'city_id' in 'field list'
+ERROR - 2012-09-20 14:45:37 --> Query error: Unknown column 'city_id' in 'field list'
+ERROR - 2012-09-20 14:46:12 --> Query error: Unknown column 'city_id' in 'field list'
+ERROR - 2012-09-20 14:46:23 --> Query error: Unknown column 'city_id' in 'field list'
+ERROR - 2012-09-20 14:48:11 --> Query error: Unknown column 'city_id' in 'field list'
+ERROR - 2012-09-20 14:48:22 --> Query error: Unknown column 'city_id' in 'field list'
+ERROR - 2012-09-20 14:50:31 --> Query error: Unknown column 'city_id' in 'field list'
+ERROR - 2012-09-20 14:50:55 --> Query error: Unknown column 'city_id' in 'field list'
+ERROR - 2012-09-20 14:51:22 --> Query error: Unknown column 'city_id' in 'field list'
+ERROR - 2012-09-20 14:51:42 --> Severity: Notice  --> Undefined variable: dropdown_city_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\zip_code\form_view.php 72
+ERROR - 2012-09-20 14:51:42 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-20 14:51:53 --> Severity: Notice  --> Undefined variable: dropdown_city_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\zip_code\form_view.php 72
+ERROR - 2012-09-20 14:51:53 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-20 14:52:03 --> Severity: Notice  --> Undefined variable: dropdown_city_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\zip_code\form_view.php 72
+ERROR - 2012-09-20 14:52:03 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-20 15:00:51 --> Query error: Unknown column 'CITIES.CITY_NAME' in 'where clause'
+ERROR - 2012-09-20 15:02:49 --> Query error: Unknown column 'CITIES.CITY_NAME' in 'where clause'
+ERROR - 2012-09-20 15:52:59 --> Severity: Notice  --> Undefined offset: 0 D:\wamp\www\Projeler\alexander-framework\application-alexander\controllers\admin\status.php 15
+ERROR - 2012-09-20 15:53:02 --> Severity: Notice  --> Undefined offset: 0 D:\wamp\www\Projeler\alexander-framework\application-alexander\controllers\admin\status.php 15
+ERROR - 2012-09-20 15:56:58 --> Severity: Notice  --> Undefined offset: 0 D:\wamp\www\Projeler\alexander-framework\application-alexander\controllers\admin\status.php 16
+ERROR - 2012-09-20 16:02:12 --> Severity: Notice  --> Undefined offset: 0 D:\wamp\www\Projeler\alexander-framework\application-alexander\controllers\admin\status.php 16
+ERROR - 2012-09-20 16:02:19 --> Severity: Notice  --> Undefined offset: 0 D:\wamp\www\Projeler\alexander-framework\application-alexander\controllers\admin\status.php 16
+ERROR - 2012-09-20 16:02:47 --> Severity: Notice  --> Undefined offset: 0 D:\wamp\www\Projeler\alexander-framework\application-alexander\controllers\admin\status.php 16
+ERROR - 2012-09-20 16:12:47 --> Severity: Notice  --> Undefined offset: 0 D:\wamp\www\Projeler\alexander-framework\application-alexander\controllers\admin\status.php 16
+ERROR - 2012-09-20 16:16:11 --> Severity: Notice  --> Undefined offset: 0 D:\wamp\www\Projeler\alexander-framework\application-alexander\controllers\admin\status.php 16
+ERROR - 2012-09-20 16:33:24 --> Severity: Notice  --> Undefined variable: edit_url_query_string D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\templates\kendo_grid_row_actions_template.php 4
+ERROR - 2012-09-20 16:33:24 --> Severity: Notice  --> Undefined variable: delete_url_query_string D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\templates\kendo_grid_row_actions_template.php 5

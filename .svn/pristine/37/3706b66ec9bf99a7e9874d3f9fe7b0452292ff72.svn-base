@@ -1,0 +1,279 @@
+<?php
+
+class Zip_code extends Admin_Controller
+{
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $module = 'zip_code';
+        $this->auth->is_authorized($module);
+        $this->load->model(array('zip_code_model','country_model','state_model','city_model'));
+        
+        $this->data['module'] = $this->auth->get_module($module);
+        $this->data['page_title'] = $this->data['module']['module_plural_label'];
+        $this->data['index_url'] = admin_url('zip_code/index/');        
+        $this->data['limit'] = 10;
+    }
+
+    public function index()
+    {
+        $this->data['edit_url'] = admin_url("zip_code/edit/window/modal");
+        $this->data['page_title'] = $this->data['module']['module_plural_label'];
+
+        $this->data['dropdown_countries'] = $this->country_model->dropdown('country_id','country_name',
+                array(
+                    'order_by' => 'country_name ASC'
+                )
+        );
+        
+        $this->data['dropdown_states'] = $this->state_model->dropdown('state_id','state_name',
+                array(
+                    'order_by' => 'state_name ASC'
+                )
+        );
+        
+        $this->template->view_parts('content', 'zip_code/index_view', $this->data)
+                ->title($this->data['page_title'])                
+                ->build();
+    }
+
+    public function grid()
+    {
+        $json['error'] = 'no';
+        $json['message'] = '';
+        use_try_catch();
+        try 
+        {
+            $extra = array(
+                'limit' => $this->data['limit'],
+                'callback' => array('join_countries','join_states','join_cities')
+            );
+            add_language_param($extra);
+            $this->zip_code_model->set_extra_from_url($extra);        
+
+            $json['rows'] = $this->zip_code_model->get_rows($extra);
+
+            unset($extra['limit'],$extra['offset']);
+            $json['total'] = $this->zip_code_model->get_count($extra);
+        }
+        catch (AF_exception $exc) 
+        {
+            $json['error'] = 'yes';
+            $json['message'] = $exc->errorMessage();
+        }      
+        
+        $this->output->_display($this->fastjson->encode($json));
+    }
+
+    public function delete()
+    {
+        $json['error'] = 'no';
+        use_try_catch();
+        try 
+        {
+            $this->db->trans_start();
+            $this->zip_code_model->delete($this->id);
+            
+            # if there is an error in database processes
+            if($this->db->trans_status() === FALSE)
+            {
+                throw new Exception(__('Unknown error was occured'));
+            }
+
+            #end transaction, has error it will be rollback
+            $this->db->trans_complete();            
+        }
+        catch (Exception $exc) 
+        {
+            $this->db->trans_rollback();
+            
+            $json['error'] = 'yes';
+            $json['message'] = $exc->getMessage();
+        }
+
+        $this->output->_display($this->fastjson->encode($json));
+    }
+    
+    /*
+    private function _upload_image($id='', $image_name='')
+    {
+        $image_id = 0;
+        if(!$id || !array_key_exists('image', $_FILES) || $_FILES['image']['error'] == '4')
+        {
+            return $image_id;
+        }
+        
+        $this->file->init(array(
+            'upload_dir_name' => 'zip_code',
+            'overwrite' => FALSE
+        ));
+
+        if($this->file->upload_file('image', $image_name))
+        {
+            $db_data = array('file_title' => $image_name);
+            $image_id = $this->file->insert($db_data);
+            $this->zip_code_model->update($id, array('image_id' => $image_id));
+        }
+        else
+        {
+            throw new Exception(implode('<br/>', $this->file->errors));
+        }
+        
+        $this->file->clear();
+        return $image_id;
+    }
+    */
+    
+    public function edit()
+    {
+        $this->_set_form_data();
+
+        $json['error'] = 'no';
+        if($this->_form_validation() === TRUE)
+        {
+            $db_data = array(
+                'zip_code' => $this->input->post('zip_code', TRUE),
+'area_code' => $this->input->post('area_code', TRUE),
+'country_id' => $this->input->post('country_id', TRUE),
+'state_id' => $this->input->post('state_id', TRUE),
+'city_id' => $this->input->post('city_id', TRUE),
+
+            );
+            
+            use_try_catch();
+            try 
+            {       
+                $this->db->trans_start();
+                
+                add_language_param($db_data); 
+                if(empty($this->id))
+                {
+                    $this->id = $this->zip_code_model->insert($db_data);
+                    $this->uri_assoc['id'] = $this->id;
+                }
+                else
+                {
+                    $this->zip_code_model->update($this->id, $db_data);
+                }
+                       
+                # if there is an error in database processes
+                if($this->db->trans_status() === FALSE)
+                {
+                    throw new Exception(__('Unknown error was occured'));
+                }
+
+                #end transaction, has error it will be rollback
+                $this->db->trans_complete();   
+                
+                if($this->data['window'] == 'modal')
+                {
+                    js_close_modal('zip_codeModal');
+                }
+                elseif(is_ajax())
+                {
+                    $this->output->_display($this->fastjson->encode($json));
+                    exit;
+                }
+                else
+                {
+                    $this->session->set_flashdata('success', __('process is performed successfully'));
+                    redirect(admin_url($this->uri->assoc_to_uri($this->uri_assoc)));
+                }
+            }
+            catch (Exception $exc) 
+            {
+                $this->db->trans_rollback();
+                
+                $this->data['error'] = $exc->errorMessage();
+                if(is_ajax())
+                {
+                    $json['error'] = 'yes';
+                    $json['message'] = $this->data['error'];
+                    $this->output->_display($this->fastjson->encode($json));
+                    exit;
+                }
+
+                $this->session->set_flashdata('error', $this->data['error']);
+                redirect(admin_url($this->uri->assoc_to_uri($this->uri_assoc)));
+            }            
+            
+            if (is_ajax()) 
+            {
+                $this->output->_display($this->fastjson->encode($json));
+                exit;
+            }
+        }
+        $this->data['row'] = $this->zip_code_model->get_row_by_id($this->id, array());
+
+        
+        $this->template->view_parts('content', 'zip_code/form_view', $this->data)
+                ->title($this->data['page_title'])
+                ->build();
+    }
+
+    private function _set_form_data()
+    {
+        $this->data['page_title'] = $this->data['module']['module_single_label'];
+
+        $this->data['dropdown_country_id'] = $this->country_model->dropdown('country_id', 'country_name',array(
+            'order_by' => array('country_name ASC')
+        ));
+        $this->data['dropdown_state_id'] = $this->state_model->dropdown('state_id', 'state_name',array(
+            'order_by' => array('state_name ASC')
+        ));
+        $this->data['dropdown_city_id'] = $this->city_model->dropdown('city_id', 'city_name',array(
+            'order_by' => array('city_name ASC')
+        ));
+        
+        $this->data['form_action'] = current_url();
+        $this->data['redirect'] = current_url();
+    }
+
+    private function _form_validation()
+    {
+        if(!$_POST) return FALSE;
+
+        $this->load->library('form_validation');
+        $validation = array(
+            array(
+            'field' => 'zip_code',
+            'label' => __('Zip Code'),
+            'rules' => 'trim|max_length[50]|required'
+        ),
+array(
+            'field' => 'area_code',
+            'label' => __('Area Code'),
+            'rules' => 'trim|max_length[50]'
+        ),
+array(
+            'field' => 'country_id',
+            'label' => __('Country Id'),
+            'rules' => 'trim|numeric'
+        ),
+array(
+            'field' => 'state_id',
+            'label' => __('State Id'),
+            'rules' => 'trim|numeric'
+        ),
+array(
+            'field' => 'city_id',
+            'label' => __('City Id'),
+            'rules' => 'trim|numeric'
+        ),
+
+        );
+
+        $this->validation = array_merge($this->validation, $validation);
+        $this->form_validation->set_rules($this->validation);
+
+        if($this->form_validation->run() === FALSE)
+        {
+            return FALSE;
+        }
+
+        return TRUE;
+    }
+
+}

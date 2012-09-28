@@ -1,0 +1,63 @@
+<div class="section corners">
+    <div class="row">
+        <div class="span12">
+            <h2 class ="ico-mug"><?php echo $page_title; ?>
+                <?php echo anchor($edit_url, __('Add New'), 
+                        'title="'.('Add New').'" class="btn btn-primary btn-small modal-for-grid" 
+                            data-modal-size="max-max" data-modal-name="userModal" data-update-grid="userGrid"'); ?>
+            </h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span12">
+            <div class="section-padding">
+                <table class="table" id="userGrid">
+                    <thead>
+                        <tr>           
+                            <th><?php _e('Processes'); ?></th>
+                            <th><?php _e('Unique Key'); ?></th>
+<th><?php _e('Creator Id'); ?></th>
+<th><?php _e('Image Id'); ?></th>
+<th><?php _e('User Type'); ?></th>
+<th><?php _e('Active'); ?></th>
+<th><?php _e('Username'); ?></th>
+<th><?php _e('Password'); ?></th>
+<th><?php _e('Email'); ?></th>
+<th><?php _e('About'); ?></th>
+<th><?php _e('Website'); ?></th>
+<th><?php _e('Display Name'); ?></th>
+<th><?php _e('Last Login'); ?></th>
+<th><?php _e('Insert Date'); ?></th>
+<th><?php _e('Gender'); ?></th>
+<th><?php _e('First Name'); ?></th>
+<th><?php _e('Full Name'); ?></th>
+<th><?php _e('Last Name'); ?></th>
+<th><?php _e('Telephone'); ?></th>
+<th><?php _e('Mobile'); ?></th>
+<th><?php _e('Address'); ?></th>
+<th><?php _e('School Id'); ?></th>
+<th><?php _e('Country Id'); ?></th>
+<th><?php _e('Birth Date'); ?></th>
+<th><?php _e('Birth Place'); ?></th>
+<th><?php _e('Appelation Id'); ?></th>
+<th><?php _e('Job Id'); ?></th>
+<th><?php _e('Meta Data'); ?></th>
+<th><?php _e('City Id'); ?></th>
+<th><?php _e('District'); ?></th>
+<th><?php _e('Zip Code'); ?></th>
+<th><?php _e('Is Admin'); ?></th>
+
+                        </tr>
+                    </thead>
+                    <tbody></tbody>    
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

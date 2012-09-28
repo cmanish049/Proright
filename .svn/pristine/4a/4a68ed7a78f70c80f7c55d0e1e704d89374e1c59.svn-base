@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>title</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="robots" content="index,follow" />
+	
+	<link rel="stylesheet" type="text/css" href="../themes/admin-bootstrap/css/bootstrap.css" />
+	<!--<link rel="stylesheet" type="text/css" href="../themes/admin-bootstrap/css/kendo.common.css" />
+	<link rel="stylesheet" type="text/css" href="../themes/admin-bootstrap/css/kendo.default.min.css" />-->
+	<link rel="stylesheet" type="text/css" href="../themes/admin-bootstrap/css/custom.css" />
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
+	<script type="text/javascript" src="../themes/admin-bootstrap/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="../themes/admin-bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="../themes/admin-bootstrap/js/jquery.maskedinput.js"></script>
+	<script type="text/javascript" src="../themes/admin-bootstrap/js/jquery.validationEngine.js"></script>
+	<script type="text/javascript" src="../themes/admin-bootstrap/js/jquery-plugins.js"></script>
+	<script type="text/javascript" src="../themes/admin-bootstrap/js/custom.js"></script>
+	<script type="text/javascript" src="../themes/admin-bootstrap/js/kendo.web.min.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+</head>
+
+<body style="">
+
+<div class="container">
+	<div class="row" style="">
+		<div class="span12" style="padding-top:20px;padding-bottom:20px;">
+			<a href="index.html">
+				<img src="images/logo.png" alt=""/>
+			</a>
+			
+		</div>
+		<div class="span12 clearfix" style="margin-bottom:10px;">
+			<div class="pull-left">
+				<img src="images/notification-menu.png" alt=""/>
+			</div>
+			
+			<div class="pull-right" style="margin-right:65px;">
+				<div class="btn-group">
+				  <a class="btn btn-user-menu dropdown-toggle" data-toggle="dropdown" href="#">
+					Serkan OZKAN
+					<span class="caret"></span>
+				  </a>
+				  <ul class="dropdown-menu pull-right">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="#">Settings</a></li>
+						<li><a href="#">Logout</a></li>
+				  </ul>
+				</div>
+			</div>					
+		</div>
+				
+		<div class="span12 clearfix" style="margin-bottom:40px;">
+			<div class="pull-left">
+				<div id="menu-container">
+					<div id="menu">
+						<ul id="menu-ul" class="clearfix unstyled">
+							<li class="pull-left">
+								<a href="index.html" class="btn-block">										
+									<div>
+										<img src="images/menu-img-1.png" alt=""/>
+									</div>									
+									<span>Schedule</span>
+								</a>
+							</li>
+							
+							<li class="divider-vertical pull-left"></li>
+							
+							<li class="pull-left">
+								<a href="notifications.html" class="btn-block">
+									<div>
+										<img src="images/menu-img-2.png" alt=""/>
+									</div>	
+									<span>Clients</span>
+								</a>
+							</li>
+							
+							<li class="divider-vertical pull-left"></li>
+							
+							<li class="pull-left">
+								<a href="grid.html" class="btn-block">
+									<div>
+										<img src="images/menu-img-3.png" alt=""/>
+									</div>	
+									<span>Matters</span>
+								</a>
+							</li>
+							<li class="divider-vertical pull-left"></li>
+							<li class="pull-left">
+								<a href="#" class="btn-block">
+									<div>
+										<img src="images/menu-img-4.png" alt=""/>
+									</div>	
+									<span>Dialog</span>
+								</a>
+							</li>
+							<li class="divider-vertical pull-left"></li>
+							<li class="pull-left">
+								<a href="#" class="btn-block">
+									<div>
+										<img src="images/menu-img-5.png" alt=""/>
+									</div>	
+									<span>Forms</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<div class="pull-left">
+				<img src="images/avatar.png" alt=""/>
+			</div>
+					
+		</div>
+		
+		
+		
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="span12">
+			<div class="main-box">
+				<div class="box-header-container">
+						<h1 class="box-header">Notifications </h1>	
+							<span class="caret"></span>
+				</div>
+				
+				<div class="box-content">
+					<div class="row">
+						<div class="span3">
+							<ul class="unstyled left-sidebar-menu">
+								<li>
+									<a href="#" class="">
+										<span class="arrow"></span>
+										<span class="text">Reminder</span>
+										<span class="icon icon-reminder" style="background:url('images/sidebar-left-menu-icon-schedule.png') no-repeat scroll 0 0 transparent"></span>
+									</a>
+								</li>
+								<li>
+									<a href="#" class="">
+										<span class="arrow"></span>
+										<span class="text">Reminder</span>
+										<span class="icon icon-reminder" style="background:url('images/sidebar-left-menu-icon-schedule.png') no-repeat scroll 0 0 transparent"></span>
+									</a>
+								</li>
+								<li>
+									<a href="#" class="">
+										<span class="arrow"></span>
+										<span class="text">Your Notes</span>
+										<span class="icon icon-reminder" style="background:url('images/sidebar-left-menu-icon-schedule.png') no-repeat scroll 0 0 transparent"></span>
+									</a>
+								</li>
+								<li>
+									<a href="#" class="">
+										<span class="arrow"></span>
+										<span class="text">Schedule</span>
+										<span class="icon icon-reminder" style="background:url('images/sidebar-left-menu-icon-schedule.png') no-repeat scroll 0 0 transparent"></span>
+									</a>
+								</li>
+								<li>
+									<a href="#" class="">
+										<span class="arrow"></span>
+										<span class="text">Tasks</span>
+										<span class="icon icon-reminder" style="background:url('images/sidebar-left-menu-icon-schedule.png') no-repeat scroll 0 0 transparent"></span>
+									</a>
+								</li>
+								<li>
+									<a href="#" class="">
+										<span class="arrow"></span>
+										<span class="text">Reminder</span>
+										<span class="icon icon-reminder" style="background:url('images/sidebar-left-menu-icon-schedule.png') no-repeat scroll 0 0 transparent"></span>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="span8 offset1">
+						<img src="images/notifications-list-image.png" alt=""/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
+
+
+
+

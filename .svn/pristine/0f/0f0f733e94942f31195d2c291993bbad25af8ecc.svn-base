@@ -1,0 +1,55 @@
+<table>
+    <tbody>
+        <?php foreach($rows as $e): $edit_url = admin_url("user/edit/window/modal/id/" . $e->user_id); ?>
+            <tr id="id-<?php echo $e->user_id; ?>">
+                <td class="islemler">
+                    <div class="btn-group">
+                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-cog"></i>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><?php echo anchor($edit_url, '<i class="icon-edit"></i> ' . __('Edit'), 'title="'.__('Edit').'" class="modal-for-grid" 
+                                    data-modal-size="max-max"  data-modal-name="userModal" data-update-grid="userGrid"'); ?></li>
+                            <?php                            
+                                echo '<li>', anchor(admin_url("user/delete/id/$e->user_id"), '<i class="icon-remove"></i> ' . __('Delete'), 'class="action-delete"'), '</li>';
+                            ?>
+                        </ul>
+                    </div>
+                </td>
+
+                <td style=""><?php echo $e->unique_key; ?></td>
+<td style="text-align:right;"><?php echo $e->creator_id; ?></td>
+<td style="text-align:right;"><?php echo $e->image_id; ?></td>
+<td style=""><?php echo $e->user_type; ?></td>
+<td style="text-align:center;"><?php echo grid_column_label($e->active); ?></td>
+<td style=""><?php echo $e->username; ?></td>
+<td style=""><?php echo $e->password; ?></td>
+<td style=""><?php echo $e->email; ?></td>
+<td style=""><?php echo $e->about; ?></td>
+<td style=""><?php echo $e->website; ?></td>
+<td style=""><?php echo $e->display_name; ?></td>
+<td style=""><?php echo $e->last_login; ?></td>
+<td style=""><?php echo $e->insert_date; ?></td>
+<td style=""><?php echo $e->gender; ?></td>
+<td style=""><?php echo $e->first_name; ?></td>
+<td style=""><?php echo $e->full_name; ?></td>
+<td style=""><?php echo $e->last_name; ?></td>
+<td style=""><?php echo $e->telephone; ?></td>
+<td style=""><?php echo $e->mobile; ?></td>
+<td style=""><?php echo $e->address; ?></td>
+<td style="text-align:right;"><?php echo $e->school_id; ?></td>
+<td style="text-align:right;"><?php echo $e->country_id; ?></td>
+<td style=""><?php echo $e->birth_date; ?></td>
+<td style=""><?php echo $e->birth_place; ?></td>
+<td style="text-align:right;"><?php echo $e->appelation_id; ?></td>
+<td style="text-align:right;"><?php echo $e->job_id; ?></td>
+<td style=""><?php echo $e->meta_data; ?></td>
+<td style="text-align:right;"><?php echo $e->city_id; ?></td>
+<td style=""><?php echo $e->district; ?></td>
+<td style=""><?php echo $e->zip_code; ?></td>
+<td style="text-align:center;"><?php echo grid_column_label($e->is_admin); ?></td>
+
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>

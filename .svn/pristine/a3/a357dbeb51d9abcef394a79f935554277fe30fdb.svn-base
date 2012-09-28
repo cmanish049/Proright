@@ -1,0 +1,19 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
+ERROR - 2012-09-03 14:26:33 --> Severity: Warning  --> mysql_pconnect() [<a href='function.mysql-pconnect'>function.mysql-pconnect</a>]: [2002] Hedef makine etkin olarak reddettiðinden baðlantý kurulamadý.
+ (trying to connect via tcp://localhost:3306) D:\wamp\www\Projeler\alexander-framework\system-alexander\database\drivers\mysql\mysql_driver.php 91
+ERROR - 2012-09-03 14:26:33 --> Severity: Warning  --> mysql_pconnect() [<a href='function.mysql-pconnect'>function.mysql-pconnect</a>]: Hedef makine etkin olarak reddettiðinden baðlantý kurulamadý.
+ D:\wamp\www\Projeler\alexander-framework\system-alexander\database\drivers\mysql\mysql_driver.php 91
+ERROR - 2012-09-03 14:26:33 --> Unable to connect to the database
+ERROR - 2012-09-03 14:26:40 --> Severity: Warning  --> mysql_pconnect() [<a href='function.mysql-pconnect'>function.mysql-pconnect</a>]: [2002] Hedef makine etkin olarak reddettiðinden baðlantý kurulamadý.
+ (trying to connect via tcp://localhost:3306) D:\wamp\www\Projeler\alexander-framework\system-alexander\database\drivers\mysql\mysql_driver.php 91
+ERROR - 2012-09-03 14:26:40 --> Severity: Warning  --> mysql_pconnect() [<a href='function.mysql-pconnect'>function.mysql-pconnect</a>]: Hedef makine etkin olarak reddettiðinden baðlantý kurulamadý.
+ D:\wamp\www\Projeler\alexander-framework\system-alexander\database\drivers\mysql\mysql_driver.php 91
+ERROR - 2012-09-03 14:26:40 --> Unable to connect to the database
+ERROR - 2012-09-03 17:26:47 --> Query error: Unknown column 'country_id,' in 'field list'
+ERROR - 2012-09-03 17:26:49 --> Query error: Unknown column 'country_id,' in 'field list'
+ERROR - 2012-09-03 17:27:36 --> Query error: Unknown column 'country_id,' in 'field list'
+ERROR - 2012-09-03 17:28:50 --> Query error: Unknown column 'country_id,' in 'field list'
+ERROR - 2012-09-03 17:30:50 --> Query error: Unknown column 'country_id,' in 'field list'
+ERROR - 2012-09-03 17:31:16 --> Query error: Unknown column 'country_id,' in 'field list'
+ERROR - 2012-09-03 17:31:26 --> Query error: Unknown column 'country_id,' in 'field list'

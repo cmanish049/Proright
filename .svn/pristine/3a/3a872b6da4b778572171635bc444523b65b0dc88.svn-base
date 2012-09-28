@@ -1,0 +1,212 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
+ERROR - 2012-09-24 10:50:04 --> 404 Page Not Found --> ajax_search/cities
+ERROR - 2012-09-24 13:50:13 --> Severity: Notice  --> Undefined property: Ajax_search::$ciy_model D:\wamp\www\Projeler\alexander-framework\application-alexander\controllers\admin\ajax_search.php 40
+ERROR - 2012-09-24 13:50:25 --> Query error: Unknown column 'sity_id' in 'field list'
+ERROR - 2012-09-24 16:27:08 --> Severity: Notice  --> Undefined variable: dropdown_user_type_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 30
+ERROR - 2012-09-24 16:27:08 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:27:08 --> Severity: Notice  --> Undefined variable: dropdown_company_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 122
+ERROR - 2012-09-24 16:27:08 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:27:08 --> Severity: Notice  --> Undefined variable: dropdown_country_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 204
+ERROR - 2012-09-24 16:27:08 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:27:08 --> Severity: Notice  --> Undefined variable: dropdown_state_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 215
+ERROR - 2012-09-24 16:27:08 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:27:08 --> Severity: Notice  --> Undefined variable: dropdown_city_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 226
+ERROR - 2012-09-24 16:27:08 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:27:08 --> Severity: Notice  --> Undefined variable: dropdown_zip_code_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 237
+ERROR - 2012-09-24 16:27:08 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:27:08 --> Severity: Notice  --> Undefined variable: dropdown_attorney_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 248
+ERROR - 2012-09-24 16:27:08 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:27:08 --> Severity: Notice  --> Undefined variable: dropdown_inserter_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 286
+ERROR - 2012-09-24 16:27:08 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:27:08 --> Severity: Notice  --> Undefined variable: dropdown_updater_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 306
+ERROR - 2012-09-24 16:27:08 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:27:08 --> Severity: Notice  --> Undefined variable: dropdown_passport_country_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 434
+ERROR - 2012-09-24 16:27:08 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:27:08 --> Severity: Notice  --> Undefined variable: dropdown_marital_status_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 454
+ERROR - 2012-09-24 16:27:08 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:00 --> Severity: Notice  --> Undefined variable: dropdown_company_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 122
+ERROR - 2012-09-24 16:31:00 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:00 --> Severity: Notice  --> Undefined variable: dropdown_country_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 204
+ERROR - 2012-09-24 16:31:00 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:00 --> Severity: Notice  --> Undefined variable: dropdown_state_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 215
+ERROR - 2012-09-24 16:31:00 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:00 --> Severity: Notice  --> Undefined variable: dropdown_city_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 226
+ERROR - 2012-09-24 16:31:00 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:00 --> Severity: Notice  --> Undefined variable: dropdown_zip_code_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 237
+ERROR - 2012-09-24 16:31:00 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:00 --> Severity: Notice  --> Undefined variable: dropdown_attorney_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 248
+ERROR - 2012-09-24 16:31:00 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:00 --> Severity: Notice  --> Undefined variable: dropdown_inserter_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 286
+ERROR - 2012-09-24 16:31:00 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:00 --> Severity: Notice  --> Undefined variable: dropdown_updater_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 306
+ERROR - 2012-09-24 16:31:00 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:00 --> Severity: Notice  --> Undefined variable: dropdown_passport_country_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 434
+ERROR - 2012-09-24 16:31:00 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:00 --> Severity: Notice  --> Undefined variable: dropdown_marital_status_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 454
+ERROR - 2012-09-24 16:31:00 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:10 --> Severity: Notice  --> Undefined variable: dropdown_company_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 122
+ERROR - 2012-09-24 16:31:10 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:10 --> Severity: Notice  --> Undefined variable: dropdown_country_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 204
+ERROR - 2012-09-24 16:31:10 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:10 --> Severity: Notice  --> Undefined variable: dropdown_state_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 215
+ERROR - 2012-09-24 16:31:10 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:10 --> Severity: Notice  --> Undefined variable: dropdown_city_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 226
+ERROR - 2012-09-24 16:31:10 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:10 --> Severity: Notice  --> Undefined variable: dropdown_zip_code_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 237
+ERROR - 2012-09-24 16:31:10 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:10 --> Severity: Notice  --> Undefined variable: dropdown_attorney_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 248
+ERROR - 2012-09-24 16:31:10 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:10 --> Severity: Notice  --> Undefined variable: dropdown_inserter_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 286
+ERROR - 2012-09-24 16:31:10 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:10 --> Severity: Notice  --> Undefined variable: dropdown_updater_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 306
+ERROR - 2012-09-24 16:31:10 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:10 --> Severity: Notice  --> Undefined variable: dropdown_passport_country_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 434
+ERROR - 2012-09-24 16:31:10 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:10 --> Severity: Notice  --> Undefined variable: dropdown_marital_status_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 454
+ERROR - 2012-09-24 16:31:10 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:55 --> Severity: Notice  --> Undefined variable: dropdown_company_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 122
+ERROR - 2012-09-24 16:31:55 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:55 --> Severity: Notice  --> Undefined variable: dropdown_country_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 204
+ERROR - 2012-09-24 16:31:55 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:55 --> Severity: Notice  --> Undefined variable: dropdown_state_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 215
+ERROR - 2012-09-24 16:31:55 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:55 --> Severity: Notice  --> Undefined variable: dropdown_city_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 226
+ERROR - 2012-09-24 16:31:55 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:55 --> Severity: Notice  --> Undefined variable: dropdown_zip_code_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 237
+ERROR - 2012-09-24 16:31:55 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:55 --> Severity: Notice  --> Undefined variable: dropdown_attorney_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 248
+ERROR - 2012-09-24 16:31:55 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:55 --> Severity: Notice  --> Undefined variable: dropdown_inserter_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 286
+ERROR - 2012-09-24 16:31:55 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:55 --> Severity: Notice  --> Undefined variable: dropdown_updater_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 306
+ERROR - 2012-09-24 16:31:55 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:55 --> Severity: Notice  --> Undefined variable: dropdown_passport_country_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 434
+ERROR - 2012-09-24 16:31:55 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:31:55 --> Severity: Notice  --> Undefined variable: dropdown_marital_status_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 454
+ERROR - 2012-09-24 16:31:55 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:33:00 --> Severity: Notice  --> Undefined variable: dropdown_country_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 204
+ERROR - 2012-09-24 16:33:00 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:33:00 --> Severity: Notice  --> Undefined variable: dropdown_state_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 215
+ERROR - 2012-09-24 16:33:00 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:33:00 --> Severity: Notice  --> Undefined variable: dropdown_city_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 226
+ERROR - 2012-09-24 16:33:00 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:33:00 --> Severity: Notice  --> Undefined variable: dropdown_zip_code_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 237
+ERROR - 2012-09-24 16:33:00 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:33:00 --> Severity: Notice  --> Undefined variable: dropdown_attorney_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 248
+ERROR - 2012-09-24 16:33:00 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:33:00 --> Severity: Notice  --> Undefined variable: dropdown_inserter_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 286
+ERROR - 2012-09-24 16:33:00 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:33:00 --> Severity: Notice  --> Undefined variable: dropdown_updater_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 306
+ERROR - 2012-09-24 16:33:00 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:33:00 --> Severity: Notice  --> Undefined variable: dropdown_passport_country_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 434
+ERROR - 2012-09-24 16:33:00 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:33:00 --> Severity: Notice  --> Undefined variable: dropdown_marital_status_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 454
+ERROR - 2012-09-24 16:33:00 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:34:03 --> Severity: Notice  --> Undefined variable: dropdown_state_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 215
+ERROR - 2012-09-24 16:34:03 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:34:03 --> Severity: Notice  --> Undefined variable: dropdown_city_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 226
+ERROR - 2012-09-24 16:34:03 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:34:03 --> Severity: Notice  --> Undefined variable: dropdown_zip_code_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 237
+ERROR - 2012-09-24 16:34:03 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:34:03 --> Severity: Notice  --> Undefined variable: dropdown_attorney_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 248
+ERROR - 2012-09-24 16:34:03 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:34:03 --> Severity: Notice  --> Undefined variable: dropdown_inserter_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 286
+ERROR - 2012-09-24 16:34:03 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:34:03 --> Severity: Notice  --> Undefined variable: dropdown_updater_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 306
+ERROR - 2012-09-24 16:34:03 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:34:03 --> Severity: Notice  --> Undefined variable: dropdown_passport_country_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 434
+ERROR - 2012-09-24 16:34:03 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:34:03 --> Severity: Notice  --> Undefined variable: dropdown_marital_status_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 454
+ERROR - 2012-09-24 16:34:03 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:34:25 --> Severity: Notice  --> Undefined variable: dropdown_state_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 215
+ERROR - 2012-09-24 16:34:25 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:34:25 --> Severity: Notice  --> Undefined variable: dropdown_city_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 226
+ERROR - 2012-09-24 16:34:25 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:34:25 --> Severity: Notice  --> Undefined variable: dropdown_zip_code_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 237
+ERROR - 2012-09-24 16:34:25 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:34:25 --> Severity: Notice  --> Undefined variable: dropdown_attorney_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 248
+ERROR - 2012-09-24 16:34:25 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:34:25 --> Severity: Notice  --> Undefined variable: dropdown_inserter_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 286
+ERROR - 2012-09-24 16:34:25 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:34:25 --> Severity: Notice  --> Undefined variable: dropdown_updater_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 306
+ERROR - 2012-09-24 16:34:25 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:34:25 --> Severity: Notice  --> Undefined variable: dropdown_passport_country_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 434
+ERROR - 2012-09-24 16:34:25 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:34:25 --> Severity: Notice  --> Undefined variable: dropdown_marital_status_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 454
+ERROR - 2012-09-24 16:34:25 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:35:19 --> Severity: Notice  --> Undefined variable: dropdown_zip_code_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 237
+ERROR - 2012-09-24 16:35:19 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:35:19 --> Severity: Notice  --> Undefined variable: dropdown_attorney_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 248
+ERROR - 2012-09-24 16:35:19 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:35:19 --> Severity: Notice  --> Undefined variable: dropdown_inserter_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 286
+ERROR - 2012-09-24 16:35:19 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:35:19 --> Severity: Notice  --> Undefined variable: dropdown_updater_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 306
+ERROR - 2012-09-24 16:35:19 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:35:19 --> Severity: Notice  --> Undefined variable: dropdown_passport_country_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 434
+ERROR - 2012-09-24 16:35:19 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:35:19 --> Severity: Notice  --> Undefined variable: dropdown_marital_status_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 454
+ERROR - 2012-09-24 16:35:19 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:36:16 --> Severity: Notice  --> Undefined variable: dropdown_zip_code_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 238
+ERROR - 2012-09-24 16:36:16 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:36:16 --> Severity: Notice  --> Undefined variable: dropdown_attorney_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 249
+ERROR - 2012-09-24 16:36:16 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:36:16 --> Severity: Notice  --> Undefined variable: dropdown_inserter_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 287
+ERROR - 2012-09-24 16:36:16 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:36:16 --> Severity: Notice  --> Undefined variable: dropdown_updater_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 307
+ERROR - 2012-09-24 16:36:16 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:36:16 --> Severity: Notice  --> Undefined variable: dropdown_passport_country_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 435
+ERROR - 2012-09-24 16:36:16 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:36:16 --> Severity: Notice  --> Undefined variable: dropdown_marital_status_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 455
+ERROR - 2012-09-24 16:36:16 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:37:03 --> Query error: Unknown column 'zip_code_name' in 'field list'
+ERROR - 2012-09-24 16:37:25 --> Severity: Notice  --> Undefined variable: dropdown_attorney_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 249
+ERROR - 2012-09-24 16:37:25 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:37:25 --> Severity: Notice  --> Undefined variable: dropdown_inserter_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 287
+ERROR - 2012-09-24 16:37:25 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:37:25 --> Severity: Notice  --> Undefined variable: dropdown_updater_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 307
+ERROR - 2012-09-24 16:37:25 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:37:25 --> Severity: Notice  --> Undefined variable: dropdown_passport_country_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 435
+ERROR - 2012-09-24 16:37:25 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 16:37:25 --> Severity: Notice  --> Undefined variable: dropdown_marital_status_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 455
+ERROR - 2012-09-24 16:37:25 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 19:01:56 --> Severity: Notice  --> Undefined variable: dropdown_company_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 122
+ERROR - 2012-09-24 19:01:56 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 19:01:56 --> Severity: Notice  --> Undefined variable: dropdown_inserter_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 287
+ERROR - 2012-09-24 19:01:56 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 19:01:56 --> Severity: Notice  --> Undefined variable: dropdown_updater_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 307
+ERROR - 2012-09-24 19:01:56 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 19:01:56 --> Severity: Notice  --> Undefined variable: dropdown_passport_country_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 435
+ERROR - 2012-09-24 19:01:56 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 19:01:56 --> Severity: Notice  --> Undefined variable: dropdown_marital_status_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 455
+ERROR - 2012-09-24 19:01:56 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 19:02:29 --> Severity: Notice  --> Undefined variable: dropdown_inserter_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 287
+ERROR - 2012-09-24 19:02:29 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 19:02:29 --> Severity: Notice  --> Undefined variable: dropdown_updater_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 307
+ERROR - 2012-09-24 19:02:29 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 19:02:29 --> Severity: Notice  --> Undefined variable: dropdown_passport_country_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 435
+ERROR - 2012-09-24 19:02:29 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 19:02:29 --> Severity: Notice  --> Undefined variable: dropdown_marital_status_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 455
+ERROR - 2012-09-24 19:02:29 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 19:03:04 --> Severity: Notice  --> Undefined variable: dropdown_inserter_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 287
+ERROR - 2012-09-24 19:03:04 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 19:03:04 --> Severity: Notice  --> Undefined variable: dropdown_updater_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 307
+ERROR - 2012-09-24 19:03:04 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 19:03:04 --> Severity: Notice  --> Undefined variable: dropdown_passport_country_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 435
+ERROR - 2012-09-24 19:03:04 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 19:03:04 --> Severity: Notice  --> Undefined variable: dropdown_marital_status_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 455
+ERROR - 2012-09-24 19:03:04 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 19:03:56 --> Severity: Notice  --> Undefined variable: dropdown_updater_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 287
+ERROR - 2012-09-24 19:03:56 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 19:03:56 --> Severity: Notice  --> Undefined variable: dropdown_passport_country_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 415
+ERROR - 2012-09-24 19:03:56 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 19:03:56 --> Severity: Notice  --> Undefined variable: dropdown_marital_status_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 435
+ERROR - 2012-09-24 19:03:56 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 19:04:28 --> Severity: Notice  --> Undefined variable: dropdown_passport_country_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 373
+ERROR - 2012-09-24 19:04:28 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 19:04:28 --> Severity: Notice  --> Undefined variable: dropdown_marital_status_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 390
+ERROR - 2012-09-24 19:04:28 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 19:05:31 --> Severity: Notice  --> Undefined variable: dropdown_marital_status_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 392
+ERROR - 2012-09-24 19:05:31 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331
+ERROR - 2012-09-24 19:08:12 --> Severity: Notice  --> Undefined variable: dropdown_marital_status_id D:\wamp\www\Projeler\alexander-framework\application-alexander\views\admin-bootstrap\user\form_view.php 392
+ERROR - 2012-09-24 19:08:12 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system-alexander\helpers\form_helper.php 331

@@ -1,0 +1,51 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8;" />
+<title><?php echo (isset($title)) ? $title : ''; ?></title>
+
+<?php echo (isset($meta)) ? $meta : ''; ?>
+
+<?php
+echo css(array(
+    'bootstrap.min.css',
+    'bootstrap-responsive.min.css',
+    'jquery-ui-1.8.17.custom.css',
+    'jquery-ui-timepicker.css',
+    'validationEngine.jquery.css',
+    'ingrid.css',
+    'jquery.treeview.css',
+    'jquery.superfish.css'
+));
+?>
+<?php echo $css; ?>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+<?php
+echo js(
+        array(
+            'jquery.cookie.js',
+            //start menu
+            'jquery.hoverIntent.js',
+            'jquery.superfish.js',
+            'jquery.bgiframe.js',
+            #finish menu
+            'jquery.MultiFile.js',
+            'languages/jquery.validationEngine-tr.js',
+            'jquery.validationEngine.js',
+            'jquery.ingrid.js',
+            'jquery.treeview.js',
+            'jquery.tagsinput.min.js',
+            'bootstrap.js',
+            'jquery-ui-1.8.17.custom.min.js',
+            'jquery-ui-timepicker.js',
+            'custom.js'
+        )
+);
+?>
+
+
+<?php echo js(array('kendo.web.min.js','languages/kendo.culture.en-US.js')), css('kendo.default.min.css'); ?>
+
+<script>
+//set current culture to "en-GB".
+kendo.culture("en-US");
+</script>

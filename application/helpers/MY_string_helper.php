@@ -10,6 +10,13 @@ function use_try_catch()
     set_error_handler('exceptions_error_handler');
 }
 
+/**
+ * 
+ * @param type $array
+ * @param type $value_field
+ * @param type $text_field
+ * @return type
+ */
 function parse_kendoui_dropdown_array($array=array(),$value_field='', $text_field='')
 {
     unset($array['']);
@@ -18,6 +25,10 @@ function parse_kendoui_dropdown_array($array=array(),$value_field='', $text_fiel
     {
         $row = array();
         
+        /**
+         * eğer $value_field ve $text_field boş gönderilmişse veritabanından veriler dropdown fonksiyonu ile çekilmiştir
+         * indeksi ($key) ve değeri ($e) olacaktır.
+         */
         if($value_field && $value_field)
         {
             $row['value'] = $e[$value_field];
@@ -47,7 +58,6 @@ function esc_title($title)
 
 function str_to_upper($str)
 {
-    return $str;
     return  mb_strtoupper($str);
 }
 

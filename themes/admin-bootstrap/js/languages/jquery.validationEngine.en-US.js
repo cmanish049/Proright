@@ -170,14 +170,18 @@
                     "alertText4": "yyyy-mm-dd hh:mm:ss AM|PM"
 	            },
                 "validateDateTime": {
-                    "alertText": "* Tarihi YYYY-MM-DD HH:mm Formatında Giriniz!"
+                    "alertText": "* Date format must be YYYY-MM-DD HH:mm !"
                 },
                 "validateDate": {
-                    "alertText": "* Tarihi YYYY-MM-DD Formatında Giriniz!"
+                    "alertText": "* Date format must be YYYY-MM-DD !"
                 },                
                 "validateTime": {
-                    "alertText": "* Saati hh:mm Formatında Giriniz!"
+                    "alertText": "*  Date format must be hh:mm !"
                 },
+                "validateExactSize": {
+                    "alertText": "* length must be",
+                    "alertText2": " characters"
+                }
             };
             
         }

@@ -251,7 +251,7 @@ class class_generator extends Admin_Controller
             $str_vars .= '
     private $' . strtolower($table_name) . ";";
             $str_vars_set_values .= '
-        $this->' . strtolower($table_name) . " = self::column_name('$table_name'); " ;    
+        $this->' . strtolower($table_name) . " = self::table_name('$table_name'); " ;    
             
             
             $search = array('{funcname}','{as}', '{table_var_name}', '{join_field_1}', '{join_field_2}');
@@ -310,7 +310,7 @@ class class_generator extends Admin_Controller
                     <div class="controls">
                         <?php echo form_input(\'{field_name}\',  
                         set_value(\'{field_name}\', object_element(\'{field_name}\', $row)), 
-                        \'class="validate[{validation_rules}] input-xlarge {input_class}" id="{field_name}" tabindex="{tabindex}" \'); ?>
+                        \'class="validate[{validation_rules}] input-xlarge {input_class}" id="{controller_name}_{field_name}" tabindex="{tabindex}" \'); ?>
                     </div>
                 </div>                
         ';
@@ -321,7 +321,7 @@ class class_generator extends Admin_Controller
                 <div class="controls">
                     <?php echo form_textarea(array(\'name\' => \'{field_name}\', \'rows\' => 5, \'cols\' => 40), 
                                     set_value(\'{field_name}\', (object_element(\'{field_name}\', $row))), 
-                                    \'class="validate[{validation_rules}] input-xlarge js-editor {input_class}" id="{field_name}" tabindex="{tabindex}"\'); ?>
+                                    \'class="validate[{validation_rules}] input-xlarge js-editor {input_class}" id="{controller_name}_{field_name}" tabindex="{tabindex}"\'); ?>
                 </div>                
             </div>';
 
@@ -333,7 +333,7 @@ class class_generator extends Admin_Controller
                         {dropdown_options}
                         echo form_dropdown(\'{field_name}\', $dropdown_{field_name}, 
                                 set_value(\'{field_name}\', object_element(\'{field_name}\', $row)), 
-                                \'class="validate[{validation_rules}] input-xlarge {input_class}" id="{field_name}" tabindex="{tabindex}"\' );
+                                \'class="validate[{validation_rules}] input-xlarge {input_class}" id="{controller_name}_{field_name}" tabindex="{tabindex}"\' );
                     ?>
                 </div>
             </div> ';
@@ -442,17 +442,17 @@ class class_generator extends Admin_Controller
             else if(!$is_dropdown_field && (in_array($type, $this->db_float_types)))
             {
                 $validation_rules[] = 'custom[number]';
-                $str_input_class = ' input-number';
+                $str_input_class .= ' input-number';
             }
             else if(!$is_dropdown_field && (in_array($type, $this->db_int_types)))
             {                
                 $validation_rules[] = 'custom[integer]';
                 if($is_dropdown_field)
                 {
-                    $str_input_class = ' nice-select';
+                    $str_input_class .= ' nice-select';
                 }
                 else{
-                    $str_input_class = ' input-integer';
+                    $str_input_class .= ' input-integer';
                 }
             }
             else if((in_array($type, $this->db_date_types)))
@@ -460,17 +460,17 @@ class class_generator extends Admin_Controller
                 if($type=='datetime')
                 {
                     $validation_rules[] = 'funcCall[validateDateTime]';
-                    $str_input_class = ' datetime';
+                    $str_input_class .= ' input-datetime';
                 }
                 else if($type=='date')
                 {
                     $validation_rules[] = 'funcCall[validateDate]';
-                    $str_input_class = ' date';
+                    $str_input_class .= ' input-date';
                 }
                 else if($type=='time')
                 {
                     $validation_rules[] = 'funcCall[validateDateTime]';
-                    $str_input_class = ' time';
+                    $str_input_class .= ' input-time';
                 }                
             }                          
             
@@ -481,14 +481,16 @@ class class_generator extends Admin_Controller
             /**
              * form elemanını oluştur 
              */
-            $search = array('{field_name}', '{validation_rules}', '{dropdown_options}','{tabindex}','{input_class}','{field_label}');
+            $search = array('{field_name}', '{validation_rules}', '{dropdown_options}',
+                '{tabindex}','{input_class}','{field_label}','{controller_name}');
             $replace = array(
                 $field_name,
                 $str_validation_rules,
                 $str_dropdown_options,
                 $key+1,
                 $str_input_class,
-                $field_name_humanize
+                $field_name_humanize,
+                $this->controller_name
             );
             $str_dropdown_options = '';
                 

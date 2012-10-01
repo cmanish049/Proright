@@ -110,8 +110,8 @@ function kendouiDataItemDateTemplateString($item_name='')
 }
 
 function kendouiDataItemDateTimeTemplateString($item_name='')
-{
-    return "#= isnull($item_name, '') #";
+{        
+    return "#= kendo.toString(isnull($item_name, ''),'yyyy-MM-dd hh:mm:ss') #";
 }
 
 function kendouiDataItemBooleanImageTemplateString($item_name='', $container_css_class='center-inner')

@@ -8,7 +8,7 @@ class User extends Admin_Controller
 
         $module = 'user';
         $this->auth->is_authorized($module);
-        $this->load->model(array('user_model'));
+        $this->load->model(array('user_model','user_type_model','country_model','state_model'));
 
         $this->data['module'] = $this->auth->get_module($module);
         $this->data['page_title'] = $this->data['module']['module_plural_label'];
@@ -20,7 +20,12 @@ class User extends Admin_Controller
     {        
         $this->data['edit_url'] = admin_url("user/edit/window/modal");
         $this->data['page_title'] = $this->data['module']['module_plural_label'];
-
+        
+        $this->data['dropdown_user_types'] = $this->user_type_model->dropdown('user_type_id','user_type_name',array('active' => 1));
+        $this->data['dropdown_genders'] = config_item('genders');
+        $this->data['dropdown_countries'] = $this->country_model->dropdown('country_id','country_name',array());
+        $this->data['dropdown_states'] = $this->state_model->dropdown('state_id','state_name',array());
+        
         $this->template->view_parts('content', 'user/index_view', $this->data)
                 ->title($this->data['page_title'])
                 ->build();
@@ -34,11 +39,11 @@ class User extends Admin_Controller
         try
         {
             $extra = array(
-                'limit' => $this->data['limit']
-            );
+                'limit' => $this->data['limit'],                
+            );            
             add_language_param($extra);
-            $this->user_model->set_extra_from_url($extra);
-
+            $this->user_model->add_to_extra_all_join_callbacks($extra);
+            $this->user_model->set_extra_from_url($extra);            
             $json['rows'] = $this->user_model->get_rows($extra);
 
             unset($extra['limit'], $extra['offset']);
@@ -93,13 +98,14 @@ class User extends Admin_Controller
                 'user_type_id' => $this->input->post('user_type_id', TRUE),
                 'unique_key' => $this->input->post('unique_key', TRUE),
                 'is_admin' => $this->input->post('is_admin', TRUE),
+                'admin_type_id' => $this->input->post('admin_type_id', TRUE),
                 'username' => $this->input->post('username', TRUE),
                 'name_prefix' => $this->input->post('name_prefix', TRUE),
                 'first_name' => $this->input->post('first_name', TRUE),
                 'middle_name' => $this->input->post('middle_name', TRUE),
                 'last_name' => $this->input->post('last_name', TRUE),
                 'maiden_name' => $this->input->post('maiden_name', TRUE),
-                'full_name' => $this->input->post('full_name', TRUE),
+                //'full_name' => $this->input->post('full_name', TRUE),
                 'email' => $this->input->post('email', TRUE),
                 'website' => $this->input->post('website', TRUE),
                 'company_id' => $this->input->post('company_id', TRUE),
@@ -147,8 +153,14 @@ class User extends Admin_Controller
             try
             {
                 $this->db->trans_start();
-
-                add_language_param($db_data);
+                
+                $db_data['full_name'] = $db_data['name_prefix'] . ' '
+                    . $db_data['first_name']  . ' '
+                    . $db_data['middle_name']  . ' '
+                    . $db_data['last_name']  . ' '
+                    . $db_data['maiden_name'];
+                $db_data['full_name'] = trim($db_data['full_name']);
+                
                 if(empty($this->id))
                 {
                     $this->id = $this->user_model->insert($db_data);
@@ -231,10 +243,13 @@ class User extends Admin_Controller
         $this->data['dropdown_city_id'] = $this->city_model->dropdown('city_id','city_name',array('order_by' => 'city_name ASC'));
         $this->data['dropdown_zip_code_id'] = $this->zip_code_model->dropdown('zip_code_id','zip_code',array('order_by' => 'zip_code ASC'));
         $this->data['dropdown_company_id'] =array('' => '');
-        $this->data['dropdown_attorney_id'] = array(''=>'');
+        $this->data['dropdown_attorney_id'] = $this->user_model->dropdown('user_id', 'full_name', array(
+            'active' => 1,
+            'is_admin' => 1
+        ));
         $this->data['dropdown_marital_status_id'] = array(''=>'');
-        $this->data['dropdown_admin_type_id'] = array_merge(array('' => ''), config_item('admin_types'));
-        $this->data['dropdown_gender'] = array_merge(array('' => ''), config_item('genders'));
+        $this->data['dropdown_admin_type_id'] = add_empty_option_for_select(config_item('admin_types'));
+        $this->data['dropdown_gender'] = add_empty_option_for_select(config_item('genders'));            
         
         $this->data['form_action'] = current_url();
         $this->data['redirect'] = current_url();
@@ -254,7 +269,7 @@ class User extends Admin_Controller
             array(
                 'field' => 'unique_key',
                 'label' => __('Unique Key'),
-                'rules' => 'trim|max_length[100]'
+                'rules' => 'trim,exact_length[32]'
             ),
             array(
                 'field' => 'is_admin',

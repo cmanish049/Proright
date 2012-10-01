@@ -178,7 +178,10 @@ class Zip_code extends Admin_Controller
                 exit;
             }
         }
-        elseif(is_ajax())
+        
+        $this->data['row'] = $this->zip_code_model->get_row_by_id($this->id, array());   
+        
+        if(is_ajax())
         {
             if($_POST)
             {
@@ -192,9 +195,7 @@ class Zip_code extends Admin_Controller
         else
         {
             $this->template->view_parts('content', 'zip_code/edit_view', $this->data);
-        }
-        
-        $this->data['row'] = $this->zip_code_model->get_row_by_id($this->id, array());       
+        }                    
         
         $this->template
                 ->title($this->data['page_title'])

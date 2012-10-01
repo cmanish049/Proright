@@ -234,7 +234,12 @@ class MY_Model extends CI_Model
         if(!$text_field) $text_field = $value_field;
 
         $this->select[] = "$value_field, $text_field";
-
+        
+        if(!isset($extra['order_by']) && $this->is_column_exist($text_field))
+        {
+            $extra['order_by'] = "$text_field ASC";
+        }
+        
         $this->_extra($extra);
         $this->_extra_select($extra);
         $this->_extra_where($extra);
@@ -691,6 +696,10 @@ class MY_Model extends CI_Model
             $filters = isset($filter['filters'])&&is_array($filter['filters'])?$filter['filters']:array();
             foreach($filters as $e)
             {
+                if(!isset($e['value']))
+                {
+                    continue;
+                }
                 $field = $e['field'];
                 $value = $e['value'];
                 $operator = $e['operator'];
@@ -785,6 +794,21 @@ class MY_Model extends CI_Model
         return $column_name;
     }
     
+    public static function table_name($table_name)
+    {
+        if(self::$table_name_toupper)
+        {
+            $table_name = strtoupper($table_name);
+        }
+        
+        return $table_name;
+    }
+    
+    public function is_column_exist($column_name)
+    {
+        return in_array(self::column_name($column_name), $this->table_columns);
+    }
+    
     /**
      * İnsert ve Update işlemlerinde verileri hazılar
      * 
@@ -803,7 +827,7 @@ class MY_Model extends CI_Model
             $e = trim($e);                        
             $key = static::column_name($key);
             
-            if(is_null($e))
+            if($e=='')
             {
                 $_data[$key] = NULL;
             }

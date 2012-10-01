@@ -1,0 +1,46 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
+ERROR - 2012-09-26 15:36:29 --> Severity: Notice  --> Undefined variable: page_title D:\wamp\www\Projeler\alexander-framework\application\views\admin-bootstrap\developer\index_view.php 7
+ERROR - 2012-09-26 15:41:11 --> Severity: Warning  --> fopen(yedek/sql/26-09-2012.sql) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: No such file or directory D:\wamp\www\Projeler\alexander-framework\system\helpers\file_helper.php 90
+ERROR - 2012-09-26 16:18:32 --> Severity: Notice  --> Undefined index: value D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 33
+ERROR - 2012-09-26 16:18:32 --> Severity: Notice  --> Undefined index: text D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 34
+ERROR - 2012-09-26 16:18:32 --> Severity: Notice  --> Undefined index: text D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 35
+ERROR - 2012-09-26 16:18:32 --> Severity: Notice  --> Undefined index: value D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 33
+ERROR - 2012-09-26 16:18:32 --> Severity: Notice  --> Undefined index: text D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 34
+ERROR - 2012-09-26 16:18:32 --> Severity: Notice  --> Undefined index: text D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 35
+ERROR - 2012-09-26 16:18:56 --> Severity: Notice  --> Undefined index: city_id D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 33
+ERROR - 2012-09-26 16:18:56 --> Severity: Notice  --> Undefined index: city_name D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 34
+ERROR - 2012-09-26 16:18:56 --> Severity: Notice  --> Undefined index: city_name D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 35
+ERROR - 2012-09-26 16:18:56 --> Severity: Notice  --> Undefined index: city_id D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 33
+ERROR - 2012-09-26 16:18:56 --> Severity: Notice  --> Undefined index: city_name D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 34
+ERROR - 2012-09-26 16:18:56 --> Severity: Notice  --> Undefined index: city_name D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 35
+ERROR - 2012-09-26 16:19:50 --> Severity: Notice  --> Undefined index: value D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 33
+ERROR - 2012-09-26 16:19:50 --> Severity: Notice  --> Undefined index: text D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 34
+ERROR - 2012-09-26 16:19:50 --> Severity: Notice  --> Undefined index: text D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 35
+ERROR - 2012-09-26 16:19:50 --> Severity: Notice  --> Undefined index: value D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 33
+ERROR - 2012-09-26 16:19:50 --> Severity: Notice  --> Undefined index: text D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 34
+ERROR - 2012-09-26 16:19:50 --> Severity: Notice  --> Undefined index: text D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 35
+ERROR - 2012-09-26 16:20:06 --> Severity: Notice  --> Undefined index: value D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 34
+ERROR - 2012-09-26 16:20:06 --> Severity: Notice  --> Undefined index: text D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 35
+ERROR - 2012-09-26 16:20:06 --> Severity: Notice  --> Undefined index: text D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 36
+ERROR - 2012-09-26 16:20:06 --> Severity: Notice  --> Undefined index: value D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 34
+ERROR - 2012-09-26 16:20:06 --> Severity: Notice  --> Undefined index: text D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 35
+ERROR - 2012-09-26 16:20:06 --> Severity: Notice  --> Undefined index: text D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 36
+ERROR - 2012-09-26 16:20:31 --> Severity: Notice  --> Undefined index: value D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 34
+ERROR - 2012-09-26 16:20:31 --> Severity: Notice  --> Undefined index: text D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 35
+ERROR - 2012-09-26 16:20:31 --> Severity: Notice  --> Undefined index: text D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 36
+ERROR - 2012-09-26 16:20:31 --> Severity: Notice  --> Undefined index: value D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 34
+ERROR - 2012-09-26 16:20:31 --> Severity: Notice  --> Undefined index: text D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 35
+ERROR - 2012-09-26 16:20:31 --> Severity: Notice  --> Undefined index: text D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 36
+ERROR - 2012-09-26 16:20:53 --> Severity: Notice  --> Undefined index: value D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 35
+ERROR - 2012-09-26 16:20:53 --> Severity: Notice  --> Undefined index: text D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 36
+ERROR - 2012-09-26 16:20:53 --> Severity: Notice  --> Undefined index: text D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 37
+ERROR - 2012-09-26 16:20:53 --> Severity: Notice  --> Undefined index: value D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 35
+ERROR - 2012-09-26 16:20:53 --> Severity: Notice  --> Undefined index: text D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 36
+ERROR - 2012-09-26 16:20:53 --> Severity: Notice  --> Undefined index: text D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 37
+ERROR - 2012-09-26 16:21:46 --> Severity: Notice  --> Undefined index: value D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 33
+ERROR - 2012-09-26 16:21:46 --> Severity: Notice  --> Undefined index: text D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 34
+ERROR - 2012-09-26 16:21:46 --> Severity: Notice  --> Undefined index: text D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 35
+ERROR - 2012-09-26 16:21:46 --> Severity: Notice  --> Undefined index: value D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 33
+ERROR - 2012-09-26 16:21:46 --> Severity: Notice  --> Undefined index: text D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 34
+ERROR - 2012-09-26 16:21:46 --> Severity: Notice  --> Undefined index: text D:\wamp\www\Projeler\alexander-framework\application\controllers\admin\ajax_search.php 35

@@ -36,8 +36,7 @@ class {class_name} extends Admin_Controller
         {
             $extra = array(
                 'limit' => $this->data['limit']
-            );
-            add_language_param($extra);
+            );            
             $this->{model_name}->set_extra_from_url($extra);        
 
             $json['rows'] = $this->{model_name}->get_rows($extra);
@@ -98,8 +97,7 @@ class {class_name} extends Admin_Controller
             try 
             {       
                 $this->db->trans_start();
-                
-                add_language_param($db_data); 
+                                
                 if(empty($this->id))
                 {
                     $this->id = $this->{model_name}->insert($db_data);
@@ -158,7 +156,10 @@ class {class_name} extends Admin_Controller
                 redirect(admin_url($this->uri->assoc_to_uri($this->uri_assoc)));
             }                        
         }
-        elseif(is_ajax())
+        
+        $this->data['row'] = $this->{model_name}->get_row_by_id($this->id, array());
+        
+        if(is_ajax())
         {
             if($_POST)
             {
@@ -172,10 +173,7 @@ class {class_name} extends Admin_Controller
         else
         {
             $this->template->view_parts('content', '{controller_name}/edit_view', $this->data);
-        }        
-        
-        $this->data['row'] = $this->{model_name}->get_row_by_id($this->id, array());
-
+        }                        
         
         $this->template
                 ->title($this->data['page_title'])

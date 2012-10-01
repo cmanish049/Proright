@@ -1,5 +1,0 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
-
-ERROR - 2012-09-24 10:50:04 --> 404 Page Not Found --> ajax_search/cities
-ERROR - 2012-09-24 13:50:13 --> Severity: Notice  --> Undefined property: Ajax_search::$ciy_model D:\wamp\www\Projeler\alexander-framework\application-alexander\controllers\admin\ajax_search.php 40
-ERROR - 2012-09-24 13:50:25 --> Query error: Unknown column 'sity_id' in 'field list'

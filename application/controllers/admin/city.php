@@ -155,6 +155,13 @@ class City extends Admin_Controller
                 }
                 elseif(is_ajax())
                 {
+                    $row = $this->city_model->get_row_by_id($this->id);
+                    $json['row'] = $row;
+                    $json['item'] = array(
+                        'id' => $row->city_id,
+                        'value' => $row->city_id,
+                        'text' => $row->city_name,
+                    );
                     $this->output->_display($this->fastjson->encode($json));
                     exit;
                 }
@@ -186,11 +193,27 @@ class City extends Admin_Controller
                 $this->output->_display($this->fastjson->encode($json));
                 exit;
             }
-        }
+        }        
+        
         $this->data['row'] = $this->city_model->get_row_by_id($this->id, array());
 
-
-        $this->template->view_parts('content', 'city/form_view', $this->data)
+        if(is_ajax())
+        {
+            if($_POST)
+            {
+                $json['error'] = 'yes';
+                $json['message'] = form_alert_admin();
+                $this->output->_display($this->fastjson->encode($json));
+                return FALSE;
+            }
+            $this->template->view_parts('content', 'city/form_view', $this->data);
+        }
+        else
+        {
+            $this->template->view_parts('content', 'city/edit_view', $this->data);
+        }     
+        
+        $this->template
                 ->title($this->data['page_title'])
                 ->build();
     }

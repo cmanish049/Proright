@@ -81,37 +81,7 @@ class Country extends Admin_Controller
         }
 
         $this->output->_display($this->fastjson->encode($json));
-    }
-    
-    /*
-    private function _upload_image($id='', $image_name='')
-    {
-        $image_id = 0;
-        if(!$id || !array_key_exists('image', $_FILES) || $_FILES['image']['error'] == '4')
-        {
-            return $image_id;
-        }
-        
-        $this->file->init(array(
-            'upload_dir_name' => 'country',
-            'overwrite' => FALSE
-        ));
-
-        if($this->file->upload_file('image', $image_name))
-        {
-            $db_data = array('file_title' => $image_name);
-            $image_id = $this->file->insert($db_data);
-            $this->country_model->update($id, array('image_id' => $image_id));
-        }
-        else
-        {
-            throw new Exception(implode('<br/>', $this->file->errors));
-        }
-        
-        $this->file->clear();
-        return $image_id;
-    }
-    */
+    }    
     
     public function edit()
     {
@@ -156,6 +126,13 @@ class Country extends Admin_Controller
                 }
                 elseif(is_ajax())
                 {
+                    $row = $this->country_model->get_row_by_id($this->id);
+                    $json['row'] = $row;
+                    $json['item'] = array(
+                        'id' => $row->country_id,
+                        'value' => $row->country_id,
+                        'text' => $row->country_name,
+                    );
                     $this->output->_display($this->fastjson->encode($json));
                     exit;
                 }
@@ -189,9 +166,24 @@ class Country extends Admin_Controller
             }
         }
         $this->data['row'] = $this->country_model->get_row_by_id($this->id, array());
-
         
-        $this->template->view_parts('content', 'country/form_view', $this->data)
+        if(is_ajax())
+        {
+            if($_POST)
+            {
+                $json['error'] = 'yes';
+                $json['message'] = form_alert_admin();
+                $this->output->_display($this->fastjson->encode($json));
+                return FALSE;
+            }
+            $this->template->view_parts('content', 'country/form_view', $this->data);
+        }
+        else
+        {
+            $this->template->view_parts('content', 'country/edit_view', $this->data);
+        }        
+        
+        $this->template
                 ->title($this->data['page_title'])
                 ->build();
     }

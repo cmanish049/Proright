@@ -29,7 +29,7 @@ body{background:none repeat 0 0 #EAEAEC;font-size: 13px;}
 .grid-row-action-menu{text-align: center;}
 .grid-row-action-menu .basic-tooltip span{display: none;}
     
-.form-lbl{font-weight:normal;}
+.form-lbl{font-weight:bold;}
 .input-date{width:70px;}
 .input-time{width:40px;}
 .tooltip-resim{cursor:pointer;}
@@ -112,15 +112,37 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dbdbdb', end
 
 /*icons*/
 .icon-grid-cell-ok{background: url(img/ok-16x16.png) no-repeat scroll 0 0 transparent;width:16px;height:16px}
-/*kendoui override*/
+
+/********************************************************************************************************************
+ * kendoui override
+ ********************************************************************************************************************/
 .k-pager-numbers .k-link{line-height: 22px;}
 .k-grid tr td{overflow:visible;}
-.k-menu a:hover,.k-button:hover,.k-button a:hover{text-decoration: none;}
-.k-button:hover,.k-button a:hover{color:#000;}
+.k-menu a:hover,.k-button:hover,.k-button a:hover,.k-link:hover{text-decoration: none;}
 .k-link input[type="checkbox"]{vertical-align: inherit;margin-right: 3px}
 div.k-grid-header .k-header{font-weight: bold}
 
-/**/
+
+/*silver theme*/
+.k-button:hover,.k-button a:hover{color:#000;}
+thead .k-header{}
+.k-state-selected, 
+.k-list > .k-state-selected, 
+.k-list > .k-state-focused, 
+.k-panelbar > .k-state-selected, 
+.k-panel > .k-state-selected, 
+.k-button:active, 
+.k-ghost-splitbar-vertical, 
+.k-ghost-splitbar-horizontal, 
+.k-draghandle.k-state-selected:hover{
+    color: white;
+background-color: #8EBC00;
+border-color: #8EBC00;
+}
+
+/********************************************************************************************************************
+ * form validator
+ ********************************************************************************************************************/
 .formError{z-index:990; white-space: normal;}
 .formError .formErrorContent{z-index:991}
 .formError .formErrorArrow{z-index:996}

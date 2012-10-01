@@ -11,9 +11,9 @@ class Zip_code_model extends MY_Model
     {
         parent::__construct('zip_codes', 'zip_code_id');
 
-        $this->countries = self::column_name('COUNTRIES');
-        $this->states = self::column_name('STATES');
-        $this->cities = self::column_name('CITIES');
+        $this->countries = self::table_name('COUNTRIES');
+        $this->states = self::table_name('STATES');
+        $this->cities = self::table_name('CITIES');
 
         parent::add_extra_search_fields(array(
             'state_name' => 'STATES.state_name',

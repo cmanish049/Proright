@@ -53,17 +53,35 @@
                             <label class="control-label form-lbl" for="unique_key"><?php _e('Unique Key') ?></label>
                             <div class="controls">
                                 <?php
-                                echo form_input('unique_key', 
+                                /*echo form_input('unique_key', 
                                         set_value('unique_key', object_element('unique_key', $row)), 
                                         'class="validate[maxSize[100]] input-xlarge nice-remote-data-select" id="unique_key" tabindex="3" '
-                                        . 'data-url="'.  admin_url('ajax_search/cities').'"');
-                                autocomplete_new_button(array(
-                                    'url' => admin_url('zip_code/edit'),
-                                    'target_selector' => '#unique_key',
-                                    'modal_name' => 'zip_codeModal'
-                                ));
-                                ?>
-                                
+                                        . 'data-url="'.  admin_url('ajax_search/cities').'"');    */                            
+                                echo form_input('unique_key', 
+                                        set_value('unique_key', object_element('unique_key', $row)), 
+                                        'class="validate[maxSize[32],minSize[32]] input-xlarge" id="unique_key" tabindex="3" '
+                                        . 'data-url=""');                                
+                                ?>    
+                                <a href="<?php echo admin_url('ajax/generate_unique_key_for_customer'); ?>"
+                                   class="basic-tooltip btn btn-success btn-mini" id="btn-generate-customer-key"
+                                   title="<?php _e('Generate key'); ?>">
+                                    <i class="icon-random"></i>
+                                </a>
+<script type="text/javascript">
+$(function(){
+    $('body').on('click','#btn-generate-customer-key',function(){
+        var thisObj = $(this);
+        $.ajax({
+            url : thisObj.attr('href'),
+            dataType : 'html',
+            success : function(data){
+                $('#unique_key').val(data);
+            }
+        });
+        return false;
+    });
+});
+</script>
                             </div>
                         </div>                
 
@@ -71,9 +89,9 @@
                             <label class="control-label form-lbl" for="is_admin"><?php _e('Is Admin') ?></label>
                             <div class="controls">
                                 <?php
-                                echo form_dropdown('id_admin', yes_no_dropdown_items(), 
-                                        set_value('id_admin', object_element('id_admin', $row)), 
-                                        'class="validate[funcCall[validateDropdownRequired]] input-xlarge nice-select" id="id_admin" tabindex="2"');
+                                echo form_dropdown('is_admin', yes_no_dropdown_items(), 
+                                        set_value('is_admin', object_element('is_admin', $row)), 
+                                        'class="validate[funcCall[validateDropdownRequired]] input-xlarge nice-select" id="is_admin" tabindex="2"');
                                 ?>
                             </div>
                         </div>                
@@ -159,7 +177,14 @@
                             <label class="control-label form-lbl" for="company_id"><?php _e('Company') ?></label>
                             <div class="controls">
                                 <?php
-                                echo form_dropdown('company_id', $dropdown_company_id, set_value('company_id', object_element('company_id', $row)), 'class="validate[] input-xlarge nice-select" id="company_id" tabindex="12"');
+                                echo form_dropdown('company_id', $dropdown_company_id, 
+                                        set_value('company_id', object_element('company_id', $row)), 
+                                        'class="validate[] input-xlarge nice-select" id="company_id" tabindex="12"');
+                                autocomplete_new_button(array(
+                                    'url' => admin_url('company/edit'),
+                                    'target_selector' => '#company_id',
+                                    'modal_name' => 'companyModal'
+                                ));
                                 ?>
                             </div>
                         </div>             
@@ -243,6 +268,11 @@
                                 <?php
                                 echo form_dropdown('country_id', $dropdown_country_id, set_value('country_id', object_element('country_id', $row)), 'class="validate[] input-xlarge nice-select chained-select" id="country_id" tabindex="21" ' .
                                         'data-url="' . admin_url('ajax_search/cities') . '" data-target="#city_id"');
+                                autocomplete_new_button(array(
+                                    'url' => admin_url('country/edit'),
+                                    'target_selector' => '#country_id',
+                                    'modal_name' => 'countryModal'
+                                ));
                                 ?>
                             </div>
                         </div> 
@@ -250,7 +280,14 @@
                             <label class="control-label form-lbl" for="state_id"><?php _e('State') ?></label>
                             <div class="controls">
                                 <?php
-                                echo form_dropdown('state_id', $dropdown_state_id, set_value('state_id', object_element('state_id', $row)), 'class="validate[] input-xlarge nice-select" id="state_id" tabindex="22"');
+                                echo form_dropdown('state_id', $dropdown_state_id, 
+                                        set_value('state_id', object_element('state_id', $row)), 
+                                        'class="validate[] input-xlarge nice-select" id="state_id" tabindex="22"');
+                                autocomplete_new_button(array(
+                                    'url' => admin_url('state/edit'),
+                                    'target_selector' => '#state_id',
+                                    'modal_name' => 'stateModal'
+                                ));
                                 ?>
                             </div>
                         </div> 
@@ -258,7 +295,14 @@
                             <label class="control-label form-lbl" for="city_id"><?php _e('City') ?></label>
                             <div class="controls">
                                 <?php
-                                echo form_dropdown('city_id', $dropdown_city_id, set_value('city_id', object_element('city_id', $row)), 'class="validate[] input-xlarge nice-select" id="city_id" tabindex="23"');
+                                echo form_dropdown('city_id', $dropdown_city_id, 
+                                        set_value('city_id', object_element('city_id', $row)), 
+                                        'class="validate[] input-xlarge nice-select" id="city_id" tabindex="23"');
+                                autocomplete_new_button(array(
+                                    'url' => admin_url('city/edit'),
+                                    'target_selector' => '#city_id',
+                                    'modal_name' => 'cityModal'
+                                ));
                                 ?>
                             </div>
                         </div> 
@@ -266,7 +310,14 @@
                             <label class="control-label form-lbl" for="zip_code_id"><?php _e('Zip Code') ?></label>
                             <div class="controls">
                                 <?php
-                                echo form_dropdown('zip_code_id', $dropdown_zip_code_id, set_value('zip_code_id', object_element('zip_code_id', $row)), 'class="validate[] input-xlarge nice-select" id="zip_code_id" tabindex="24"');
+                                echo form_dropdown('zip_code_id', $dropdown_zip_code_id, 
+                                        set_value('zip_code_id', object_element('zip_code_id', $row)), 
+                                        'class="validate[] input-xlarge nice-select" id="zip_code_id" tabindex="24"');
+                                autocomplete_new_button(array(
+                                    'url' => admin_url('zip_code/edit'),
+                                    'target_selector' => '#zip_code_id',
+                                    'modal_name' => 'zip_codeModal'
+                                ));
                                 ?>
                             </div>
                         </div> 
@@ -282,7 +333,9 @@
                             <label class="control-label form-lbl" for="date_of_record"><?php _e('Date Of Record') ?></label>
                             <div class="controls">
                                 <?php
-                                echo form_input('date_of_record', set_value('date_of_record', object_element('date_of_record', $row)), 'class="validate[funcCall[validateDateTime]] input-xlarge  datetime" id="date_of_record" tabindex="26" ');
+                                echo form_input('date_of_record', 
+                                        set_value('date_of_record', object_element('date_of_record', $row)), 
+                                        'class="validate[funcCall[validateDateTime]] input-xlarge input-datetime" id="date_of_record" tabindex="26" ');
                                 ?>
                             </div>
                         </div>                
@@ -299,8 +352,9 @@
                         <div class="control-group">
                             <label class="control-label form-lbl" for="active"><?php _e('Active') ?></label>
                             <div class="controls">
-                                <?php
-                                echo form_input('active', set_value('active', object_element('active', $row)), 'class="validate[custom[integer]] input-xlarge  input-integer" id="active" tabindex="28" ');
+                                <?php                                
+                                echo form_input('active', set_value('active', object_element('active', $row)), 
+                                        'class="validate[custom[integer]] input-xlarge input-integer" id="active" tabindex="28" ');
                                 ?>
                             </div>
                         </div>                
@@ -345,7 +399,9 @@
                             <label class="control-label form-lbl" for="date_of_birth"><?php _e('Date Of Birth') ?></label>
                             <div class="controls">
                                 <?php
-                                echo form_input('date_of_birth', set_value('date_of_birth', object_element('date_of_birth', $row)), 'class="validate[funcCall[validateDateTime]] input-xlarge  datetime" id="date_of_birth" tabindex="37" ');
+                                echo form_input('date_of_birth', 
+                                        set_value('date_of_birth', object_element('date_of_birth', $row)), 
+                                        'class="validate[funcCall[validateDate]] input-xlarge input-date" id="date_of_birth" tabindex="37" ');
                                 ?>
                             </div>
                         </div>                
@@ -427,7 +483,7 @@
                             <label class="control-label form-lbl" for="date_passport_expires"><?php _e('Date Passport Expires') ?></label>
                             <div class="controls">
                                 <?php
-                                echo form_input('date_passport_expires', set_value('date_passport_expires', object_element('date_passport_expires', $row)), 'class="validate[funcCall[validateDateTime]] input-xlarge  datetime" id="date_passport_expires" tabindex="46" ');
+                                echo form_input('date_passport_expires', set_value('date_passport_expires', object_element('date_passport_expires', $row)), 'class="validate[funcCall[validateDateTime]] input-xlarge input-datetime" id="date_passport_expires" tabindex="46" ');
                                 ?>
                             </div>
                         </div>                
@@ -455,7 +511,7 @@
                             <label class="control-label form-lbl" for="date_married"><?php _e('Date Married') ?></label>
                             <div class="controls">
                                 <?php
-                                echo form_input('date_married', set_value('date_married', object_element('date_married', $row)), 'class="validate[funcCall[validateDateTime]] input-xlarge  datetime" id="date_married" tabindex="49" ');
+                                echo form_input('date_married', set_value('date_married', object_element('date_married', $row)), 'class="validate[funcCall[validateDateTime]] input-xlarge input-datetime" id="date_married" tabindex="49" ');
                                 ?>
                             </div>
                         </div>                

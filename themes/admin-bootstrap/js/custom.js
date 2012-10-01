@@ -1,34 +1,42 @@
+function collapseBox(collapseBtnObj){    
+    var boxObj = collapseBtnObj.closest('.box');
+    var boxContentObj = boxObj.find('.box-content');
+
+    collapseBtnObj.removeClass('icon-chevron-down');
+    collapseBtnObj.removeClass('icon-chevron-right');
+
+    var isBoxContentVisible = boxContentObj.is(":visible");
+
+    //Content Açık ise kapat
+    if(isBoxContentVisible){
+        collapseBtnObj.attr('title','Open content');
+        collapseBtnObj.addClass('icon-chevron-right');
+        boxContentObj.slideUp();
+
+        return false;
+    }
+
+    //content kapalı ise aç
+    collapseBtnObj.attr('title','Close content');
+    collapseBtnObj.addClass('icon-chevron-down');
+    boxContentObj.slideDown();
+}
 function init(container){
     
     var collapseButtonHtml = '<i class="icon-chevron-down pull-right button-box-collapse" title="Close content"></i>';
     var collapseButtonObj = $(collapseButtonHtml);
     
-    collapseButtonObj.on('click', function(e){
-        var thisObj = $(this);
-        var boxObj = thisObj.closest('.box');
-        var boxContentObj = boxObj.find('.box-content');
-		
-        thisObj.removeClass('icon-chevron-down');
-        thisObj.removeClass('icon-chevron-right');
-		
-        var isBoxContentVisible = boxContentObj.is(":visible");
-		
-        //Content Açık ise kapat
-        if(isBoxContentVisible){
-            thisObj.attr('title','Open content');
-            thisObj.addClass('icon-chevron-right');
-            boxContentObj.slideUp();
-			
-            return false;
-        }
-		
-        //content kapalı ise aç
-        thisObj.attr('title','Close content');
-        thisObj.addClass('icon-chevron-down');
-        boxContentObj.slideDown();
-		
+    collapseButtonObj.on('click', function(e){        
+		collapseBox($(this));
     });
-    container.find('.box .box-header-container').not('.no-collapse').append(collapseButtonObj);
+    
+    
+    container.find('.box .box-header-container').not('.no-collapse')
+        .append(collapseButtonObj)
+        .on('click',function(){
+            collapseBox($(this).find('.button-box-collapse'));
+        });
+    
 
     container.find(".nice-select").select2({
         placeholder: "Please select",
@@ -54,6 +62,7 @@ function init(container){
             }
         });
     }); 
+    container.find('.chained-select').trigger('change');
     
     container.find(".nice-remote-data-select").each(function(i,e){
         var thisObj = $(this);
@@ -95,42 +104,64 @@ function init(container){
         });
     });
     
-    //$.mask.definitions['~']='[+-]';
+    //show-current-time, $.mask.definitions['~']='[+-]';
     var maskPlaceholder = '_';
-    container.find(".input-date").kendoDatePicker({
-        format : 'yyyy-MM-dd',
-        value : new Date()
-    }).mask('9999-99-99',{
-        placeholder:maskPlaceholder
+    container.find(".input-date").each(function(){
+        var thisObj = $(this);
+        var kendoOptions = {
+            format : 'yyyy-MM-dd'
+        }
+        if (thisObj.hasClass('show-current-time')) {
+            kendoOptions.value = new Date()
+        }        
+        thisObj
+            .kendoDatePicker(kendoOptions)
+            .mask('9999-99-99',{
+                placeholder:maskPlaceholder
+            });
     });
     
-    container.find(".input-datetime").kendoDateTimePicker({
-        parseFormats:['yyyy-MM-dd', 'HH:mm'],
-        format : 'yyyy-MM-dd HH:mm',
-        timeFormat: 'HH:mm',
-        value : new Date(),
-        interval  : 30
-    })
-    .mask('9999-99-99 99:99',{
-        placeholder:maskPlaceholder
+    container.find(".input-datetime").each(function(){
+        var thisObj = $(this);
+        var kendoOptions = {
+            parseFormats:['yyyy-MM-dd', 'HH:mm'],
+            format : 'yyyy-MM-dd HH:mm',
+            timeFormat: 'HH:mm',
+            interval  : 30
+        }
+        if (thisObj.hasClass('show-current-time')) {
+            kendoOptions.value = new Date()
+        }        
+        thisObj
+            .kendoDateTimePicker(kendoOptions)
+            .mask('9999-99-99 99:99',{
+                placeholder:maskPlaceholder
+            });
     });
     
-    container.find(".input-time").kendoTimePicker({
-        format : 'HH:mm',
-        value : new Date(),
-        interval  : 30
-//        max:,
-//        min:,
-    }).mask('99:99',{
-        placeholder:maskPlaceholder
-    });
+    
+    container.find(".input-time").each(function(){
+        var thisObj = $(this);
+        var kendoOptions = {
+            format : 'HH:mm',
+            interval  : 30
+        }
+        if (thisObj.hasClass('show-current-time')) {
+            kendoOptions.value = new Date()
+        }        
+        thisObj
+            .kendoTimePicker(kendoOptions)
+            .mask('99:99',{
+                placeholder:maskPlaceholder
+            });
+    });    
     
     container.find(".input-integer").kendoNumericTextBox({
         format: "0",
         min: 0,
         max: 10,
         step: 1,
-        value:0,
+        //value:0,
         upArrowText: "İncrease value",
         downArrowText: "Decrease value"
     });
@@ -234,26 +265,31 @@ function init(container){
         var detailsTemplateSelector = thisObj.attr('data-quickview-template-selector');        
         var gridRowObj = thisObj.closest('tr');
         var dataItem = kendoGrid.dataItem(gridRowObj);
-        var detailsTemplate = kendo.template($(detailsTemplateSelector).html());
-
+        var detailsTemplate = kendo.template($(detailsTemplateSelector).html());       
+        
+        var _dialog = {
+                title : thisObj.attr('title'),                
+                content:{
+                    template : detailsTemplate(dataItem)
+                },
+                activate : function(){
+                    this.element.find('.quickview-grid').kendoGrid({
+                        scrollable:false
+                    });
+                }
+            };
+        
         modalSizes = modalSizes.split('-');
-        var width = modalSizes[0];
+        if (modalSizes.length>0) {
+            _dialog.width = modalSizes[0];
+        }
 
+                
         uiDialog({
             varName:dataModalName,
             type:'inline',
-            dialog:{
-                title : thisObj.attr('title'),
-                width : width,  
-                content:{
-                    template : detailsTemplate(dataItem)
-                }
-            }
+            dialog:_dialog
         }); 
-
-        getDialogObj(dataModalName).element.find('.quickview-grid').kendoGrid({
-            scrollable:false
-        });
         return false;
     });
     
@@ -261,7 +297,7 @@ function init(container){
         var thisObj = $(this);
         var dataWindow = thisObj.attr('data-window');
         var dataModalName = thisObj.attr('data-modal-name');
-        if (dataWindow=='modal') {
+        if (dataWindow=='modal' || dataWindow=='ajax-modal') {
             closeDialog(dataModalName);
             return false;
         }                
@@ -335,42 +371,54 @@ function init(container){
                 content: url,
                 iframe : false,
                 modal : true,
+                open : function(e){
+                    
+                },
                 refresh  : function(e){   
-                  var windowObj = this;
-                  
-                  this.element.find('form').addClass('autocomplete-ajax-form');
-                  this.element.find('form').on('submit', function(){
-                        var formObj = $(this);
-                        $.ajax({
-                            type : 'POST',
-                            url : formObj.attr('action'),
-                            cache:false,
-                            data : formObj.serialize(),
-                            dataType : 'json',
-                            success:function(data){                    
-                                if(data !=null && data != undefined && data.error == 'yes'){
-                                    formObj.find('.ajax-validation-errors').remove();
-                                    formObj.prepend('<div class="ajax-validation-errors">'+data.message+'</div>');
-                                    formObj.find('input[type="submit"]').attr('disabled',false);
-                                    return false;
-                                }      
+                    var windowObj = this;
+                    windowObj.center();
+                    var wrapperObj = windowObj.wrapper;
+                    wrapperObj.css('top', wrapperObj.position().top-30);
 
-                                var select2Data = {id:data.item.value, text : data.item.text};                                
-                                                                
-                                if(targetInputObj.is('select')){
-                                    var html = '<option value="'+select2Data.id+'">' + select2Data.text +'</option>';                                    
-                                    targetInputObj.find('option:first').after(html);                                    
-                                    targetInputObj.trigger("liszt:updated");
-                                    targetInputObj.select2('val',select2Data.id);
-                                }           
-                                else{
-                                    targetInputObj.select2('data',select2Data);
-                                }
-                                windowObj.close();
-                            }
-                        });
-                  });
-                  init(this.element);
+                    this.element.find('form').addClass('autocomplete-ajax-form');
+                    this.element.find('form').on('submit', function(){
+
+                          var formObj = $(this);
+
+                          if (!formObj.validationEngine('validate')) {
+                              return false;
+                          }
+
+                          $.ajax({
+                              type : 'POST',
+                              url : formObj.attr('action'),
+                              cache:false,
+                              data : formObj.serialize(),
+                              dataType : 'json',
+                              success:function(data){                    
+                                  if(data !=null && data != undefined && data.error == 'yes'){
+                                      formObj.find('.ajax-validation-errors').remove();
+                                      formObj.prepend('<div class="ajax-validation-errors">'+data.message+'</div>');
+                                      formObj.find('input[type="submit"]').attr('disabled',false);
+                                      return false;
+                                  }      
+
+                                  var select2Data = {id:data.item.value, text : data.item.text};                                
+
+                                  if(targetInputObj.is('select')){
+                                      var html = '<option value="'+select2Data.id+'">' + select2Data.text +'</option>';                                    
+                                      targetInputObj.find('option:first').after(html);                                    
+                                      targetInputObj.trigger("liszt:updated");
+                                      targetInputObj.select2('val',select2Data.id);
+                                  }           
+                                  else{
+                                      targetInputObj.select2('data',select2Data);
+                                  }
+                                  windowObj.close();
+                              }
+                          });
+                    });
+                    init(this.element);
                   
                 }
             };
@@ -419,9 +467,18 @@ $(function(){
     });
 
 
-function isnull(a, b) {
-    b = b || '';
-    return a || b;
+function isnull(a, b) {     
+    var text = a;    
+    if (a) {
+        if (a.toString().toLowerCase()=='null') {
+            text = b || '';
+        }        
+    }
+    else if(!a){
+        text = b || '';
+    }
+    
+    return text;
 }
 
 var dialogs = {};        
@@ -433,7 +490,8 @@ function uiDialog(options){
         dialog :{}
     };
     $.extend(o, options);
-        	    
+    var _modalType = (o.type != undefined)?o.type:'inline';    
+    
     var uiDialogOptions = {
         title: '',
         modal: false,
@@ -441,32 +499,48 @@ function uiDialog(options){
         resizable: true,
         width: 980,
         scrollable: false,
-        //animation :{open: { effects: 'expand:vertical' }},
+        //animation :{open: { effects: 'fadeIn' },reverse: true},
         close: function(e){
             
         },
         open : function(e){
-            this.wrapper.css('top','30px');
+
         },
         activate : function(e){
+            var wrapperObj = this.wrapper;
+            /*console.log(wrapperObj);            
+            if (_modalType=='iframe') {
+                var iframeHeight = wrapperObj.find('iframe').outerHeight();
+                wrapperObj.height(iframeHeight);
+                console.log(wrapperObj.height());
+            }*/
+            //this.center();
+            
+        },
+        refresh : function(e){
+            this.center();
+            var wrapperObj = this.wrapper;
+            wrapperObj.css('top', wrapperObj.position().top-30);
         },
         deactivate: function() {
-            this.destroy();                                           
+            this.destroy();
         },
         //maxHeight : maxHeight,
         //iframe:true,
-        actions: ['Maximize', 'Close']//'Minimize', 
+        actions: ['Minimize','Maximize', 'Close']//'Minimize', 
     };
     $.extend(uiDialogOptions, o.dialog);
+    if (_modalType=='iframe') {
+        uiDialogOptions.title='';
+    }
     
-    var _modalType = (o.type != undefined)?o.type:'inline';
     if (uiDialogOptions.width=='max') {
         var maxWidth = $(window).width() - 100;        
         uiDialogOptions.width = maxWidth;
     }
     
     // || _modalType=='iframe'
-    if (uiDialogOptions.height!=undefined && uiDialogOptions.height=='max') {
+    if (_modalType=='iframe' && uiDialogOptions.height!=undefined && uiDialogOptions.height=='max') {
         var maxHeight = $(window).height() -  100;
         uiDialogOptions.height = maxHeight;
     }
@@ -482,7 +556,7 @@ function uiDialog(options){
     contentObj.kendoWindow(uiDialogOptions);//create window obj
     var wnd = contentObj.data("kendoWindow");
     window.top.dialogs[o.varName] = wnd;
-    wnd.center();     
+    wnd.center();        
     wnd.open();
 }
 
@@ -607,9 +681,29 @@ function grid(gridObj,o){
         type: 'json',
         //autoSync: true,
         transport: {
-            read : function(options) {
-                gridDataSourceReadAjax(o.url,options);
+            read : {
+                cache : false,
+                url : o.url,
+                type : 'post',
+                dataType : 'json'
             }
+            /*read : function(options) {
+                gridDataSourceReadAjax(o.url,options);
+            },*/
+            /*
+             date alanları için sonradan geliştirilecek.
+             parameterMap: function (options) {
+                if (options.filter) {
+                    $.each(options.filter.filters,function(i,e){
+                        console.log(e);
+                        if (e.field=='insert_date') {
+                            options.filter.filters[i].value = kendo.toString(e.value, "MM/dd/yyyy");                
+                        }
+                    });
+
+                }
+                return options;
+            }*/
         },
         schema: {            
             total : 'total',
@@ -638,7 +732,7 @@ function grid(gridObj,o){
             //this.element.find('.grid-action-menu').kendoMenu({direction:'bottom',orientation: 'vertical'});
             var thisObj = $(this);   
             var rowsObj = this.element.find("tr[data-uid]");
-            var rowsLength = rowsObj.length;
+            //var rowsLength = rowsObj.length;
             //rowsObj.slice(rowsLength-4, rowsLength).find('.grid-row-action-menu').addClass('dropup');
             //console.log(this);
             this.element.find('.basic-tooltip').tooltip({
@@ -759,36 +853,46 @@ var dateTimeFormat = 'yyyy-MM-dd HH:mm';
 var dateTimeFormatWithSecond = 'yyyy-MM-dd HH:mm:ss';
 var timeFormat = 'HH:mm';
 var timeFormatWithSecond = 'HH:mm:ss';
+$(function(){
+    /*var a = new XDate("29-05-1988");
+    console.log(a);
+    console.log(a.valid());*/
+   //console.log(moment("2011-10-10", "YYYY-MM-DD").isValid()); 
+});
 
-function isValidDateTime(val){
-    var timestamp=Date.parseExact(val,dateTimeFormat);
-    if (!timestamp || timestamp==null || isNaN(timestamp))
-    {
-        return false;
-    }  
-    return true;
+function getMomentJsFormatFromOriginalFormat(formatStr){
+    return formatStr
+            .replace('yyyy','YYYY')
+            .replace('dd','DD');
+}
+
+function isValidDateTime(val){    
+    if (!val) {
+        return true;
+    }
+    
+    return moment(val, getMomentJsFormatFromOriginalFormat(dateTimeFormat)).isValid();
 }
 
 function isValidDate(val){
-    var timestamp=Date.parseExact(val,dateFormat);
-    if (!timestamp || timestamp==null || isNaN(timestamp))
-    {
-        return false;
-    }  
-    return true;
+    if (!val) {
+        return true;
+    }
+    
+    return moment(val, getMomentJsFormatFromOriginalFormat(dateFormat)).isValid();
 }
 
 function isValidTime(val){
-    var timestamp=Date.parseExact(val,timeFormat);
-    if (!timestamp || timestamp==null || isNaN(timestamp))
-    {
-        return false;
-    }  
-    return true;
+    if (!val) {
+        return true;
+    }
+    return moment(val, getMomentJsFormatFromOriginalFormat(timeFormat)).isValid();
 }
 
 
+
 /*validasyon*/
+
 function validateDateTime(field, rules, i, options){    
     if (!isValidDateTime(field.val()))
     {

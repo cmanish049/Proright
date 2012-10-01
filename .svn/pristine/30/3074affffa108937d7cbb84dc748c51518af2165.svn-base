@@ -1,0 +1,14 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
+ERROR - 2012-09-27 20:09:56 --> Severity: Notice  --> Undefined variable: dropdown_country_id D:\wamp\www\Projeler\alexander-framework\application\views\admin-bootstrap\zip_code\form_view.php 33
+ERROR - 2012-09-27 20:09:56 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system\helpers\form_helper.php 331
+ERROR - 2012-09-27 20:09:56 --> Severity: Notice  --> Undefined variable: dropdown_state_id D:\wamp\www\Projeler\alexander-framework\application\views\admin-bootstrap\zip_code\form_view.php 44
+ERROR - 2012-09-27 20:09:56 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system\helpers\form_helper.php 331
+ERROR - 2012-09-27 20:09:56 --> Severity: Notice  --> Undefined variable: dropdown_city_id D:\wamp\www\Projeler\alexander-framework\application\views\admin-bootstrap\zip_code\form_view.php 54
+ERROR - 2012-09-27 20:09:56 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system\helpers\form_helper.php 331
+ERROR - 2012-09-27 20:11:37 --> Severity: Notice  --> Undefined variable: dropdown_country_id D:\wamp\www\Projeler\alexander-framework\application\views\admin-bootstrap\zip_code\form_view.php 33
+ERROR - 2012-09-27 20:11:37 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system\helpers\form_helper.php 331
+ERROR - 2012-09-27 20:11:37 --> Severity: Notice  --> Undefined variable: dropdown_state_id D:\wamp\www\Projeler\alexander-framework\application\views\admin-bootstrap\zip_code\form_view.php 44
+ERROR - 2012-09-27 20:11:37 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system\helpers\form_helper.php 331
+ERROR - 2012-09-27 20:11:37 --> Severity: Notice  --> Undefined variable: dropdown_city_id D:\wamp\www\Projeler\alexander-framework\application\views\admin-bootstrap\zip_code\form_view.php 54
+ERROR - 2012-09-27 20:11:37 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\alexander-framework\system\helpers\form_helper.php 331

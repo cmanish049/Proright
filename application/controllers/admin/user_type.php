@@ -159,7 +159,10 @@ class User_type extends Admin_Controller
             }
 
         }
-        elseif(is_ajax())
+        
+        $this->data['row'] = $this->user_type_model->get_row_by_id($this->id, array());
+        
+        if(is_ajax())
         {
             if($_POST)
             {
@@ -173,9 +176,7 @@ class User_type extends Admin_Controller
         else
         {
             $this->template->view_parts('content', 'user_type/edit_view', $this->data);
-        }
-        
-        $this->data['row'] = $this->user_type_model->get_row_by_id($this->id, array());
+        }                
 
 
         $this->template

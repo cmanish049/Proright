@@ -256,6 +256,12 @@ class Auth
     {
         return sha1(md5(sha1($this->encryption_key . $password . $this->encryption_key)));
     }
+    
+    public function generate_unique_key_for_user()
+    {
+        $str = random_string('unique');
+        return str_to_upper($str);
+    }
 
     /**
      * Parametre olarak gelen stringi class'ın $mesajlar değişkenine ekler

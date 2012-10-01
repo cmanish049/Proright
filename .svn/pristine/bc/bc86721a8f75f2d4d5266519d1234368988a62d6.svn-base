@@ -1,9 +1,0 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
-
-ERROR - 2012-07-29 22:30:08 --> Severity: Warning  --> mysql_pconnect() [<a href='function.mysql-pconnect'>function.mysql-pconnect</a>]: [2002] Hedef makine etkin olarak reddettiðinden baðlantý kurulamadý.
- (trying to connect via tcp://localhost:3306) D:\wamp\www\Projeler\alexander-framework\system-alexander\database\drivers\mysql\mysql_driver.php 91
-ERROR - 2012-07-29 22:30:08 --> Severity: Warning  --> mysql_pconnect() [<a href='function.mysql-pconnect'>function.mysql-pconnect</a>]: Hedef makine etkin olarak reddettiðinden baðlantý kurulamadý.
- D:\wamp\www\Projeler\alexander-framework\system-alexander\database\drivers\mysql\mysql_driver.php 91
-ERROR - 2012-07-29 22:30:08 --> Unable to connect to the database
-ERROR - 2012-07-29 23:33:20 --> 404 Page Not Found --> themes
-ERROR - 2012-07-29 23:33:22 --> 404 Page Not Found --> themes

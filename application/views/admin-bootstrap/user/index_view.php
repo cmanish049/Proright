@@ -50,7 +50,7 @@ $this->template->view('templates/kendo_grid_row_actions_template',array(
                 
             	<tr>
                     <td><strong><?php _e('User Type'); ?></strong></td>
-                    <td><?php echo kendouiDataItemTemplateString('user_type_id'); ?></td>
+                    <td><?php echo kendouiDataItemTemplateString('user_type_name'); ?></td>
              	</tr>
 
             	<tr>
@@ -150,7 +150,7 @@ $this->template->view('templates/kendo_grid_row_actions_template',array(
 
             	<tr>
                     <td><strong><?php _e('Insert Date'); ?></strong></td>
-                    <td><?php echo kendouiDataItemTemplateString('insert_date'); ?></td>
+                    <td><?php echo kendouiDataItemDateTimeTemplateString('insert_date'); ?></td>
              	</tr>
 
 
@@ -163,7 +163,8 @@ $this->template->view('templates/kendo_grid_row_actions_template',array(
 <script type="text/javascript">
     var userGrid;
     
-    $(function() {
+    $(function() {        
+        
         grid(
             $('#userGrid'),
             {
@@ -240,21 +241,22 @@ $this->template->view('templates/kendo_grid_row_actions_template',array(
                 				field:'user_type_id',
                 				title:'<?php _e('User Type'); ?>',
                 				filterable: true,
-                				width: 200,
-                				template : '#= isnull(user_type_id, "") #'
+                				width: 100,
+                				template : '#= isnull(user_type_name, "") #',
+                                values : jQuery.parseJSON('<?php echo parse_json(parse_kendoui_dropdown_array($dropdown_user_types)); ?>')
             			},
             			{
                 				field:'unique_key',
                 				title:'<?php _e('Unique Key'); ?>',
                 				filterable: true,
-                				width: 200,
+                				width: 260,
                 				template : '#= isnull(unique_key, "") #'
             			},
             			{
                 				field:'full_name',
-                				title:'<?php _e('Full Name'); ?>',
+                				title:'<?php _e('Name'); ?>',
                 				filterable: true,
-                				width: 200,
+                				width: 300,
                 				template : '#= isnull(full_name, "") #'
             			},
             			{
@@ -311,35 +313,38 @@ $this->template->view('templates/kendo_grid_row_actions_template',array(
                 				title:'<?php _e('Gender'); ?>',
                 				filterable: true,
                 				width: 200,
-                				template : '#= isnull(gender, "") #'
+                				template : '#if(gender=="1"){# <?php _e('Male') ?> #}else if(gender==2){# <?php _e('Female') ?>#}#',
+                                values : jQuery.parseJSON('<?php echo parse_json(parse_kendoui_dropdown_array($dropdown_genders)); ?>')
             			},
             			{
                 				field:'country_id',
                 				title:'<?php _e('Country'); ?>',
                 				filterable: true,
                 				width: 200,
-                				template : '#= isnull(country_id, "") #'
+                				template : '#= isnull(country_name, "") #',
+                                values : jQuery.parseJSON('<?php echo parse_json(parse_kendoui_dropdown_array($dropdown_countries)); ?>')
             			},
             			{
                 				field:'state_id',
                 				title:'<?php _e('State'); ?>',
                 				filterable: true,
                 				width: 200,
-                				template : '#= isnull(state_id, "") #'
+                				template : '#= isnull(state_name, "") #',
+                                values : jQuery.parseJSON('<?php echo parse_json(parse_kendoui_dropdown_array($dropdown_states)); ?>')
             			},
             			{
-                				field:'city_id',
+                				field:'city_name',
                 				title:'<?php _e('City'); ?>',
                 				filterable: true,
                 				width: 200,
-                				template : '#= isnull(city_id, "") #'
+                				template : '#= isnull(city_name, "") #'
             			},
             			{
                 				field:'zip_code_id',
                 				title:'<?php _e('Zip Code'); ?>',
                 				filterable: true,
                 				width: 200,
-                				template : '#= isnull(zip_code_id, "") #'
+                				template : '#= isnull(zip_code, "") #'
             			},
             			{
                 				field:'attorney_id',
@@ -367,7 +372,7 @@ $this->template->view('templates/kendo_grid_row_actions_template',array(
                 				title:'<?php _e('Insert Date'); ?>',
                 				filterable: true,
                 				width: 200,
-                				template : '#= isnull(insert_date, "") #'
+                				template : "<?php echo kendouiDataItemDateTimeTemplateString('insert_date') ?>"
             			}
                     ]
                 }

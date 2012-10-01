@@ -1,5 +1,10 @@
 <?php
 
+function add_empty_option_for_select($select_options)
+{
+    return array('' => '') + $select_options;    
+}
+
 function yes_no_dropdown_items($add_empty_item = TRUE)
 {
     $items = array(

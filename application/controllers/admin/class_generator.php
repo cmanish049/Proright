@@ -162,14 +162,21 @@ class class_generator extends Admin_Controller
                 continue;
             }            
             
+            $field_label = str_replace('_', ' ', humanize($field_name));            
+            $field_name_humanize = str_replace('_', ' ', humanize($field_name));
+            $field_name_humanize = str_replace(' Id', '', $field_name_humanize); 
+            
             $str_col_sort_params .= "'$field_name',";
             $str_col_widths .= "'$col_width_percent%',";
 
             //db_table dizisi string
             $search = array('{field_name}','{field_input_name}');
             $replace = array(strtolower($field_name),strtolower($field_name));
-            $str_db_data .= str_replace($search, $replace, $template_db_data) . "\n";
-
+            if(!in_array(strtoupper($field_name), array('INSERTER_ID','INSERT_DATE','UPDATER_ID','UPDATE_DATE')))
+            {
+                $str_db_data .= str_replace($search, $replace, $template_db_data) . "\n";
+            }
+            
             //validasyon kuralları string
             $search = array('{field_name}', '|max_length[{size}]', '|numeric', '|required', '{field_label}');
             $replace = array(
@@ -177,9 +184,14 @@ class class_generator extends Admin_Controller
                 (in_array($type, $db_string_types) && $max_length > 0) ? "|max_length[{$max_length}]" : '',
                 (in_array($type, $db_int_types)) ? '|numeric' : '',
                 $e->null=='NO' ? '|required' : '',
-                str_replace('_', ' ', humanize($field_name)),
+                $field_name_humanize
             );
-            $str_validation_rules .= str_replace($search, $replace, $template_validation_rule) . "\n";
+                
+            if(!in_array(strtoupper($field_name), array('INSERTER_ID','INSERT_DATE','UPDATER_ID','UPDATE_DATE')))
+            {
+                $str_validation_rules .= str_replace($search, $replace, $template_validation_rule) . "\n";
+            }
+            
         }
         $str_col_sort_params = substr_replace($str_col_sort_params, '', -1);
         $str_col_widths = substr_replace($str_col_widths, '', -1);
@@ -197,7 +209,7 @@ class class_generator extends Admin_Controller
             $str_validation_rules,
             $str_col_sort_params,
             $str_col_widths,
-            $this->auto_increment
+            strtolower($this->auto_increment)
         );
         $str = str_replace($search, $replace, $template_controller);
        
@@ -228,14 +240,18 @@ class class_generator extends Admin_Controller
         $template_join_callback = '
     public function callback_join_{funcname}($extra=array())
     {
-        $this->join_select[] = "{as}.*";
+        $this->join_select[] = "{select_statement}";
         $this->db->join("$this->{table_var_name} {as}","$this->as.{join_field_1}={as}.{join_field_2}", \'LEFT\');
     }            
         ';
         
-        $joins_array = explode("\n", $this->input->post('joins'));        
+        $joins_array = $this->input->post('joins');
         foreach($joins_array as $e)
         {
+            if(!$e)
+            {
+                continue;
+            }
             #table_name, join_fields(country_id,country_id), select_str
             $join_table_info_array = explode('@', $e);
             array_walk($join_table_info_array, 'trim');
@@ -245,8 +261,14 @@ class class_generator extends Admin_Controller
                 continue;
             }
             $table_name = $join_table_info_array[0];
+            $table_name_array = explode(' ', $table_name);
+            $table_as = count($table_name_array)>1?$table_name_array[1]:$table_name;
+            $table_name = count($table_name_array)>1?$table_name_array[0]:$table_name;
+            
             $joined_fields = explode(',', $join_table_info_array[1]);
-            //$select_statement = $join_table_info_array[2];
+            $select_statement = (isset($join_table_info_array[2]) && $join_table_info_array[2])
+                                ?$join_table_info_array[2]
+                                :strtoupper($table_name). '.*';
             
             $str_vars .= '
     private $' . strtolower($table_name) . ";";
@@ -254,13 +276,14 @@ class class_generator extends Admin_Controller
         $this->' . strtolower($table_name) . " = self::table_name('$table_name'); " ;    
             
             
-            $search = array('{funcname}','{as}', '{table_var_name}', '{join_field_1}', '{join_field_2}');
+            $search = array('{funcname}','{as}', '{table_var_name}', '{join_field_1}', '{join_field_2}','{select_statement}');
             $replace = array(
-                strtolower($table_name),
-                strtoupper($table_name),
+                strtolower($table_as),
+                strtoupper($table_as),
                 strtolower($table_name),
                 $joined_fields[0],
-                $joined_fields[1]
+                str_replace("\n", "", $joined_fields[1]),
+                $select_statement
             );
             $str = str_replace($search, $replace, $template_join_callback); 
             $str_join_callbacks .= $str;
@@ -306,7 +329,7 @@ class class_generator extends Admin_Controller
 
         $template_input_controls = '            
                 <div class="control-group">
-                    <label class="control-label form-lbl" for="{field_name}"><?php _e(\'{field_label}\') ?></label>
+                    <label class="control-label form-lbl" for="{controller_name}_{field_name}"><?php _e(\'{field_label}\') ?></label>
                     <div class="controls">
                         <?php echo form_input(\'{field_name}\',  
                         set_value(\'{field_name}\', object_element(\'{field_name}\', $row)), 
@@ -317,17 +340,18 @@ class class_generator extends Admin_Controller
 
         $template_input_textarea = '
             <div class="control-group">
-                <label class="control-label form-lbl" for="{field_name}"><?php _e(\'{field_label}\') ?></label> 
+                <label class="control-label form-lbl" for="{controller_name}_{field_name}"><?php _e(\'{field_label}\') ?></label> 
                 <div class="controls">
                     <?php echo form_textarea(array(\'name\' => \'{field_name}\', \'rows\' => 5, \'cols\' => 40), 
                                     set_value(\'{field_name}\', (object_element(\'{field_name}\', $row))), 
                                     \'class="validate[{validation_rules}] input-xlarge js-editor {input_class}" id="{controller_name}_{field_name}" tabindex="{tabindex}"\'); ?>
                 </div>                
-            </div>';
+            </div>
+        ';
 
         $template_input_dropdown = '
             <div class="control-group">
-                <label class="control-label form-lbl" for="{field_name}"><?php _e(\'{field_label}\') ?></label>
+                <label class="control-label form-lbl" for="{controller_name}_{field_name}"><?php _e(\'{field_label}\') ?></label>
                 <div class="controls">
                     <?php
                         {dropdown_options}
@@ -336,7 +360,8 @@ class class_generator extends Admin_Controller
                                 \'class="validate[{validation_rules}] input-xlarge {input_class}" id="{controller_name}_{field_name}" tabindex="{tabindex}"\' );
                     ?>
                 </div>
-            </div> ';
+            </div>
+        ';
 
         $enum_dropdown_options = "array(
             'yes' => __('Yes'),
@@ -369,27 +394,36 @@ class class_generator extends Admin_Controller
             }
             $field_label = str_replace('_', ' ', humanize($field_name));            
             $field_name_humanize = str_replace('_', ' ', humanize($field_name));
-            $field_name_humanize = str_replace(' Id', '', $field_name_humanize);
-            
-            $str_quickview_rows .= "
-            \t<tr>
-                    <td><strong><?php _e('" . $field_name_humanize . "'); ?></strong></td>
-                    <td><?php echo kendouiDataItemTemplateString('".$field_name."'); ?></td>
-             \t</tr>\n";
-            
+            $field_name_humanize = str_replace(' Id', '', $field_name_humanize);                        
+                        
             $str_grid_column_template = "template : '#= isnull($field_name, \"\") #'";
-            if(in_array($field_name, $this->db_date_types))
+            if(in_array($type, $this->db_date_types))
             {
                 $str_grid_column_template = "template: \"<?php echo kendouiDataItemDateTemplateString('$field_name'); ?>\"";
             }
-            $str_grid_columns_script .= "
-            \t\t\t{
-                \t\t\t\tfield:'$field_name',
-                \t\t\t\ttitle:'<?php _e('" . $field_name_humanize . "'); ?>',
-                \t\t\t\tfilterable: true,
-                \t\t\t\twidth: 200,
-                \t\t\t\t$str_grid_column_template
-            \t\t\t},";
+            elseif(strtoupper(substr($field_name, 0, 3))=='IS_')
+            {
+                $str_grid_column_template = "template: '<?php echo kendouiDataItemBooleanImageTemplateString('$field_name'); ?>'";
+            }
+            
+            if(!in_array(strtoupper($field_name), array('UPDATER_ID','UPDATE_DATE')))
+            {
+                $str_quickview_rows .= "
+                \t<tr>
+                        <td><strong><?php _e('" . $field_name_humanize . "'); ?></strong></td>
+                        <td><?php echo kendouiDataItemTemplateString('".$field_name."'); ?></td>
+                 \t</tr>\n";
+
+                $str_grid_columns_script .= "
+                \t\t\t{
+                    \t\t\t\tfield:'$field_name',
+                    \t\t\t\ttitle:'<?php _e('" . $field_name_humanize . "'); ?>',
+                    \t\t\t\tfilterable: true,
+                    \t\t\t\twidth: 200,
+                    \t\t\t\t$str_grid_column_template
+                \t\t\t},";
+            }
+            
                   
             //Number|String|Boolean|Date
             $grid_column_model_types = array(
@@ -412,13 +446,14 @@ class class_generator extends Admin_Controller
             $str_grid_models_script .= "
                         $field_name: { type: '".  element(strtolower($type), $grid_column_model_types,'string')."' },";
             
-            if($type == 'enum')
+            $is_enum_field = strtoupper(substr($field_name, 0, 3))=='IS_';
+            if($type == 'enum' || $is_enum_field)
             {
-                $_dropdown_options = $enum_dropdown_options;
+                $_dropdown_options = 'yes_no_dropdown_items()';
                 $str_dropdown_options = '$dropdown_' . "$field_name = $_dropdown_options;";
             }
             
-            $is_dropdown_field = strpos($field_name, '_ID')!==FALSE || strpos($field_name, '_id')!==FALSE || $type == 'enum';
+            $is_dropdown_field = $is_enum_field || strpos($field_name, '_ID')!==FALSE || strpos($field_name, '_id')!==FALSE || $type == 'enum';
             
             //integer,maxSize[{size}],required,funcCall[validateDateTime]
             $str_input_class = '';
@@ -444,14 +479,14 @@ class class_generator extends Admin_Controller
                 $validation_rules[] = 'custom[number]';
                 $str_input_class .= ' input-number';
             }
-            else if(!$is_dropdown_field && (in_array($type, $this->db_int_types)))
-            {                
-                $validation_rules[] = 'custom[integer]';
+            else if((in_array($type, $this->db_int_types)))
+            {                                
                 if($is_dropdown_field)
                 {
                     $str_input_class .= ' nice-select';
                 }
                 else{
+                    $validation_rules[] = 'custom[integer]';
                     $str_input_class .= ' input-integer';
                 }
             }
@@ -494,11 +529,15 @@ class class_generator extends Admin_Controller
             );
             $str_dropdown_options = '';
                 
-            if(in_array($type, $this->db_textarea_types))
+            if(in_array(strtoupper($field_name), array('INSERTER_ID','INSERT_DATE','UPDATER_ID','UPDATE_DATE')))
+            {
+                
+            }
+            else if(in_array($type, $this->db_textarea_types))
             {
                 $str_input_controls .= str_replace($search, $replace, $template_input_textarea);
             }
-            elseif(strpos($field_name, '_id') !== FALSE || $type == 'enum')
+            elseif(strpos($field_name, '_id') !== FALSE || $type == 'enum' || $is_enum_field)
             {
                 $str_input_controls .= str_replace($search, $replace, $template_input_dropdown);
             }
@@ -518,6 +557,7 @@ class class_generator extends Admin_Controller
         /**
          * index_view dosyasını oluştur  
          */ 
+        //$str_quickview_rows = '';
         $search = array('{single_name}', '{controller_name}', '{primary_key}',
             '{controls}', '{quick_view_rows}','{grid_columns_script}','{grid_models_script}');
         $replace = array(

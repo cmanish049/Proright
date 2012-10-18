@@ -48,7 +48,7 @@ class Matter_linked_client_type extends Admin_Controller
         catch (AF_exception $exc) 
         {
             $json['error'] = 'yes';
-            $json['message'] = $exc->errorMessage();
+            $json['message'] = $exc->getMessage();
         }      
         
         $this->output->_display($this->fastjson->encode($json));
@@ -151,26 +151,33 @@ class Matter_linked_client_type extends Admin_Controller
                 #end transaction, has error it will be rollback
                 $this->db->trans_complete();   
                 
-                if($this->data['window'] == 'modal')
+                if(is_ajax())
                 {
-                    js_close_modal('matter_linked_client_typeModal');
-                }
-                elseif(is_ajax())
-                {
+                    $row = $this->matter_linked_client_type_model->get_row_by_id($this->id);
+                    $json['row'] = $row;
+                    $json['item'] = array(
+                        'id' => $row->linked_type_id,
+                        'value' => $row->linked_type_id,
+                        'text' => $row->linked_type_name,
+                    );
                     $this->output->_display($this->fastjson->encode($json));
                     exit;
                 }
+                elseif($this->data['window'] == 'modal')
+                {
+                    js_close_modal('matter_linked_client_typeModal');
+                }                
                 else
                 {
                     $this->session->set_flashdata('success', __('process is performed successfully'));
                     redirect(admin_url($this->uri->assoc_to_uri($this->uri_assoc)));
                 }
             }
-            catch (Exception $exc) 
+            catch (AF_exception $exc) 
             {
                 $this->db->trans_rollback();
                 
-                $this->data['error'] = $exc->errorMessage();
+                $this->data['error'] = $exc->getMessage();
                 if(is_ajax())
                 {
                     $json['error'] = 'yes';
@@ -191,8 +198,23 @@ class Matter_linked_client_type extends Admin_Controller
         }
         $this->data['row'] = $this->matter_linked_client_type_model->get_row_by_id($this->id, array());
 
+        if(is_ajax())
+        {
+            if($_POST)
+            {
+                $json['error'] = 'yes';
+                $json['message'] = form_alert_admin();
+                $this->output->_display($this->fastjson->encode($json));
+                return FALSE;
+            }
+            $this->template->view_parts('content', 'matter_linked_client_type/form_view', $this->data);
+        }
+        else
+        {
+            $this->template->view_parts('content', 'matter_linked_client_type/edit_view', $this->data);
+        } 
         
-        $this->template->view_parts('content', 'matter_linked_client_type/form_view', $this->data)
+        $this->template
                 ->title($this->data['page_title'])
                 ->build();
     }

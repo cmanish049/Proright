@@ -86,8 +86,8 @@ class MY_Model extends CI_Model
 
         $row = $object->row();
         $object->free_result();
-        unset($object);
-
+        unset($object);       
+        
         $row = object_change_key_case($row);
         
         #Eğer bir tek alan istenmişse o alanın değerini dönderiyoruz
@@ -612,20 +612,25 @@ class MY_Model extends CI_Model
                 $order_by = $array[0];
                 $order = $array[1];
             }
-
-            $order_by = self::column_name($order_by);
-            if(!in_array($order_by, $this->table_columns))
+                        
+            if($this->is_column_exist($order_by))
             {
+                if(strpos($order_by,'.') === FALSE)
+                {
+                    $order_by = $this->as . '.' . $order_by;
+                }
+            }
+            else if(in_array($order_by, array_keys($this->search_fields)))
+            {
+                $order_by = $this->search_fields[$order_by];
+            }
+            else
+            {                
                 continue;
             }
             
-            if(strpos($order_by,'.') === FALSE)
-            {
-                $order_by = $this->as . '.' . $order_by;
-            }
-
-            $order = (in_array(strtoupper($order), array('ASC', 'DESC'))) ? $order : 'DESC';            
-                     
+            $order_by = self::column_name($order_by);
+            $order = (in_array(strtoupper($order), array('ASC', 'DESC'))) ? $order : 'DESC';                                 
             $this->db->order_by($order_by, $order);
         }
 
@@ -671,7 +676,7 @@ class MY_Model extends CI_Model
             foreach($sort as $key => $e)
             {
                 $dir = strtoupper($e['dir']);
-                $field = strtoupper(self::column_name($e['field']));
+                $field = $e['field'];
                 
                 $extra['order_by'][] = "$field $dir";
             }
@@ -720,14 +725,6 @@ class MY_Model extends CI_Model
                 }
                 else
                 {
-                    /*if(strpos($field, '.')!==FALSE)
-                    {
-                        $this->db->where("{$field}{$operators[$operator]}", $value);
-                    }
-                    else
-                    {
-                        $extra["{$field}{$operators[$operator]}"] = $value;
-                    }*/
                     $extra["{$field}{$operators[$operator]}"] = $value;
                 }
                 
@@ -749,14 +746,17 @@ class MY_Model extends CI_Model
             $extra['q'] = $params['q'];
             $extra['callback'][] = 'search';
         }
-                
-        //join callbackleri ayarla
-        /*$uri_params_keys = array_keys($params);
-        $db_join_params = array_diff($uri_params_keys, array_merge($this->table_columns, $default_uri_params));
-        foreach($db_join_params as $e)
+          
+        /**
+         * if param is column of this table add to eksra for sql where statement
+         */
+        foreach($params as $key => $e)
         {
-            $extra['callback'][] = $e;
-        }*/
+            if(!isset($extra[$key]) && $this->is_column_exist($key))
+            {
+                $extra[$key] = $e;
+            }
+        }
     }
 
     public function set_table($table = '')
@@ -799,6 +799,10 @@ class MY_Model extends CI_Model
         if(self::$table_name_toupper)
         {
             $table_name = strtoupper($table_name);
+        }
+        else
+        {
+            $table_name = strtolower($table_name);
         }
         
         return $table_name;

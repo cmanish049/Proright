@@ -32,35 +32,24 @@ class File
     public $upload_base_dir = 'upload';
     public $upload_dir_name = 'yazi-thumb';
     public $upload_dir = '';
-    public $create_date_dir = TRUE;
-    public $allowed_types = 'gif|jpg|png|jpeg';
+    public $create_date_dir = FALSE;
+    public $allowed_types = '*'; //'gif|jpg|png|jpeg';
     public $file_path = '';
     public $file_url = '';
     public $overwrite = false;
     public $data = array();
-    public $max_size = '3000';
-    public $max_width = '3000';
-    public $max_height = '3000';
+    public $max_size = '52000';
+    public $max_width = '5000';
+    public $max_height = '5000';
     public $db_data = array(
-        'yazi_id' => 0,
-        'galeri_id' => 0,
-        'file_name' => '',
-        'file_title' => '',
-        'file_explanation' => '',
-        'file_path',
-        'alttext' => '',
-        'file_type' => '',
-        'ekleme_tarihi' => '',
-        'mime_type' => '',
-        'dosya_directory' => '',
-        'file_seo' => ''
     );
     public $errors = array();
 
     public function __construct($options = array())
     {
         $this->CI = &get_instance();
-
+        
+        $this->CI->load->helper('file');
         if(count($options) > 0)
         {
             $this->init($options);
@@ -75,18 +64,8 @@ class File
         $this->overwrite = FALSE;
         $this->data = array();
         $this->db_data = array(
-            'file_name' => '',
-            'file_title' => '',
-            'file_explanation' => '',
-            'file_path',
-            'alttext' => '',
-            'file_type' => '',
-            'ekleme_tarihi' => '',
-            'mime_type' => '',
-            'dosya_path' => '',
-            'file_seo' => ''
         );
-        $this->allowed_types = 'gif|jpg|png|jpeg';
+        $this->allowed_types = '*';
     }
 
     public function insert($data = array())
@@ -96,7 +75,7 @@ class File
         $db_data['file_title'] = (isset($data['file_title'])) ? $data['file_title'] : element('file_name', $this->data, '');
         $db_data['alttext'] = $db_data['file_title'];
         $db_data['insert_date'] = mysql_now();
-        $db_data['creator_id'] = ($this->CI->auth->get_user_id()>0)?$this->CI->auth->get_user_id():0;
+        $db_data['creator_id'] = ($this->CI->auth->get_user_id() > 0) ? $this->CI->auth->get_user_id() : 0;
 
         if(!empty($this->data))
         {
@@ -107,7 +86,7 @@ class File
             $db_data['file_seo'] = $this->CI->dosya_model->ayarla_seo($this->data['raw_name']);
             $db_data['mime_type'] = $this->data['file_type'];
             $db_data['file_type'] = ($this->data['is_image']) ? 'resim' : '';
-            
+
             $meta_data = array(
                 'ext' => $this->data['file_ext'],
                 'size' => round($this->data['file_size'], 3),
@@ -122,47 +101,29 @@ class File
         return $this->CI->dosya_model->insert($db_data);
     }
 
-    function upload_file($_name = 'resim', $new_name = '')
+    function upload_file($_name = 'file', $new_name = '')
     {
-        $i = FALSE;
-        if(is_array($_name))
+        $name = $_name;
+        if(!array_key_exists($name, $_FILES))
         {
-            $i = $_name['i'];
-            $name = $_name['name'];
-            if(!array_key_exists($name, $_FILES))
-            {
-                $this->add_error(__("$name index has not been found"));
-                return false;
-            }
-            
-            if($_FILES[$name]['error'][$i] == '4' || count($_FILES[$name]['tmp_name']) < 1)
-            {
-                return false;
-            }
-        }
-        else
-        {
-            $name = $_name;            
-            if(!array_key_exists($name, $_FILES))
-            {
-                $this->add_error(__("$name index has not been found"));
-                return false;
-            }
-            
-            if($_FILES[$name]['error'] == '4' || count($_FILES[$name]['tmp_name']) < 1)
-            {
-                return false;
-            }
+            $this->add_error(__("$name index has not been found"));
+            return false;
         }
 
-        $tmp_name = ($i === FALSE) ? $_FILES[$name]['name'] : $_FILES[$name]['name'][$i];
-        $array = explode(".", $tmp_name);
-        $file_ext = end($array);
+        if($_FILES[$name]['error'] == '4' || count($_FILES[$name]['tmp_name']) < 1)
+        {
+            return false;
+        }
+        
+        $tmp_name = $_FILES[$name]['name'];
+        //$array = explode(".", $tmp_name);
+        //$file_ext = end($array);
         if(!empty($new_name))
         {
-            $file_name = seo_url($new_name);
+            /*$file_name = seo_url($new_name);
             $config['file_name'] = $file_name . '.' . $file_ext;
-            $config['file_name'] = seo_url(character_limiter($config['file_name'], 80));
+            $config['file_name'] = seo_url(character_limiter($config['file_name'], 80));*/
+            $config['file_name'] = $this->new_file_name($tmp_name, $new_name);
         }
 
         $this->upload_dir_name = $this->_upload_path();
@@ -176,22 +137,16 @@ class File
         $this->CI->load->library('upload');
         $this->CI->upload->initialize($config);
 
-        $bool = false;
-        if($i === FALSE)
-        {
-            $bool = $this->CI->upload->do_upload($name);
-        }
-        else
-        {
-            $bool = $this->CI->upload->multi_upload($name, $i);
-        }
+        $bool = $this->CI->upload->do_upload($name);
 
         if($bool)
         {
             $this->data = $this->CI->upload->data();
-
+            
             $this->file_path = trim_slashes($this->upload_dir_name) . '/' . trim_slashes($this->data['file_name']);
             $this->file_url = base_url() . trim_slashes($this->file_path);
+            $this->data['file_path'] = $this->file_path;
+            $this->data['file_url'] = $this->file_url;
         }
         else
         {
@@ -202,30 +157,58 @@ class File
         return TRUE;
     }
 
+    public function new_file_name($old_file_name_with_ext='',$new_file_name_without_ext='')
+    {
+        $array = explode(".", $old_file_name_with_ext);
+        $file_ext = end($array);
+        return seo_url($new_file_name_without_ext) . '.' . $file_ext;
+    }
+
+
+    public function create_directories($upload_path='',$create_index_html=TRUE)
+    {
+        $directories = explode('/', $upload_path);
+        
+        $checked_directories = '';
+        foreach($directories as $e)
+        {
+            if(!$e)
+            {
+                continue;
+            }
+            
+            $checked_directories[] = $e;
+            $directory_path = implode('/', $directories);
+            if(!is_dir($directory_path))
+            {
+                mkdir($directory_path);                
+            }
+            if($create_index_html)
+            {
+                $index_file = $directory_path . "/index.html";
+                if(!is_file($index_file))
+                {
+                    
+                    write_file($index_file, '<p>Directory access forbidden</p>');
+                }
+            }
+        }
+    }
+
+
     private function _upload_path()
     {
         $ftp_username = config_item('ftp_username');
-        
+
         $year = date('Y');
         $month = date('m');
 
         $upload_directory = $this->upload_base_dir . '/' . trim_slashes($this->upload_dir_name);
         $upload_real_path = FCPATH . $upload_directory;
+        
         #------------------------------------------------------------------------------------------
         # Eğer dizinler yoksa oluştur
-        #------------------------------------------------------------------------------------------
-        $_a = trim($this->upload_dir_name, '/');
-        $_arr = explode('/', $_a);
-        $_d = $this->upload_base_dir;
-        foreach($_arr as $d)
-        {
-            $_d .= "/$d";
-            if(!is_dir(FCPATH . $_d))
-            {
-                mkdir(FCPATH . $_d, 0777);
-                $this->create_index_html($_d);
-            }
-        }
+        #------------------------------------------------------------------------------------------                
         //shell_exec("chown -R $ftp_user_name $upload_path");
         chmod($upload_real_path, 0777);
 
@@ -239,46 +222,27 @@ class File
         # Yüklenecek yıl klasörünü oluştur
         #------------------------------------------------------------------------------------------
         $upload_year_directory = trim_slashes($upload_directory) . '/' . $year;
-        $upload_year_real_path = FCPATH . $upload_year_directory;
-        if(!is_dir($upload_year_real_path))
-        {
-            mkdir($upload_year_real_path, 0777);
-
-            $index_file = $upload_year_real_path . "/index.html";
-            if(!is_file($index_file))
-            {
-                $this->CI->load->helper('file');
-                write_file($index_file, '<p>Directory access forbidden</p>');
-            }
-        }
+        $upload_year_real_path = FCPATH . $upload_year_directory;        
         //shell_exec("chown -R $ftp_user_name $yukleme_yil_gercek_yolu");
         chmod($upload_year_real_path, 0777);
+        
         #------------------------------------------------------------------------------------------
         # yüklenecek ay klasörünün yolunu berirle
         # bu aynı zamanda dosyamızın yükleneceği yoldur
         #------------------------------------------------------------------------------------------
-        $upload_modth_directory = $upload_year_directory . '/' . $month;
-        $upload_month_real_path = FCPATH . $upload_modth_directory;
-        if(!is_dir($upload_month_real_path))
-        {
-            mkdir($upload_month_real_path, 0777);
-
-            $index_file = $upload_month_real_path . "/index.html";
-            if(!is_file($index_file))
-            {
-                $this->CI->load->helper('file');
-                write_file($index_file, '<p>Directory access forbidden</p>');
-            }
-        }
-
+        $upload_month_directory = $upload_year_directory . '/' . $month;
+        $upload_month_real_path = FCPATH . $upload_month_directory;
         //shell_exec("chown -R $ftp_user_name $yukleme_ay_gercek_yolu");
         chmod($upload_month_real_path, 0777);
-
-        $this->upload_dir = $upload_modth_directory;
+        
+        
+        $this->create_directories($upload_month_directory);
+        
+        $this->upload_dir = $upload_month_directory;
         return trim_slashes($this->upload_dir);
     }
 
-    public function delete_temp_files($file_path='')
+    public function delete_temp_files($file_path = '')
     {
         if(!empty($file_path))
         {
@@ -289,7 +253,7 @@ class File
             $this->delete_files('temp');
         }
     }
-    
+
     /**
      * Bir yolun içerisindeki tüm dosyaları siler
      * @param type $path 

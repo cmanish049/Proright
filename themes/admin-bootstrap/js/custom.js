@@ -21,6 +21,7 @@ function collapseBox(collapseBtnObj){
     collapseBtnObj.addClass('icon-chevron-down');
     boxContentObj.slideDown();
 }
+
 function init(container){
     
     var collapseButtonHtml = '<i class="icon-chevron-down pull-right button-box-collapse" title="Close content"></i>';
@@ -33,8 +34,10 @@ function init(container){
     
     container.find('.box .box-header-container').not('.no-collapse')
         .append(collapseButtonObj)
-        .on('click',function(){
-            collapseBox($(this).find('.button-box-collapse'));
+        .on('click',function(e){
+            if (!$(e.target).hasClass('button-box-collapse')) {
+                collapseBox($(this).find('.button-box-collapse'));
+            }            
         });
     
 
@@ -67,6 +70,9 @@ function init(container){
     container.find(".nice-remote-data-select").each(function(i,e){
         var thisObj = $(this);
         var url = thisObj.attr('data-url');
+        var value = thisObj.val();
+        var text = thisObj.attr('data-text');
+        var isMultiple = thisObj.attr('multiple')=='multiple';
         
         if (!url || url==undefined) {
             alert('data-url attribute not found');
@@ -76,7 +82,9 @@ function init(container){
             placeholder: "Please select",
             allowClear: true,
             placeholder: "Search",
-            minimumInputLength: 1,
+            multiple : isMultiple,
+            //minimumInputLength: 1,
+            //id : {id: value, text: text},
             ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
                 url: url,
                 dataType: 'json',
@@ -102,6 +110,10 @@ function init(container){
                 }
             }
         });
+        if (value) {
+            thisObj.select2('data',{id: value, text: text});
+        }
+        
     });
     
     //show-current-time, $.mask.definitions['~']='[+-]';
@@ -111,7 +123,7 @@ function init(container){
         var kendoOptions = {
             format : 'yyyy-MM-dd'
         }
-        if (thisObj.hasClass('show-current-time')) {
+        if (thisObj.hasClass('show-current-time') && !thisObj.val()) {
             kendoOptions.value = new Date()
         }        
         thisObj
@@ -129,7 +141,7 @@ function init(container){
             timeFormat: 'HH:mm',
             interval  : 30
         }
-        if (thisObj.hasClass('show-current-time')) {
+        if (thisObj.hasClass('show-current-time') && !thisObj.val()) {
             kendoOptions.value = new Date()
         }        
         thisObj
@@ -144,9 +156,10 @@ function init(container){
         var thisObj = $(this);
         var kendoOptions = {
             format : 'HH:mm',
-            interval  : 30
+            interval  : 30,
+            width: 70
         }
-        if (thisObj.hasClass('show-current-time')) {
+        if (thisObj.hasClass('show-current-time') && !thisObj.val()) {
             kendoOptions.value = new Date()
         }        
         thisObj
@@ -159,7 +172,7 @@ function init(container){
     container.find(".input-integer").kendoNumericTextBox({
         format: "0",
         min: 0,
-        max: 10,
+        //max: 10,
         step: 1,
         //value:0,
         upArrowText: "İncrease value",
@@ -178,27 +191,64 @@ function init(container){
         //showOneMessage
     });
     
-    container.on('submit','.form-validation-engine',function(){
-        var thisObj = $(this);
-        var isValid = thisObj.validationEngine('validate');
-        var isAjaxForm = thisObj.hasClass('ajax-form');
-        var isAutoCompleteForm = thisObj.hasClass('autocomplete-ajax-form');
-     
-        if (!isValid) {
-            return false;
-        }
-        else{
-            $(this).find('input[type="submit"]').attr('disabled',true);
-        }
-        
-        if (isAjaxForm || isAutoCompleteForm) {            
-            
-            
-            return false;
-        }
+    /*container.on('click','.btn-form-submit',function(){
+        $(this).button('loading');
+    });*/
+    
+    container.find('input[type="submit"]').each(function(){
+        $(this).attr('data-loading-text',$(this).val()+'...');
     });
     
-    
+    container.on('submit','.form-validation-engine:not(.autocomplete-ajax-form)',function(){
+        var formObj = $(this);
+        var isValid = formObj.validationEngine('validate');
+        var formAction = formObj.attr('action');
+        var isAjaxForm = formObj.hasClass('ajax-form');
+        var isAutoCompleteForm = formObj.hasClass('autocomplete-ajax-form');
+        var btnSubmitObj = formObj.find('input[type="submit"]');            
+        btnSubmitObj.button('loading');
+        
+        if (!isValid) {
+            btnSubmitObj.attr('disabled',false);
+            btnSubmitObj.button('reset');
+            return false;
+        }
+        else{            
+            btnSubmitObj.attr('disabled',true);
+        }
+        
+        if (!isAjaxForm || isAutoCompleteForm) {            
+            
+            return isValid;
+        }
+             
+        var btnSubmitObj =  formObj.find('.btn-form-submit');
+        var dataModalName = btnSubmitObj.attr('data-modal-name');
+        if (!isDialogExist(dataModalName)) {
+            return isValid;
+        }
+                
+        $.ajax({
+            type : 'POST',
+            url : formAction,
+            cache:false,
+            data : formObj.serialize(),
+            dataType : 'json',
+            success:function(data){                                
+                if(data !=null && data != undefined && data.error == 'yes'){
+                    formObj.find('.ajax-validation-errors').remove();                    
+                    formObj.prepend('<div class="ajax-validation-errors">'+data.message_html+'</div>');
+                    formObj.find('input[type="submit"]').attr('disabled',false);
+                    return false;
+                }      
+                                
+                closeDialog(dataModalName);               
+            }
+        });
+        
+        return false;
+    });
+        
     var validator = $(".kendo-form").kendoValidator().data("kendoValidator");    
     $(".kendo-form").find('input[type="submit"]').on('click',function(){
 
@@ -257,7 +307,7 @@ function init(container){
         return false;
     });
     
-    container.on('click','.action-quickview',function(){
+    container.on('click','.action-quickvieww',function(){
         var thisObj = $(this);
         var modalSizes = thisObj.attr('data-modal-size');  
         var kendoGrid = getKendoGrid($(thisObj.attr('data-grid-selector')));
@@ -268,16 +318,16 @@ function init(container){
         var detailsTemplate = kendo.template($(detailsTemplateSelector).html());       
         
         var _dialog = {
-                title : thisObj.attr('title'),                
-                content:{
-                    template : detailsTemplate(dataItem)
-                },
-                activate : function(){
-                    this.element.find('.quickview-grid').kendoGrid({
-                        scrollable:false
-                    });
-                }
-            };
+            title : thisObj.attr('title'),                
+            content:{
+                template : detailsTemplate(dataItem)
+            },
+            activate : function(){
+                this.element.find('.quickview-grid').kendoGrid({
+                    scrollable:false
+                });
+            }
+        };
         
         modalSizes = modalSizes.split('-');
         if (modalSizes.length>0) {
@@ -297,10 +347,11 @@ function init(container){
         var thisObj = $(this);
         var dataWindow = thisObj.attr('data-window');
         var dataModalName = thisObj.attr('data-modal-name');
-        if (dataWindow=='modal' || dataWindow=='ajax-modal') {
+        
+        if (isDialogExist(dataModalName) || dataWindow=='modal' || dataWindow=='ajax-modal') {
             closeDialog(dataModalName);
             return false;
-        }                
+        }             
     });
         
     container.on('click','.modal-for-grid',function(){
@@ -381,8 +432,8 @@ function init(container){
                     wrapperObj.css('top', wrapperObj.position().top-30);
 
                     this.element.find('form').addClass('autocomplete-ajax-form');
+                    
                     this.element.find('form').on('submit', function(){
-
                           var formObj = $(this);
 
                           if (!formObj.validationEngine('validate')) {
@@ -398,7 +449,7 @@ function init(container){
                               success:function(data){                    
                                   if(data !=null && data != undefined && data.error == 'yes'){
                                       formObj.find('.ajax-validation-errors').remove();
-                                      formObj.prepend('<div class="ajax-validation-errors">'+data.message+'</div>');
+                                      formObj.prepend('<div class="ajax-validation-errors">'+data.message_html+'</div>');
                                       formObj.find('input[type="submit"]').attr('disabled',false);
                                       return false;
                                   }      
@@ -417,6 +468,7 @@ function init(container){
                                   windowObj.close();
                               }
                           });
+                          return false;
                     });
                     init(this.element);
                   
@@ -441,6 +493,25 @@ function init(container){
         });
 }
 
+function upload(obj, options){
+    var _o = {
+        'method' : 'post',
+        'auto'   : true,
+        'swf'    : themeUrl+'/js/uploadify.swf?',
+        'preventCaching' : false,
+        'fileObjName' : 'file',
+        'removeCompleted' : false,
+        'multi'    : false,
+        'formData' : {},
+        'height'     : 30,
+        'width'      : 120,
+        'queueSizeLimit' : 1
+        //checkExisting
+    };
+    $.extend(_o, options);
+    
+    obj.uploadify(_o);
+}
 
 $(function(){  
 	
@@ -494,7 +565,7 @@ function uiDialog(options){
     
     var uiDialogOptions = {
         title: '',
-        modal: false,
+        modal: true,
         visible: true,
         resizable: true,
         width: 980,
@@ -546,7 +617,10 @@ function uiDialog(options){
     }
     
     var contentObj,dialogContainerId = 'dialog-container' + parseInt(Math.random()*100);
-    if ($('#' + dialogContainerId).length>0) {
+    if (o.contentObj && o.contentObj!=undefined) {
+        contentObj = o.contentObj;
+    }
+    else if ($('#' + dialogContainerId).length>0) {
         contentObj = $('#'+dialogContainerId);
     }else{
         $('body').append('<div id="'+dialogContainerId+'"></div>');
@@ -562,6 +636,10 @@ function uiDialog(options){
 
 function getDialogObj(dialogName){
     return window.top.dialogs[dialogName];
+}
+
+function isDialogExist(dialogName){
+    return  window.top.dialogs[dialogName] &&  window.top.dialogs[dialogName]!=undefined;
 }
 
 function closeDialog(dialogName)
@@ -635,6 +713,22 @@ function bindSelect(selector, target, url)
     });   
 }
 
+function tab(obj,options){
+    var _o = {
+        animation: { open: { effects: "fadeIn" } }
+    };
+    $.extend(_o, options);
+    
+    obj.kendoTabStrip(_o);
+}
+
+function showAlert(message){
+    if (!jQuery.isPlainObject(message)) {
+        alert(message);
+        return false;
+    }
+}
+
 function gridDataSourceReadAjax(url,options){
     $.ajax( {
         cache : false,
@@ -653,6 +747,7 @@ function getKendoGrid(obj){
 }
 
 function resetGrid(url,kendoGrid){
+    //kendoGrid.dataSource.filter([]);
     kendoGrid.dataSource.query({
         page:1, 
         pageSize:10,
@@ -710,6 +805,15 @@ function grid(gridObj,o){
             data : 'rows',
             errors: 'message',
             groups : 'groups'
+            /*parse: function (response) {
+                console.log(response);
+                for (var currentObject in response) {
+                    //Parsing the data before its used
+                    response[currentObject].Subobject = response[currentObject].Subobject.Date;
+                };
+                
+                return response;
+            }*/
         },
         //filter : {}, //ajax isteği yapılırken ekstra param gibi düşün
         pageSize: 10,
@@ -728,6 +832,9 @@ function grid(gridObj,o){
         dataSource: new kendo.data.DataSource(dataSource),
         //detailInit : function(e){},
         //dataBinding : function(e){},
+        /*detailCollapse: function(e) {
+            // handle event
+        },*/
         dataBound: function(e) {
             //this.element.find('.grid-action-menu').kendoMenu({direction:'bottom',orientation: 'vertical'});
             var thisObj = $(this);   
@@ -752,13 +859,79 @@ function grid(gridObj,o){
                     thisObj.data('isFilterMenuSetted',true);
                 });
             }
+            
+             var columns = this.columns;
+            rowsObj.on('click','.action-quickview',function(){
+                var thisObj = $(this);
+                var gridRowObj = thisObj.closest('tr');                
+                var modalSizes = thisObj.attr('data-modal-size');                  
+                var dataModalName = thisObj.attr('data-modal-name');                                                                
+                
+                if (isDialogExist(dataModalName)) {
+                    getDialogObj(dataModalName).close();
+                }                
+
+                var tableHtml = '<div id="quickview-container">'+
+                        '<table class="quickview-grid">'+
+                            '<thead>'+
+                                '<tr>'+
+                                    '<th class="label">Label</th>'+
+                                    '<th class="value">Value</th>'+
+                                '</tr>'+
+                            '</thead>'+
+                            '<tbody>';
+                //tableHtml = '<div id="quickview-container"><ul class="detail-list">';
+                var increaseIndex = gridRowObj.find('.k-hierarchy-cell').length>0?1:0;
+                $.each(columns,function(i,column){                       
+                    var show = column.showQuickView!=undefined?column.showQuickView:true;                                                            
+                    if (i==0 || !show) {
+                        return;
+                    }
+                    
+                    var tdObj = gridRowObj.find('td:eq('+(i+increaseIndex)+')');
+                    tableHtml +='<tr>'+
+                                    '<td><strong>'+column.title+'</strong></td>'+
+                                    '<td>'+tdObj.html()+'</td>'+
+                                '</tr>';       
+                    /*tableHtml += '<li>'+
+                                    '<label>'+column.title+'</label>'+
+                                    '<span>'+tdObj.html()+'</span>'+
+                                '</li>';*/
+                });
+                //tableHtml += '</ul></div>';
+                tableHtml += '</tbdoy></table></div>';
+                
+                var tableHtmlObj = $(tableHtml);                
+                var _dialog = {
+                    title : thisObj.attr('title'),                
+                    activate : function(){
+                        this.element.find('.quickview-grid').kendoGrid({
+                            scrollable:false,
+                            selectable:'multiple, row'
+                        });
+                    }
+                };
+
+                modalSizes = modalSizes.split('-');
+                if (modalSizes.length>0) {
+                    _dialog.width = modalSizes[0];
+                }
+
+                uiDialog({
+                    contentObj : tableHtmlObj,
+                    varName:dataModalName,
+                    type:'inline',
+                    dialog:_dialog
+                }); 
+                return false;
+            });
         },
         groupable:false,
         selectable:'multiple, row',
         scrollable: true,
         /*height:500,*/
         editable : false,
-        navigatable: true,
+        //navigatable: true,
         reorderable: true,
         resizable: true,
         filterable: {
@@ -810,7 +983,7 @@ function grid(gridObj,o){
             allowUnsort: true
         },        
         pageable: {
-            input: false,
+            input: true,
             numeric: true,
             refresh: true,
             pageSizes: [5,10,20,30,40,50],
@@ -846,6 +1019,44 @@ function grid(gridObj,o){
     }
     
     gridObj.kendoGrid(gridOptions);    
+}
+
+function htmlEditor(obj,options){
+    
+    var _o;
+    
+    var tools = [
+        
+        "strikethrough",
+        "fontName",
+        "formatBlock",
+        "fontSize",
+        "underline",
+        "bold",
+        "italic",
+        "foreColor",
+        "backColor",
+        "justifyLeft",
+        "justifyCenter",
+        "justifyRight",
+        "justifyFull",
+        "insertUnorderedList",
+        "insertOrderedList",
+        "indent",
+        "outdent",        
+        "createLink",
+        "unlink",
+        "insertImage",
+        "subscript",
+        "superscript",
+        "viewHtml"
+    ];
+    _o = $.extend(_o, options);
+    
+    tools = $.extend(tools, options.tools);
+    _o.tools = tools;
+    
+    obj.kendoEditor(_o);
 }
 
 var dateFormat = 'yyyy-MM-dd';
@@ -916,9 +1127,14 @@ function validateTime(field, rules, i, options){
 
 function validateDropdownRequired(field, rules, i, options){    
     field.val('maksat validasyona girsin diye değer attık');
-    var selectObj = field.next('select');        
     
-    if (!selectObj.val() || selectObj.val()=='') {
+    var selectObj = field.next('select');       
+    if (selectObj.length==0) {
+        selectObj = field.next('input');
+    }
+       
+    var value = selectObj.val();
+    if (!value || value=='') {
         return options.allrules.required.alertText;
     }
 }

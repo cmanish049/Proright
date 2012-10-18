@@ -48,7 +48,7 @@ class Matter_doc_type extends Admin_Controller
         catch (AF_exception $exc) 
         {
             $json['error'] = 'yes';
-            $json['message'] = $exc->errorMessage();
+            $json['message'] = $exc->getMessage();
         }      
         
         $this->output->_display($this->fastjson->encode($json));
@@ -83,35 +83,6 @@ class Matter_doc_type extends Admin_Controller
         $this->output->_display($this->fastjson->encode($json));
     }
     
-    /*
-    private function _upload_image($id='', $image_name='')
-    {
-        $image_id = 0;
-        if(!$id || !array_key_exists('image', $_FILES) || $_FILES['image']['error'] == '4')
-        {
-            return $image_id;
-        }
-        
-        $this->file->init(array(
-            'upload_dir_name' => 'matter_doc_type',
-            'overwrite' => FALSE
-        ));
-
-        if($this->file->upload_file('image', $image_name))
-        {
-            $db_data = array('file_title' => $image_name);
-            $image_id = $this->file->insert($db_data);
-            $this->matter_doc_type_model->update($id, array('image_id' => $image_id));
-        }
-        else
-        {
-            throw new Exception(implode('<br/>', $this->file->errors));
-        }
-        
-        $this->file->clear();
-        return $image_id;
-    }
-    */
     
     public function edit()
     {
@@ -151,15 +122,22 @@ class Matter_doc_type extends Admin_Controller
                 #end transaction, has error it will be rollback
                 $this->db->trans_complete();   
                 
-                if($this->data['window'] == 'modal')
+                if(is_ajax())
                 {
-                    js_close_modal('matter_doc_typeModal');
-                }
-                elseif(is_ajax())
-                {
+                    $row = $this->matter_doc_type_model->get_row_by_id($this->id);
+                    $json['row'] = $row;
+                    $json['item'] = array(
+                        'id' => $row->doc_type_id,
+                        'value' => $row->doc_type_id,
+                        'text' => $row->doc_type_name,
+                    );
                     $this->output->_display($this->fastjson->encode($json));
                     exit;
                 }
+                elseif($this->data['window'] == 'modal')
+                {
+                    js_close_modal('matter_doc_typeModal');
+                }                
                 else
                 {
                     $this->session->set_flashdata('success', __('process is performed successfully'));
@@ -170,7 +148,7 @@ class Matter_doc_type extends Admin_Controller
             {
                 $this->db->trans_rollback();
                 
-                $this->data['error'] = $exc->errorMessage();
+                $this->data['error'] = $exc->getMessage();
                 if(is_ajax())
                 {
                     $json['error'] = 'yes';
@@ -191,8 +169,23 @@ class Matter_doc_type extends Admin_Controller
         }
         $this->data['row'] = $this->matter_doc_type_model->get_row_by_id($this->id, array());
 
+        if(is_ajax())
+        {
+            if($_POST)
+            {
+                $json['error'] = 'yes';
+                $json['message'] = form_alert_admin();
+                $this->output->_display($this->fastjson->encode($json));
+                return FALSE;
+            }
+            $this->template->view_parts('content', 'matter_doc_type/form_view', $this->data);
+        }
+        else
+        {
+            $this->template->view_parts('content', 'matter_doc_type/edit_view', $this->data);
+        } 
         
-        $this->template->view_parts('content', 'matter_doc_type/form_view', $this->data)
+        $this->template
                 ->title($this->data['page_title'])
                 ->build();
     }

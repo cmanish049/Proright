@@ -1,4 +1,16 @@
-<div class="section corners">
+<?php 
+$container_tag_selector = $this->input->get('container_tag_id'); 
+$container_tag_selector = $container_tag_selector?"#$container_tag_selector":'body';
+?>
+
+
+<?php if($this->input->get('show_only_grid')=='1'): ?>
+<div class="grid-container">
+    <div id="{single_name}Grid"></div>
+</div>
+<?php else: ?>
+    
+<div class="section">
     <div class="row">
         <div class="span12">
             <div class="box">
@@ -21,6 +33,8 @@
         </div>
     </div>
 </div>
+<?php endif; ?>
+
 
 <?php 
 $this->template->view('templates/kendo_grid_toolbar_template',array(
@@ -37,31 +51,15 @@ $this->template->view('templates/kendo_grid_row_actions_template',array(
 )); 
 ?>
 
-<script type="text/x-kendo-template" id="{single_name}-quickview-template">
-    <div id="quickview-container">
-        <table class="quickview-grid">
-            <thead>
-                <tr>
-                    <th class="label"><?php _e('Label'); ?></th>
-                    <th class="value"><?php _e('Value'); ?></th>
-                </tr>
-            </thead>
-            <tbody>  
-                {quick_view_rows}
-            </tbody>
-        </table>        
-    </div>
-</script>
 
 
-<script type="text/javascript">
-    var {single_name}Grid;
-    
+<script type="text/javascript">    
+    var containerTagObj = $('<?php echo $container_tag_selector; ?>');
     $(function() {
         grid(
-            $('#{single_name}Grid'),
+            containerTagObj.find('#{single_name}Grid'),
             {
-                url : '<?php echo admin_url("$controller/grid"); ?>',
+                url : '<?php echo admin_url("$controller/grid") . query_string(); ?>',
                 model : {
                     id:'{primary_key}',
                     fields: {
@@ -85,8 +83,24 @@ $this->template->view('templates/kendo_grid_row_actions_template',array(
                 }
 
             }
-        );      
-        {single_name}Grid = $('#{single_name}Grid').data('kendoGrid');
+        );              
 
     });
+</script>
+
+
+<script type="text/x-kendo-template" id="{single_name}-quickview-template">
+    <div id="quickview-container">
+        <table class="quickview-grid">
+            <thead>
+                <tr>
+                    <th class="label"><?php _e('Label'); ?></th>
+                    <th class="value"><?php _e('Value'); ?></th>
+                </tr>
+            </thead>
+            <tbody>  
+                {quick_view_rows}
+            </tbody>
+        </table>        
+    </div>
 </script>

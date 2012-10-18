@@ -19,7 +19,7 @@ class {class_name} extends Admin_Controller
 
     public function index()
     {
-        $this->data['edit_url'] = admin_url("{controller_name}/edit/window/modal");
+        $this->data['edit_url'] = admin_url("{controller_name}/edit/window/modal") . query_string();
         $this->data['page_title'] = $this->data['module']['module_plural_label'];
 
         $this->template->view_parts('content', '{controller_name}/index_view', $this->data)
@@ -47,7 +47,7 @@ class {class_name} extends Admin_Controller
         catch (AF_exception $exc) 
         {
             $json['error'] = 'yes';
-            $json['message'] = $exc->errorMessage();
+            $json['message'] = $exc->getMessage();
         }      
         
         $this->output->_display($this->fastjson->encode($json));
@@ -117,11 +117,7 @@ class {class_name} extends Admin_Controller
                 #end transaction, has error it will be rollback
                 $this->db->trans_complete();   
                 
-                if($this->data['window'] == 'modal')
-                {
-                    js_close_modal('{controller_name}Modal');
-                }
-                elseif(is_ajax())
+                if(is_ajax())
                 {
                     $row = $this->{model_name}->get_row_by_id($this->id);
                     $json['row'] = $row;
@@ -133,6 +129,10 @@ class {class_name} extends Admin_Controller
                     $this->output->_display($this->fastjson->encode($json));
                     exit;
                 }
+                elseif($this->data['window'] == 'modal')
+                {
+                    js_close_modal('{controller_name}Modal');
+                }
                 else
                 {
                     $this->session->set_flashdata('success', __('process is performed successfully'));
@@ -143,28 +143,30 @@ class {class_name} extends Admin_Controller
             {
                 $this->db->trans_rollback();
                 
-                $this->data['error'] = $exc->errorMessage();
+                $this->data['error'] = $exc->getMessage();
                 if(is_ajax())
                 {
                     $json['error'] = 'yes';
                     $json['message'] = $this->data['error'];
+                    $json['message_html'] = alert($this->data['error'], 'error');
                     $this->output->_display($this->fastjson->encode($json));
                     exit;
                 }
 
-                $this->session->set_flashdata('error', $this->data['error']);
-                redirect(admin_url($this->uri->assoc_to_uri($this->uri_assoc)));
+                //$this->session->set_flashdata('error', $this->data['error']);
+                //redirect(admin_url($this->uri->assoc_to_uri($this->uri_assoc)));
             }                        
         }
         
-        $this->data['row'] = $this->{model_name}->get_row_by_id($this->id, array());
-        
+        $row = $this->{model_name}->get_row_by_id($this->id, array());
+        $this->data['row'] =& $row;
         if(is_ajax())
         {
             if($_POST)
             {
                 $json['error'] = 'yes';
                 $json['message'] = form_alert_admin();
+                $json['message_html'] = form_alert_admin();
                 $this->output->_display($this->fastjson->encode($json));
                 return FALSE;
             }

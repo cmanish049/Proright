@@ -48,7 +48,7 @@ class Matter_fact_type extends Admin_Controller
         catch (AF_exception $exc) 
         {
             $json['error'] = 'yes';
-            $json['message'] = $exc->errorMessage();
+            $json['message'] = $exc->getMessage();
         }      
         
         $this->output->_display($this->fastjson->encode($json));
@@ -82,37 +82,7 @@ class Matter_fact_type extends Admin_Controller
 
         $this->output->_display($this->fastjson->encode($json));
     }
-    
-    /*
-    private function _upload_image($id='', $image_name='')
-    {
-        $image_id = 0;
-        if(!$id || !array_key_exists('image', $_FILES) || $_FILES['image']['error'] == '4')
-        {
-            return $image_id;
-        }
         
-        $this->file->init(array(
-            'upload_dir_name' => 'matter_fact_type',
-            'overwrite' => FALSE
-        ));
-
-        if($this->file->upload_file('image', $image_name))
-        {
-            $db_data = array('file_title' => $image_name);
-            $image_id = $this->file->insert($db_data);
-            $this->matter_fact_type_model->update($id, array('image_id' => $image_id));
-        }
-        else
-        {
-            throw new Exception(implode('<br/>', $this->file->errors));
-        }
-        
-        $this->file->clear();
-        return $image_id;
-    }
-    */
-    
     public function edit()
     {
         $this->_set_form_data();
@@ -151,14 +121,21 @@ class Matter_fact_type extends Admin_Controller
                 #end transaction, has error it will be rollback
                 $this->db->trans_complete();   
                 
-                if($this->data['window'] == 'modal')
+                if(is_ajax())
                 {
-                    js_close_modal('matter_fact_typeModal');
-                }
-                elseif(is_ajax())
-                {
+                    $row = $this->matter_fact_type_model->get_row_by_id($this->id,array('callback' => array()));
+                    $json['row'] = $row;
+                    $json['item'] = array(
+                        'id' => $row->fact_id,
+                        'value' => $row->fact_id,
+                        'text' => '',
+                    );
                     $this->output->_display($this->fastjson->encode($json));
                     exit;
+                }
+                elseif($this->data['window'] == 'modal')
+                {
+                    js_close_modal('matter_fact_typeModal');
                 }
                 else
                 {
@@ -170,7 +147,7 @@ class Matter_fact_type extends Admin_Controller
             {
                 $this->db->trans_rollback();
                 
-                $this->data['error'] = $exc->errorMessage();
+                $this->data['error'] = $exc->getMessage();
                 if(is_ajax())
                 {
                     $json['error'] = 'yes';

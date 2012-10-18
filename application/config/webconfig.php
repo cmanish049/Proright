@@ -1,10 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-$config['website_domain'] = 'alexander-cms.com';
-$config['project_name'] = 'Alexander Framework';
-$config['website_title_add'] = ' - alexander-framework';
+$config['website_domain'] = 'proright.com';
+$config['project_name'] = 'Proright';
+$config['website_title_add'] = ' - proright';
 $config['title_indicator'] = ' ';
-$config['site_descriptions'] = 'Alexander Framework';
+$config['site_descriptions'] = 'Proright';
 $config['site_keywords'] = '';
 
 $config['admin_directory'] = 'admin';
@@ -18,7 +18,7 @@ $config['theme'] = 'theme-3.3';
 $config['theme_name'] = $config['theme'];
 $config['theme_path'] = $config['themes_folder'] . '/' . $config['theme'];
 $config['layout'] = 'layout';
-$config['admin_tema'] = 'admin-bootstrap';
+$config['admin_theme'] = 'admin-bootstrap';
 $config['admin_layout'] = 'layout';
 
 $config['logo'] = $config['themes_folder'] . '/' . $config['theme'] . '/css/img/logo.png';
@@ -33,12 +33,12 @@ $config['yorum_avatar'] = $config['theme_path'].'/css/images/avatar.png';
 $config['yorum_onay_durumu'] = 'aktif';
 $config['yorum_onay_durumu_kullanici_icin'] = 'aktif';
 $config['akismet_api_key'] = "";
-$config['akismet_blog_url'] = "http://www.alexander-cms.com";
+$config['akismet_blog_url'] = "http://www.proright.com";
 
 #url segment
 
 #Admin bilgileri
-$config['email'] = 'alexander-framework@alexander-framework.com';
+$config['email'] = 'proright@proright.com';
 
 #user
 $config['user_avatar'] = $config['theme_path'] . '/css/images/default.png';
@@ -50,7 +50,7 @@ $config['google_site_verification'] = '';
 #language
 $config['is_multiple_language_active'] = FALSE;
 $config['show_language_dropdown'] = FALSE;
-$config['default_language'] = 'tr';
+$config['default_language'] = 'en';
 
 #ftp
 $config['ftp_username'] = '';

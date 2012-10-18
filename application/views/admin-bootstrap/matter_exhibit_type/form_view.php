@@ -34,12 +34,7 @@
                         <?php $this->template->view('templates/form_input_is_active'); ?>
 
                         <div class="form-actions">
-                            <?php echo form_submit(array('name' => 'button', 'value' => __('Save'), 'id' => 'save', 'class' => 'btn btn-primary btn-large')); ?>
-                            <a href="<?php echo $index_url; ?>" class="btn btn-large btn-cancel-form"
-                               data-window="<?php echo $window ?>"
-                               data-modal-name="matter_exhibit_typeModal">
-                                   <?php _e('Cancel'); ?>
-                            </a>
+                            <?php $this->template->view('templates/form_footer_buttons_view',array('modal_name'=>'matter_exhibit_typeModal')); ?>
                         </div>
 
                         <?php echo form_close(); ?>

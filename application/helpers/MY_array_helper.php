@@ -1,5 +1,43 @@
 <?php
 if(!defined('BASEPATH')) exit('No direct script access allowed');
+
+
+/**
+ * 
+ * @param type $array
+ * @param type $value_field
+ * @param type $text_field
+ * @return type
+ */
+function parse_kendoui_dropdown_array($array=array(),$value_field='', $text_field='')
+{
+    unset($array['']);
+    $options = array();
+    foreach($array as $key => $e)
+    {
+        $row = array();
+        
+        /**
+         * eğer $value_field ve $text_field boş gönderilmişse veritabanından veriler dropdown fonksiyonu ile çekilmiştir
+         * indeksi ($key) ve değeri ($e) olacaktır.
+         */
+        if($value_field && $value_field)
+        {
+            $row['value'] = $e[$value_field];
+            $row['text'] = $e[$text_field];
+        }
+        else{
+            $row['value'] = $key;
+            $row['text'] = $e;
+        }
+        
+        $options[] = $row;
+    }
+
+    return $options;
+}
+
+
 /**
  * dizinin veya objenin indexlerini küçük harfe çevirir
  * @param type $object
@@ -16,6 +54,11 @@ function object_change_key_case($object)
             $_object->$_key = $e;
         }
         return $_object;
+    }
+    
+    if(!is_array($object))
+    {
+        return $object;
     }
 
     #else is array

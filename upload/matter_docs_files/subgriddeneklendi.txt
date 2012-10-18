@@ -1,0 +1,35 @@
+
+The source excerpt is a brief plain text introduction to the topic that the source represents.\n
+                It is shown a tooltip wherever the source appears. Complete this first!
+
+bu iptal olsun
+==================================================================
+
+The source info is a detailed introduction to the topic,\n
+                suitable as a destination for those curious about it:
+
+The source info is introduction and information about the source.
+==================================================================
+
+talkin points -> talkinpoints
+==================================================================
+
+explain yerine explanation
+==================================================================
+
+Please login for add your comment. -> Please login to add your comment.
+==================================================================
+
+duzenleme = edit,  guncelleme = update
+Updated %s -> Edited %s
+==================================================================
+Username must be at least %d -> Username must be at least %d characters
+==================================================================
+
+You do not yet have enough reputation source edit.\n
+                Your edit will be placed in a queue until it is activated.
+
+You do not have enough talkinpoints for source editing. Please continue editing and it will be placed after activated by talkinwords team.
+==================================================================
+
+go user website -> go to user's website

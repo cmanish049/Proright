@@ -44,36 +44,37 @@ class Admin_Controller extends MY_Controller
             $js_is_logged_in = 'true';
         }
 
-        /*
-            
-         */
-        $this->template->meta('
-                            <script type="text/javascript">
-                                var isLoggedIn = ' . $js_is_logged_in . ';                                    
-                            </script>');
-
-        $this->template->theme(config_item('admin_tema'))
-                ->data($this->data)
-                ->meta('
-                            <script type="text/javascript">
-                                var adminUrl = "' . admin_url() . '/";
-                                var siteUrl = "' . site_url() . '";
-                            </script>')
-                ->layout(config_item('admin_layout'));
-
-        if($this->data['window'] == 'modal')
-        {
-            $this->template->layout('iframe_layout');
-        }
-        if($this->data['window'] == 'ajax-modal')
-        {
-            $this->template->layout('ajax_layout');
-        }
+        $this->template->theme(config_item('admin_theme'));
         if(is_ajax())
         {
             $this->template->layout('ajax_layout');
         }
+        elseif($this->data['window'] == 'modal')
+        {
+            $this->template->layout('iframe_layout');
+        }
+        elseif($this->data['window'] == 'ajax-modal')
+        {
+            $this->template->layout('ajax_layout');
+        }
+        else
+        {
+            $this->template->layout('layout');
+        }
+        
+        
 
+        $this->template
+                ->data($this->data)
+                ->meta('
+                            <script type="text/javascript">
+                                var isLoggedIn = ' . $js_is_logged_in . ';  
+                                var adminUrl = "' . admin_url() . '/";
+                                var siteUrl = "' . site_url() . '";
+                                var themeUrl = "' . $this->template->get_theme_url() . '";
+                            </script>');
+                
+        
         if(in_array($this->template->get_layout(), array('layout')))
         {
             //menüyü oluştur

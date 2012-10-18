@@ -16,6 +16,48 @@ class {model_class_name} extends MY_Model
         
     }       
     
+    public function insert($data = array())
+    {
+        if(!isset($data['inserter_id']))
+        {
+            $data['inserter_id'] = $this->auth->get_user_id();
+        }
+        if(!isset($data['insert_date']))
+        {
+            $data['insert_date'] = mysql_now();
+        }
+        
+        return parent::insert($data);
+    }
+    
+    public function update($id, $data = array())
+    {
+        if(!isset($data['updater_id']))
+        {
+            $data['updater_id'] = $this->auth->get_user_id();
+        }
+        if(!isset($data['update_date']))
+        {
+            $data['update_date'] = mysql_now();
+        }
+        
+        return parent::update($id, $data);
+    }
+    
+    public function update_where($where = array(), $data = array())
+    {
+        if(!isset($data['updater_id']))
+        {
+            $data['updater_id'] = $this->auth->get_user_id();
+        }
+        if(!isset($data['update_date']))
+        {
+            $data['update_date'] = mysql_now();
+        }
+        
+        return parent::update_where($where, $data);
+    }
+    
     {join_callbacks}
     
     public function callback_search(&$extra=array())

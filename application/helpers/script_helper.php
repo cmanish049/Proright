@@ -5,10 +5,10 @@ function js_close_modal($modal_name = 'dialog')
 {
     $script = '';
     if($_POST)
-    {
-        $script = "if(window.parent.dialogs['$modal_name'] != undefined) { 
-            window.parent.dialogs['$modal_name'].close();
-            window.parent.dialogs['$modal_name'].destroy();
+    {        
+        $script = "if(window.top.dialogs['$modal_name'] != undefined) { 
+            window.top.dialogs['$modal_name'].close();
+            window.top.dialogs['$modal_name'].destroy();
         }";
     }
     echo "<script type='text/javascript'>$script</script>";
@@ -106,17 +106,22 @@ function kendouiDataItemTemplateString($item_name='')
 
 function kendouiDataItemDateTemplateString($item_name='')
 {
-    return "#= kendo.toString(isnull($item_name, ''),'yyyy-MM-dd hh:mm:ss') #";
+    $format = 'yyyy-MM-dd';
+    return "#= isnull( kendo.toString(kendo.parseDate($item_name,'yyyy-MM-dd hh:mm:ss'),'$format') , '') #";
 }
 
 function kendouiDataItemDateTimeTemplateString($item_name='')
 {        
-    return "#= kendo.toString(isnull($item_name, ''),'yyyy-MM-dd hh:mm:ss') #";
+    $format = 'yyyy-MM-dd hh:mm';
+    
+    //return "#= isnull( kendo.toString(moment($item_name,'YYYY-MM-DD hh:mm:ss').toDate(),'$format') , '') #";
+    return "#= isnull( kendo.toString(kendo.parseDate($item_name,'yyyy-MM-dd hh:mm:ss'),'$format') , '') #";
+    
 }
 
 function kendouiDataItemBooleanImageTemplateString($item_name='', $container_css_class='center-inner')
 {
-    return '<div class="'.$container_css_class.'"> # if('.$item_name.'=="1"){# <i class="icon-grid-cell-ok"></i> #}else{#  #}#</div>';
+    return '<div class="'.$container_css_class.'"> # if('.$item_name.'=="1"){# <i class="icon-grid-cell-ok"></i> #}else{# <i class="icon-grid-cell-no"></i> #}#</div>';
 }
 
 function kendoui_yes_no_grid_filter_items()

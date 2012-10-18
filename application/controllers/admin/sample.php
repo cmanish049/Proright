@@ -17,6 +17,57 @@ class Sample extends Admin_Controller
         $this->data['window'] = element('window', $this->uri_assoc);
     }
 
+    public function event()
+    {
+        $this->data['page_title'] = _('Calendar');
+        load_jqueryCalendar();
+        $this->template->view_parts('content', 'sample/event_view', $this->data)
+                ->title('Events')
+                ->build();
+    }
+
+    public function events()
+    {
+
+        $year = date('Y');
+        $month = date('m');
+
+        $events = array(
+            array(
+                'id' => 111,
+                'event_id' => 111,
+                'title' => "Event1 Event1 Event1 Event1 Event1",
+                'start' => "$year-$month-10 13:10",
+                'end' => "$year-$month-10 15:10",
+                'className' => '',
+                'editable' => true,
+                'icon_path' => 'upload/event_category/sep11.png',
+                'category_name' => 'Appoinment',
+                'category_color' => '#395648',
+                'color' => '#395648',
+                'textColor' => 'white',
+                /*'backgroundColor' => 'yellow',
+                'borderColor' => 'green'*/
+                //'url' => "#"
+            ),
+            array(
+                'id' => 222,
+                'title' => "Event2 Event3 Event4 Event5 Event6",
+                'start' => "$year-$month-20 11:10",
+                'end' => "$year-$month-20 15:10",
+                'description' => 'This is a cool event',
+                'icon_path' => 'upload/event_category/sep11.png',
+                'category_name' => 'Appoinment',
+                'category_color' => '#831874',
+                'color' => '#831874',
+                'textColor' => 'white',
+                //'url' => "#"
+            )
+        );
+        
+        $this->output->_display($this->fastjson->encode($events));
+    }
+
     public function index()
     {
         $this->data['edit_url'] = admin_url("sample/edit/window/modal");
@@ -52,7 +103,7 @@ class Sample extends Admin_Controller
             add_language_param($extra);
             $this->sample_model->set_extra_from_url($extra);
             $json['rows'] = $this->sample_model->get_rows($extra);
-            
+
             $json['groups'] = array(
                 array(
                     'field' => 'country_name',
@@ -60,10 +111,10 @@ class Sample extends Admin_Controller
                     'hasSubgroups' => false,
                     'aggregates' => array(),
                     'items' => array(
-                        array('country_name' => 'a', 'country_seo' => 'b','insert_date' => 'c'),
-                        array('country_name' => 'a', 'country_seo' => 'b','insert_date' => 'c'),
-                        array('country_name' => 'a', 'country_seo' => 'b','insert_date' => 'c'),
-                        array('country_name' => 'a', 'country_seo' => 'b','insert_date' => 'c')
+                        array('country_name' => 'a', 'country_seo' => 'b', 'insert_date' => 'c'),
+                        array('country_name' => 'a', 'country_seo' => 'b', 'insert_date' => 'c'),
+                        array('country_name' => 'a', 'country_seo' => 'b', 'insert_date' => 'c'),
+                        array('country_name' => 'a', 'country_seo' => 'b', 'insert_date' => 'c')
                     )
                 ),
                 array(
@@ -72,32 +123,32 @@ class Sample extends Admin_Controller
                     'hasSubgroups' => false,
                     'aggregates' => array(),
                     'items' => array(
-                        array('country_name' => 'a', 'country_seo' => 'b','insert_date' => 'c'),
-                        array('country_name' => 'a', 'country_seo' => 'b','insert_date' => 'c'),
-                        array('country_name' => 'a', 'country_seo' => 'b','insert_date' => 'c'),
-                        array('country_name' => 'a', 'country_seo' => 'b','insert_date' => 'c'),
-                        array('country_name' => 'a', 'country_seo' => 'b','insert_date' => 'c'),
-                        array('country_name' => 'a', 'country_seo' => 'b','insert_date' => 'c'),
-                        array('country_name' => 'a', 'country_seo' => 'b','insert_date' => 'c'),
-                        array('country_name' => 'a', 'country_seo' => 'b','insert_date' => 'c')
+                        array('country_name' => 'a', 'country_seo' => 'b', 'insert_date' => 'c'),
+                        array('country_name' => 'a', 'country_seo' => 'b', 'insert_date' => 'c'),
+                        array('country_name' => 'a', 'country_seo' => 'b', 'insert_date' => 'c'),
+                        array('country_name' => 'a', 'country_seo' => 'b', 'insert_date' => 'c'),
+                        array('country_name' => 'a', 'country_seo' => 'b', 'insert_date' => 'c'),
+                        array('country_name' => 'a', 'country_seo' => 'b', 'insert_date' => 'c'),
+                        array('country_name' => 'a', 'country_seo' => 'b', 'insert_date' => 'c'),
+                        array('country_name' => 'a', 'country_seo' => 'b', 'insert_date' => 'c')
                     )
                 )
             );
-            
+
             unset($extra['limit'], $extra['offset'], $extra['callback']);
             $json['total'] = $this->sample_model->get_count($extra);
         }
         catch (AF_exception $exc)
         {
             $json['error'] = 'yes';
-            $json['message'] = $exc->errorMessage();
+            $json['message'] = $exc->getMessage();
         }
-        
+
         $this->output->_display($this->fastjson->encode($json));
     }
 
     public function delete()
-    {        
+    {
         $json['error'] = 'no';
         use_try_catch();
         try
@@ -119,7 +170,7 @@ class Sample extends Admin_Controller
             $this->db->trans_rollback();
 
             $json['error'] = 'yes';
-            $json['error'] = $exc->errorMessage();
+            $json['error'] = $exc->getMessage();
         }
 
         $this->output->_display($this->fastjson->encode($json));
@@ -212,7 +263,7 @@ class Sample extends Admin_Controller
             {
                 $this->db->trans_rollback();
 
-                $this->data['error'] = $exc->errorMessage();
+                $this->data['error'] = $exc->getMessage();
                 if(is_ajax())
                 {
                     $json['error'] = 'yes';

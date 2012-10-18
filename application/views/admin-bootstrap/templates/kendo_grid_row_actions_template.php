@@ -1,8 +1,8 @@
 <?php
-isset($edit_modal_size) OR $edit_modal_size = 'max-max';
-isset($detail_modal_size) OR $detail_modal_size = $edit_modal_size;
-isset($edit_url_query_string) OR $edit_url_query_string = '';
-isset($delete_url_query_string) OR $delete_url_query_string = '';
+    isset($edit_modal_size) OR $edit_modal_size = 'max-max';
+    isset($detail_modal_size) OR $detail_modal_size = $edit_modal_size;
+    isset($edit_url_query_string) OR $edit_url_query_string = '';
+    isset($delete_url_query_string) OR $delete_url_query_string = '';
 ?>
 
 <script type="text/x-kendo-template" id="<?php echo $grid_name; ?>-actions-template">

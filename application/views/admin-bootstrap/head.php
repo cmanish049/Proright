@@ -3,19 +3,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php echo (isset($meta)) ? $meta : ''; ?>
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
 
 <?php echo css(array('bootstrap.css',
-    'kendo.common.css','kendo.silver.min.css',
+    'kendo.common.css','kendo.default.min.css',
     'custom.css')); ?>
 
 <?php
 
-echo js('languages/jquery.validationEngine.en-US.js');
+//echo js();
 echo js(
         array(
-            'kendo.web.min.js','languages/kendo.culture.en-US.js',
             'jquery-plugins.js',
+            'kendo.web.min.js','languages/kendo.culture.en-US.js',   
+            'languages/jquery.validationEngine.en-US.js',
             'custom.js'
         )
 );
@@ -26,3 +27,5 @@ echo js(
 //set current culture to "en-GB".
 kendo.culture("en-US");
 </script>
+
+<base href="<?php echo base_url(); ?>"/>

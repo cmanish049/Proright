@@ -81,13 +81,23 @@ $config['db_tables'] = array(
 	),
 	'email_sendings' => array(
 		'EMAIL_ID',
-		'MATTER_ID',
-		'USER_ID',
+		'RECEIVER_ID',
 		'EMAIL_TO',
-		'EMAIL_CC',
-		'EMAIL_BCC',
+		'IS_SUCCESSFUL'
+	),
+	'email_templates' => array(
+		'EMAIL_TEMPLATE_ID',
+		'EMAIL_TEMPLATE_NAME',
+		'EMAIL_TEMPLATE_SUBJECT',
+		'EMAIL_TEMPLATE_BODY',
+		'IS_ACTIVE'
+	),
+	'emails' => array(
+		'EMAIL_ID',
+		'MATTER_ID',
+		'EMAIL_SUBJECT',
 		'EMAIL_BODY',
-		'SUCCESSFUL',
+		'EMAIL_TEMPLATE_ID',
 		'INSERTER_ID',
 		'INSERT_DATE'
 	),
@@ -97,24 +107,40 @@ $config['db_tables'] = array(
 		'CATEGORY_COLOR',
 		'ICON_PATH'
 	),
+	'event_priorities' => array(
+		'PRIORITY_ID',
+		'PRIORITY_NAME',
+		'PRIORITY_COLOR',
+		'PRIORITY_RATING'
+	),
+	'event_reminders' => array(
+		'EVENT_ID',
+		'REMINDER_WITH',
+		'REMINDER_DATE'
+	),
+	'event_subjects' => array(
+		'SUBJECT_ID',
+		'SUBJECT',
+		'IS_ACTIVE'
+	),
+	'event_users' => array(
+		'EVENT_ID',
+		'USER_ID'
+	),
 	'events' => array(
 		'EVENT_ID',
 		'CATEGORY_ID',
-		'EVENT_DATETIME',
-		'END_DATETIME',
+		'IS_ALL_DAY',
+		'BEGIN_DATE',
+		'END_DATE',
+		'SUBJECT_ID',
 		'DESCRIPTION',
-		'LOCATION_ID',
-		'WITH_ID',
-		'MATTER_ID',
+		'EVENT_LOCATION_ID',
 		'PRIORITY_ID',
 		'EVENT_STATUS_ID',
-		'PRIVATE',
-		'REMINDER1_WITH',
-		'REMINDER1_DATE',
-		'REMINDER2_WITH',
-		'REMINDER2_DATE',
-		'REMINDER3_WITH',
-		'REMINDER3_DATE',
+		'MATTER_ID',
+		'CLIENT_ID',
+		'IS_PRIVATE',
 		'INSERTER_ID',
 		'INSERT_DATE',
 		'UPDATER_ID',
@@ -135,13 +161,14 @@ $config['db_tables'] = array(
 	),
 	'matter_documents' => array(
 		'DOC_ID',
-		'DOC_PATH',
+		'DOC_TYPE_ID',
+		'DOC_STATUS_ID',
 		'DOC_NAME',
+		'DOC_FILE_NAME',
+		'DOC_FILE_PATH',
 		'MATTER_ID',
 		'CLIENT_ID',
-		'DOC_TYPE_ID',
 		'AUTHOR',
-		'DOC_STATUS_ID',
 		'DESCRIPTION',
 		'INSERTER_ID',
 		'INSERT_DATE',
@@ -219,7 +246,7 @@ $config['db_tables'] = array(
 	),
 	'matter_linked_clients' => array(
 		'LINKED_ID',
-		'LINK_TYPE_ID',
+		'LINKED_TYPE_ID',
 		'MATTER_ID',
 		'CLIENT_ID',
 		'DESCRIPTION',
@@ -247,7 +274,7 @@ $config['db_tables'] = array(
 		'INSERTER_ID',
 		'INSERT_DATE',
 		'UPDATER_ID',
-		'UDPATE_DATE'
+		'UPDATE_DATE'
 	),
 	'matter_types' => array(
 		'MATTER_TYPE_ID',
@@ -257,10 +284,9 @@ $config['db_tables'] = array(
 	'matters' => array(
 		'MATTER_ID',
 		'MATTER_TYPE_ID',
-		'UNIQUE_KEY',
 		'MATTER_NAME',
-		'SUBJECT',
-		'FILE_OR_CASE_NUMBER',
+		'CASE_NUMBER',
+		'COURT_CASE_NUMBER',
 		'ATTORNEY_ID',
 		'COURT_ID',
 		'DESCRIPTION',
@@ -361,7 +387,8 @@ $config['db_tables'] = array(
 		'MARITAL_STATUS_ID',
 		'PREVIOUS_MARRIAGES_COUNT',
 		'DATE_MARRIED',
-		'PLACE_MARRIED'
+		'PLACE_MARRIED',
+		'DESCRIPTION'
 	),
 	'zip_codes' => array(
 		'ZIP_CODE_ID',

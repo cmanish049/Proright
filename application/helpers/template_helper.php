@@ -122,6 +122,21 @@ function load_colorPicker()
     $CI->template->js('js/jquery.miniColors.js');
 }
 
+function load_jqueryFileUpload()
+{
+    $CI = & get_instance();    
+    
+    $CI->template->css('css/jquery.fileupload.css');
+    $CI->template->js('js/jquery.fileupload.js');
+}
+function load_jqueryCalendar()
+{
+    $CI = & get_instance();    
+    
+    $CI->template->css('css/fullcalendar.css');
+    $CI->template->js('js/fullcalendar.js');
+}
+
 if(!function_exists('flash_data_alert_admin'))
 {
 

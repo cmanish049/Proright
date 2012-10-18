@@ -1,9 +1,10 @@
 <?php
 
 $config['status_types'] = array(
-    'matter_document_status' => 1,
+    'matter_doc_status' => 1,
     'matter_exhibit_status' => 2,
-    'matter_fact_status' => 3
+    'matter_fact_status' => 3,
+    'event_status' => 4,
 );
 
 $config['genders'] = array(

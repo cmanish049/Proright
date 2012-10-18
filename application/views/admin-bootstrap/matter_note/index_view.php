@@ -8,7 +8,7 @@ $container_tag_selector = $container_tag_selector?"#$container_tag_selector":'bo
     <div id="matter_noteGrid"></div>
 </div>
 <?php else: ?>
-    <div class="section corners">
+    <div class="section">
         <div class="row">
             <div class="span12">
                 <div class="box">

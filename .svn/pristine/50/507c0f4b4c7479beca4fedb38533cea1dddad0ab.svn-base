@@ -1,0 +1,4 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
+ERROR - 2012-10-18 00:05:27 --> Severity: Notice  --> Undefined variable: dropdown_operator_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\matter_note\form_view.php 88
+ERROR - 2012-10-18 00:05:27 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331

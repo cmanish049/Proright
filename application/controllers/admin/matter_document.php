@@ -217,11 +217,7 @@ class Matter_document extends Admin_Controller
                 'join_doc_status'
             )
         ));
-
-        if (empty($row))
-        {
-            $row = new stdClass();
-        }
+        $row OR $row = new stdClass();
         
         $matter = $this->matter_model->get_row_by_id($this->input->get('matter_id'));
         if(!empty($matter))

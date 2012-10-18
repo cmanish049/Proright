@@ -1,0 +1,115 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
+ERROR - 2012-10-11 09:19:16 --> 404 Page Not Found --> admin/customer
+ERROR - 2012-10-11 09:37:04 --> 404 Page Not Found --> sample
+ERROR - 2012-10-11 09:37:26 --> 404 Page Not Found --> sample
+ERROR - 2012-10-11 10:34:08 --> 404 Page Not Found --> admin/customer
+ERROR - 2012-10-11 10:35:21 --> 404 Page Not Found --> admin/customer
+ERROR - 2012-10-11 10:35:38 --> 404 Page Not Found --> admin/customer
+ERROR - 2012-10-11 10:55:48 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:55:50 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:55:52 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:55:53 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:55:56 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:55:59 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:56:01 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:56:04 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:56:06 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:56:11 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:56:13 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:57:03 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:57:06 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:57:13 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:57:19 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:57:48 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:57:53 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:57:55 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:58:02 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:58:04 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:58:41 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:58:43 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:58:45 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:58:47 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:58:50 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:58:54 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:59:07 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 10:59:12 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 11:07:05 --> 404 Page Not Found --> undefined
+ERROR - 2012-10-11 13:58:01 --> 404 Page Not Found --> admin/customer
+ERROR - 2012-10-11 16:58:50 --> Severity: Notice  --> Undefined variable: dropdown_category_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 12
+ERROR - 2012-10-11 16:58:50 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 16:58:50 --> Severity: Notice  --> Undefined variable: dropdown_subject_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 54
+ERROR - 2012-10-11 16:58:50 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 16:58:50 --> Severity: Notice  --> Undefined variable: dropdown_event_location_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 75
+ERROR - 2012-10-11 16:58:50 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 16:58:50 --> Severity: Notice  --> Undefined variable: dropdown_priority_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 87
+ERROR - 2012-10-11 16:58:50 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 16:58:50 --> Severity: Notice  --> Undefined variable: dropdown_event_status_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 99
+ERROR - 2012-10-11 16:58:50 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 16:58:50 --> Severity: Notice  --> Undefined variable: dropdown_matter_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 111
+ERROR - 2012-10-11 16:58:50 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 16:58:50 --> Severity: Notice  --> Undefined variable: dropdown_client_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 123
+ERROR - 2012-10-11 16:58:50 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:00:50 --> Severity: Notice  --> Undefined variable: dropdown_subject_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 54
+ERROR - 2012-10-11 17:00:50 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:00:50 --> Severity: Notice  --> Undefined variable: dropdown_event_location_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 75
+ERROR - 2012-10-11 17:00:50 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:00:50 --> Severity: Notice  --> Undefined variable: dropdown_priority_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 87
+ERROR - 2012-10-11 17:00:50 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:00:50 --> Severity: Notice  --> Undefined variable: dropdown_event_status_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 99
+ERROR - 2012-10-11 17:00:50 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:00:50 --> Severity: Notice  --> Undefined variable: dropdown_matter_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 111
+ERROR - 2012-10-11 17:00:50 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:00:50 --> Severity: Notice  --> Undefined variable: dropdown_client_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 123
+ERROR - 2012-10-11 17:00:50 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:01:24 --> Query error: Unknown column 'subject_name' in 'field list'
+ERROR - 2012-10-11 17:01:32 --> Severity: Notice  --> Undefined variable: dropdown_event_location_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 75
+ERROR - 2012-10-11 17:01:32 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:01:32 --> Severity: Notice  --> Undefined variable: dropdown_priority_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 87
+ERROR - 2012-10-11 17:01:32 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:01:32 --> Severity: Notice  --> Undefined variable: dropdown_event_status_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 99
+ERROR - 2012-10-11 17:01:33 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:01:33 --> Severity: Notice  --> Undefined variable: dropdown_matter_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 111
+ERROR - 2012-10-11 17:01:33 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:01:33 --> Severity: Notice  --> Undefined variable: dropdown_client_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 123
+ERROR - 2012-10-11 17:01:33 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:02:21 --> Query error: Unknown column 'location_id' in 'field list'
+ERROR - 2012-10-11 17:02:32 --> Severity: Notice  --> Undefined property: Event::$event_location_model D:\wamp\www\Projeler\Proright\application\controllers\admin\event.php 201
+ERROR - 2012-10-11 17:02:45 --> Severity: Notice  --> Undefined variable: dropdown_event_location_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 75
+ERROR - 2012-10-11 17:02:45 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:02:45 --> Severity: Notice  --> Undefined variable: dropdown_priority_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 87
+ERROR - 2012-10-11 17:02:45 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:02:45 --> Severity: Notice  --> Undefined variable: dropdown_event_status_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 99
+ERROR - 2012-10-11 17:02:45 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:02:45 --> Severity: Notice  --> Undefined variable: dropdown_matter_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 111
+ERROR - 2012-10-11 17:02:45 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:02:45 --> Severity: Notice  --> Undefined variable: dropdown_client_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 123
+ERROR - 2012-10-11 17:02:45 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:03:02 --> Severity: Notice  --> Undefined variable: dropdown_priority_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 87
+ERROR - 2012-10-11 17:03:02 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:03:02 --> Severity: Notice  --> Undefined variable: dropdown_event_status_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 99
+ERROR - 2012-10-11 17:03:02 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:03:02 --> Severity: Notice  --> Undefined variable: dropdown_matter_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 111
+ERROR - 2012-10-11 17:03:02 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:03:02 --> Severity: Notice  --> Undefined variable: dropdown_client_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 123
+ERROR - 2012-10-11 17:03:02 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:05:08 --> Severity: Notice  --> Undefined property: Event::$priority_model D:\wamp\www\Projeler\Proright\application\controllers\admin\event.php 202
+ERROR - 2012-10-11 17:05:17 --> Severity: Notice  --> Undefined variable: dropdown_event_status_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 99
+ERROR - 2012-10-11 17:05:17 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:05:17 --> Severity: Notice  --> Undefined variable: dropdown_matter_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 111
+ERROR - 2012-10-11 17:05:17 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:05:17 --> Severity: Notice  --> Undefined variable: dropdown_client_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 123
+ERROR - 2012-10-11 17:05:17 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:07:08 --> Severity: Notice  --> Undefined property: Event::$status_model D:\wamp\www\Projeler\Proright\application\controllers\admin\event.php 203
+ERROR - 2012-10-11 17:07:23 --> Severity: Notice  --> Undefined variable: dropdown_matter_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 111
+ERROR - 2012-10-11 17:07:23 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:07:23 --> Severity: Notice  --> Undefined variable: dropdown_client_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 123
+ERROR - 2012-10-11 17:07:23 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:09:25 --> Severity: Notice  --> Undefined variable: dropdown_matter_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 111
+ERROR - 2012-10-11 17:09:25 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:09:25 --> Severity: Notice  --> Undefined variable: dropdown_client_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 123
+ERROR - 2012-10-11 17:09:25 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:11:05 --> Severity: Notice  --> Undefined variable: dropdown_matter_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 111
+ERROR - 2012-10-11 17:11:05 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-11 17:11:05 --> Severity: Notice  --> Undefined variable: dropdown_client_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 125
+ERROR - 2012-10-11 17:11:05 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331

@@ -1,4 +1,4 @@
-<div class="section corners">
+<div class="section">
     <div class="row">
         <div class="span12">
             <div class="box">
@@ -59,7 +59,20 @@ $this->template->view('templates/kendo_grid_row_actions_template', array(
                     <li><?php _e('Notes'); ?></li>
                     <li><?php _e('Emails'); ?></li>
                     <li><?php _e('Documents'); ?></li>
+                    <li><?php _e('Events'); ?></li>
+                    <li><?php _e('Calendar'); ?></li>
                 </ul>
+                <div class="clearfix">
+                    <iframe 
+                        src="<?php echo admin_url('matter_linked_client/index/window/modal?') ?>show_only_grid=1&matter_id=#= matter_id #"></iframe>
+                </div>
+                <div class="clearfix"></div>
+                <div class="clearfix"></div>
+                <div class="clearfix"></div>
+                <div class="clearfix"></div>
+                <div class="clearfix">
+                    <iframe src="<?php echo admin_url('event/calendar/window/modal?') ?>show_only_grid=1&matter_id=#= matter_id #"></iframe>
+                </div>
             </div>
         </div>
     </div>
@@ -74,10 +87,14 @@ $this->template->view('templates/kendo_grid_row_actions_template', array(
         
         tab(detailRow.find(".tabstrip"),{
             contentUrls: [
-                '<?php echo admin_url('matter_linked_client/index?') ?>' + queryString,
+                ,
+                //'<?php echo admin_url('matter_linked_client/index?') ?>' + queryString,
                 '<?php echo admin_url('matter_note/index?') ?>' + queryString,              
                 '<?php echo admin_url('email/index?') ?>' + queryString,              
-                '<?php echo admin_url('matter_document/index?') ?>' + queryString           
+                '<?php echo admin_url('matter_document/index?') ?>' + queryString,         
+                '<?php echo admin_url('event/index?') ?>' + queryString,         
+                
+                //'<?php echo admin_url('event/calendar?') ?>' + queryString          
             ]
         });
 
@@ -111,7 +128,7 @@ $this->template->view('templates/kendo_grid_row_actions_template', array(
             gridOptions : {
                 detailTemplate: kendo.template($("#matter-details-template").html()),
                 detailInit: detailInit, 
-                selectable : 'cell',//'multiple cell',
+                //selectable : 'cell',//'multiple cell',
                 toolbar: [{template:$('#matter-toolbar-template').html()}],
                 columns: [
                     {

@@ -1,0 +1,8 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
+ERROR - 2012-09-29 13:57:09 --> 404 Page Not Found --> Projeler
+ERROR - 2012-09-29 13:57:15 --> 404 Page Not Found --> Projeler
+ERROR - 2012-09-29 13:57:17 --> 404 Page Not Found --> Projeler
+ERROR - 2012-09-29 14:10:52 --> 404 Page Not Found --> admin/company
+ERROR - 2012-09-29 15:29:59 --> 404 Page Not Found --> admin/company
+ERROR - 2012-09-29 19:58:56 --> Severity: Notice  --> Trying to get property of non-object D:\wamp\www\Projeler\Proright\application\controllers\admin\user.php 122

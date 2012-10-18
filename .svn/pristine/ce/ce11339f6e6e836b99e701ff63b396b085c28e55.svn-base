@@ -1,0 +1,25 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
+ERROR - 2012-10-08 15:53:57 --> Severity: Notice  --> Undefined variable: dropdown_doc_type_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\matter_document\form_view.php 10
+ERROR - 2012-10-08 15:53:57 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-08 15:53:57 --> Severity: Notice  --> Undefined variable: dropdown_doc_status_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\matter_document\form_view.php 22
+ERROR - 2012-10-08 15:53:57 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-08 15:53:57 --> Severity: Notice  --> Undefined variable: dropdown_matter_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\matter_document\form_view.php 52
+ERROR - 2012-10-08 15:53:57 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-08 15:53:57 --> Severity: Notice  --> Undefined variable: dropdown_client_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\matter_document\form_view.php 64
+ERROR - 2012-10-08 15:53:57 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-08 16:01:19 --> Severity: Notice  --> Undefined variable: dropdown_matter_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\matter_document\form_view.php 52
+ERROR - 2012-10-08 16:01:19 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-08 16:01:19 --> Severity: Notice  --> Undefined variable: dropdown_client_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\matter_document\form_view.php 64
+ERROR - 2012-10-08 16:01:19 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-08 16:02:05 --> Severity: Notice  --> Undefined index: matter_doc_status?status_type=matter_doc_status D:\wamp\www\Projeler\Proright\application\helpers\af_helper.php 8
+ERROR - 2012-10-08 16:03:14 --> Severity: Notice  --> Undefined index: matter_doc_status?status_type=matter_doc_status D:\wamp\www\Projeler\Proright\application\helpers\af_helper.php 8
+ERROR - 2012-10-08 16:04:33 --> Severity: Notice  --> Undefined index: matter_doc_status?status_type=matter_doc_status D:\wamp\www\Projeler\Proright\application\helpers\af_helper.php 8
+ERROR - 2012-10-08 16:07:02 --> Severity: Notice  --> Undefined variable: dropdown_matter_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\matter_document\form_view.php 52
+ERROR - 2012-10-08 16:07:02 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-08 16:07:02 --> Severity: Notice  --> Undefined variable: dropdown_client_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\matter_document\form_view.php 64
+ERROR - 2012-10-08 16:07:02 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-08 16:08:16 --> Severity: Notice  --> Undefined variable: dropdown_matter_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\matter_document\form_view.php 52
+ERROR - 2012-10-08 16:08:16 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-08 16:08:16 --> Severity: Notice  --> Undefined variable: dropdown_client_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\matter_document\form_view.php 64
+ERROR - 2012-10-08 16:08:16 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331

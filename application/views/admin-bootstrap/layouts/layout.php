@@ -74,7 +74,7 @@
         ?>
         
        <div class="container" style="margin-top:10px;margin-bottom: 20px;">
-            <div class="section corners" style="text-align: center;">
+            <div class="section" style="text-align: center;">
                 <a href="http://www.3digitaltech.com" title="2 Digital Technologies" target="_blank"><strong>3</strong></a>
             </div>
         </div>

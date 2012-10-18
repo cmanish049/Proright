@@ -1,0 +1,17 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
+ERROR - 2012-10-05 14:12:41 --> Severity: Notice  --> Undefined variable: dropdown_email_template_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\email_sending\form_view.php 77
+ERROR - 2012-10-05 14:12:41 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-05 14:12:54 --> Severity: Notice  --> Undefined variable: dropdown_email_template_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\email_sending\form_view.php 77
+ERROR - 2012-10-05 14:12:54 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-05 14:14:54 --> Severity: Notice  --> Undefined variable: dropdown_email_template_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\email_sending\form_view.php 77
+ERROR - 2012-10-05 14:14:54 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-05 14:15:33 --> Severity: Notice  --> Undefined variable: dropdown_email_template_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\email_sending\form_view.php 68
+ERROR - 2012-10-05 14:15:33 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-05 14:16:15 --> Severity: Notice  --> Undefined variable: dropdown_email_template_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\email_sending\form_view.php 68
+ERROR - 2012-10-05 14:16:15 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-05 12:07:44 --> 404 Page Not Found --> admin/email_sending
+ERROR - 2012-10-05 15:21:42 --> Severity: Notice  --> Trying to get property of non-object D:\wamp\www\Projeler\Proright\application\controllers\admin\user.php 128
+ERROR - 2012-10-05 12:21:57 --> 404 Page Not Found --> admin/email_sending
+ERROR - 2012-10-05 12:22:31 --> 404 Page Not Found --> admin/email_sending
+ERROR - 2012-10-05 12:22:37 --> 404 Page Not Found --> admin/email_sending

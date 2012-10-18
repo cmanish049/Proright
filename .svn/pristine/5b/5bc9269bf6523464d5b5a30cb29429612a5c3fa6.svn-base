@@ -1,0 +1,18 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
+ERROR - 2012-10-06 15:51:39 --> Severity: Notice  --> Undefined variable: e D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\email\form_view.php 96
+ERROR - 2012-10-06 15:51:39 --> Severity: Notice  --> Trying to get property of non-object D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\email\form_view.php 96
+ERROR - 2012-10-06 15:51:39 --> Severity: Notice  --> Undefined variable: email_templates D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\email\form_view.php 99
+ERROR - 2012-10-06 15:51:39 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\email\form_view.php 99
+ERROR - 2012-10-06 15:51:39 --> Severity: Notice  --> Undefined variable: email_templates D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\email\form_view.php 107
+ERROR - 2012-10-06 15:51:39 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\email\form_view.php 107
+ERROR - 2012-10-06 15:51:48 --> Severity: Notice  --> Undefined variable: email_templates D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\email\form_view.php 98
+ERROR - 2012-10-06 15:51:48 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\email\form_view.php 98
+ERROR - 2012-10-06 15:51:48 --> Severity: Notice  --> Undefined variable: email_templates D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\email\form_view.php 106
+ERROR - 2012-10-06 15:51:48 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\email\form_view.php 106
+ERROR - 2012-10-06 16:32:01 --> Severity: Notice  --> Undefined variable: dropdown_operator_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\matter_note\form_view.php 88
+ERROR - 2012-10-06 16:32:01 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-06 16:35:00 --> Severity: Notice  --> Undefined variable: dropdown_operator_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\matter_note\form_view.php 88
+ERROR - 2012-10-06 16:35:00 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331
+ERROR - 2012-10-06 19:14:36 --> Severity: Notice  --> Undefined variable: dropdown_operator_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\matter_note\form_view.php 88
+ERROR - 2012-10-06 19:14:36 --> Severity: Warning  --> Invalid argument supplied for foreach() D:\wamp\www\Projeler\Proright\system\helpers\form_helper.php 331

@@ -1,0 +1,45 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
+ERROR - 2012-10-09 13:11:16 --> Severity: Notice  --> Undefined property: Ajax::$file D:\wamp\www\Projeler\Proright\application\controllers\admin\ajax.php 31
+ERROR - 2012-10-09 13:11:52 --> Severity: Notice  --> Undefined property: Ajax::$file D:\wamp\www\Projeler\Proright\application\controllers\admin\ajax.php 31
+ERROR - 2012-10-09 13:13:52 --> Severity: Warning  --> mkdir() [<a href='function.mkdir'>function.mkdir</a>]: No such file or directory D:\wamp\www\Projeler\Proright\application\libraries\File.php 225
+ERROR - 2012-10-09 13:13:52 --> Severity: Warning  --> fopen(upload/temp/index.html) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: No such file or directory D:\wamp\www\Projeler\Proright\system\helpers\file_helper.php 90
+ERROR - 2012-10-09 13:13:52 --> Severity: Warning  --> chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory D:\wamp\www\Projeler\Proright\application\libraries\File.php 230
+ERROR - 2012-10-09 13:13:52 --> Severity: Warning  --> mkdir() [<a href='function.mkdir'>function.mkdir</a>]: No such file or directory D:\wamp\www\Projeler\Proright\application\libraries\File.php 245
+ERROR - 2012-10-09 13:13:52 --> Severity: Warning  --> fopen(D:\wamp\www\Projeler\Proright\upload/temp/2012/index.html) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: No such file or directory D:\wamp\www\Projeler\Proright\system\helpers\file_helper.php 90
+ERROR - 2012-10-09 13:13:52 --> Severity: Warning  --> chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory D:\wamp\www\Projeler\Proright\application\libraries\File.php 255
+ERROR - 2012-10-09 13:13:52 --> Severity: Warning  --> mkdir() [<a href='function.mkdir'>function.mkdir</a>]: No such file or directory D:\wamp\www\Projeler\Proright\application\libraries\File.php 264
+ERROR - 2012-10-09 13:13:52 --> Severity: Warning  --> fopen(D:\wamp\www\Projeler\Proright\upload/temp/2012/10/index.html) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: No such file or directory D:\wamp\www\Projeler\Proright\system\helpers\file_helper.php 90
+ERROR - 2012-10-09 13:13:52 --> Severity: Warning  --> chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory D:\wamp\www\Projeler\Proright\application\libraries\File.php 275
+ERROR - 2012-10-09 13:13:52 --> Yüklenilmek istenen dosya yolu geçersiz.
+ERROR - 2012-10-09 13:14:59 --> Severity: Warning  --> mkdir() [<a href='function.mkdir'>function.mkdir</a>]: No such file or directory D:\wamp\www\Projeler\Proright\application\libraries\File.php 225
+ERROR - 2012-10-09 13:14:59 --> Severity: Warning  --> fopen(upload/temp/index.html) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: No such file or directory D:\wamp\www\Projeler\Proright\system\helpers\file_helper.php 90
+ERROR - 2012-10-09 13:14:59 --> Severity: Warning  --> chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory D:\wamp\www\Projeler\Proright\application\libraries\File.php 230
+ERROR - 2012-10-09 13:14:59 --> Severity: Warning  --> mkdir() [<a href='function.mkdir'>function.mkdir</a>]: No such file or directory D:\wamp\www\Projeler\Proright\application\libraries\File.php 245
+ERROR - 2012-10-09 13:14:59 --> Severity: Warning  --> fopen(D:\wamp\www\Projeler\Proright\upload/temp/2012/index.html) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: No such file or directory D:\wamp\www\Projeler\Proright\system\helpers\file_helper.php 90
+ERROR - 2012-10-09 13:14:59 --> Severity: Warning  --> chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory D:\wamp\www\Projeler\Proright\application\libraries\File.php 255
+ERROR - 2012-10-09 13:14:59 --> Severity: Warning  --> mkdir() [<a href='function.mkdir'>function.mkdir</a>]: No such file or directory D:\wamp\www\Projeler\Proright\application\libraries\File.php 264
+ERROR - 2012-10-09 13:14:59 --> Severity: Warning  --> fopen(D:\wamp\www\Projeler\Proright\upload/temp/2012/10/index.html) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: No such file or directory D:\wamp\www\Projeler\Proright\system\helpers\file_helper.php 90
+ERROR - 2012-10-09 13:14:59 --> Severity: Warning  --> chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory D:\wamp\www\Projeler\Proright\application\libraries\File.php 275
+ERROR - 2012-10-09 13:14:59 --> Yüklenilmek istenen dosya yolu geçersiz.
+ERROR - 2012-10-09 13:15:11 --> Severity: Warning  --> mkdir() [<a href='function.mkdir'>function.mkdir</a>]: No such file or directory D:\wamp\www\Projeler\Proright\application\libraries\File.php 225
+ERROR - 2012-10-09 13:15:11 --> Severity: Warning  --> fopen(upload/temp/index.html) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: No such file or directory D:\wamp\www\Projeler\Proright\system\helpers\file_helper.php 90
+ERROR - 2012-10-09 13:15:11 --> Severity: Warning  --> chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory D:\wamp\www\Projeler\Proright\application\libraries\File.php 230
+ERROR - 2012-10-09 13:15:11 --> Severity: Warning  --> mkdir() [<a href='function.mkdir'>function.mkdir</a>]: No such file or directory D:\wamp\www\Projeler\Proright\application\libraries\File.php 245
+ERROR - 2012-10-09 13:15:11 --> Severity: Warning  --> fopen(D:\wamp\www\Projeler\Proright\upload/temp/2012/index.html) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: No such file or directory D:\wamp\www\Projeler\Proright\system\helpers\file_helper.php 90
+ERROR - 2012-10-09 13:15:11 --> Severity: Warning  --> chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory D:\wamp\www\Projeler\Proright\application\libraries\File.php 255
+ERROR - 2012-10-09 13:15:11 --> Severity: Warning  --> mkdir() [<a href='function.mkdir'>function.mkdir</a>]: No such file or directory D:\wamp\www\Projeler\Proright\application\libraries\File.php 264
+ERROR - 2012-10-09 13:15:11 --> Severity: Warning  --> fopen(D:\wamp\www\Projeler\Proright\upload/temp/2012/10/index.html) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: No such file or directory D:\wamp\www\Projeler\Proright\system\helpers\file_helper.php 90
+ERROR - 2012-10-09 13:15:11 --> Severity: Warning  --> chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory D:\wamp\www\Projeler\Proright\application\libraries\File.php 275
+ERROR - 2012-10-09 13:15:11 --> Yüklenilmek istenen dosya yolu geçersiz.
+ERROR - 2012-10-09 13:16:06 --> Seçtiğiniz dosya türünün yüklenmesine izin verilmiyor.
+ERROR - 2012-10-09 13:17:29 --> Seçtiğiniz dosya türünün yüklenmesine izin verilmiyor.
+ERROR - 2012-10-09 13:17:48 --> Seçtiğiniz dosya türünün yüklenmesine izin verilmiyor.
+ERROR - 2012-10-09 14:43:57 --> Severity: Notice  --> Undefined variable: i D:\wamp\www\Projeler\Proright\application\libraries\File.php 117
+ERROR - 2012-10-09 14:43:57 --> Severity: Notice  --> Undefined variable: i D:\wamp\www\Projeler\Proright\application\libraries\File.php 117
+ERROR - 2012-10-09 14:44:11 --> Severity: Notice  --> Undefined variable: i D:\wamp\www\Projeler\Proright\application\libraries\File.php 117
+ERROR - 2012-10-09 14:44:11 --> Severity: Notice  --> Undefined variable: i D:\wamp\www\Projeler\Proright\application\libraries\File.php 117
+ERROR - 2012-10-09 14:45:52 --> Severity: Notice  --> Undefined variable: i D:\wamp\www\Projeler\Proright\application\libraries\File.php 117
+ERROR - 2012-10-09 14:45:52 --> Severity: Notice  --> Undefined variable: i D:\wamp\www\Projeler\Proright\application\libraries\File.php 117
+ERROR - 2012-10-09 17:04:05 --> Query error: Unknown table 'STATUS'
+ERROR - 2012-10-09 17:05:23 --> Query error: Unknown table 'STATUS'

@@ -1,4 +1,4 @@
-<div class="section corners">
+<div class="section">
 
     <div class="row">
         <div class="span12">

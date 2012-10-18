@@ -1,0 +1,24 @@
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
+
+ERROR - 2012-10-16 11:08:15 --> Severity: Notice  --> Undefined property: stdClass::$begin_date D:\wamp\www\Projeler\Proright\application\controllers\admin\event.php 268
+ERROR - 2012-10-16 11:08:15 --> Severity: Notice  --> Undefined property: stdClass::$end_date D:\wamp\www\Projeler\Proright\application\controllers\admin\event.php 271
+ERROR - 2012-10-16 11:08:15 --> Severity: Notice  --> Undefined property: stdClass::$event_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 211
+ERROR - 2012-10-16 11:38:14 --> Severity: Notice  --> Undefined property: stdClass::$event_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 211
+ERROR - 2012-10-16 11:44:47 --> Severity: Notice  --> Undefined property: stdClass::$event_id D:\wamp\www\Projeler\Proright\application\views\admin-bootstrap\event\form_view.php 211
+ERROR - 2012-10-16 14:11:06 --> 404 Page Not Found --> event/details
+ERROR - 2012-10-16 14:11:19 --> 404 Page Not Found --> event/details
+ERROR - 2012-10-16 14:11:43 --> 404 Page Not Found --> event/details
+ERROR - 2012-10-16 14:11:51 --> 404 Page Not Found --> event/details
+ERROR - 2012-10-16 14:13:59 --> 404 Page Not Found --> event/details
+ERROR - 2012-10-16 11:20:43 --> 404 Page Not Found --> admin/customer
+ERROR - 2012-10-16 11:22:15 --> 404 Page Not Found --> admin/customer
+ERROR - 2012-10-16 11:22:48 --> 404 Page Not Found --> admin/customer
+ERROR - 2012-10-16 11:22:49 --> 404 Page Not Found --> admin/customer
+ERROR - 2012-10-16 11:22:55 --> 404 Page Not Found --> admin/customer
+ERROR - 2012-10-16 11:24:00 --> 404 Page Not Found --> admin/customer
+ERROR - 2012-10-16 11:24:02 --> 404 Page Not Found --> admin/customer
+ERROR - 2012-10-16 14:24:12 --> 404 Page Not Found --> event_category/details
+ERROR - 2012-10-16 11:24:16 --> 404 Page Not Found --> admin/customer
+ERROR - 2012-10-16 11:43:24 --> 404 Page Not Found --> admin/customer
+ERROR - 2012-10-16 11:44:01 --> 404 Page Not Found --> admin/customer
+ERROR - 2012-10-16 11:46:06 --> 404 Page Not Found --> admin/2

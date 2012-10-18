@@ -11,7 +11,7 @@
 <a href="#" id="renderEvent">renderEvent</a>
 <a href="#" id="render">render</a>
 
-<div class="section corners">
+<div class="section">
     <div class="row">
         <div class="span12">
             <div class="box">

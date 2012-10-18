@@ -1,6 +1,6 @@
 <?php ?>
 
-<div class="section corners">
+<div class="section">
     <div class="row">
         <div class="span12">
             <div class="box">
@@ -102,6 +102,10 @@
         {
             id : 'detail-matter-document',
             url : '<?php echo admin_url("matter_document/index?matter_id=$row->matter_id"); ?>'
+        },
+        {
+            id : 'detail-matter-event',
+            url : '<?php echo admin_url("event/index?matter_id=$row->matter_id"); ?>'
         }
     ];
     

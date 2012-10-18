@@ -9,7 +9,7 @@ class Event extends Admin_Controller
         $module = 'event';
         $this->auth->is_authorized($module);
         $this->load->model(array('event_model', 'event_category_model', 'event_priority_model', 'event_subject_model',
-            'location_model', 'status_model'));
+            'location_model', 'status_model','matter_model'));
 
         $this->data['module'] = $this->auth->get_module($module);
         $this->data['page_title'] = $this->data['module']['module_plural_label'];
@@ -25,14 +25,17 @@ class Event extends Admin_Controller
         $start_time = mysql_datetime($start);
         $end_time = mysql_datetime($end);
         
-        $rows = $this->event_model->get_rows(array(
+        
+        $extra = array(
             'begin_date >=' => $start_time,
             //'end_date >=' => $end_time,
             'callback' => array(
                 'join_event_subjects',
                 'join_event_categories'
             )
-        ));
+        );
+        $this->event_model->set_extra_from_url($extra);
+        $rows = $this->event_model->get_rows($extra);
         
         $events = array();
         foreach($rows as $e)
@@ -61,6 +64,7 @@ class Event extends Admin_Controller
     public function calendar()
     {
         $this->data['page_title'] = _('Calendar');
+        
         load_jqueryCalendar();
         $this->template->view_parts('content', 'event/calendar_view', $this->data)
                 ->title('Events')
@@ -253,6 +257,9 @@ class Event extends Admin_Controller
         $this->data['row'] =& $row;        
         $row OR $row = new stdClass();
         
+        /**
+         * set dates from uri
+         */
         $start = $this->input->get('start');
         $end = $this->input->get('end');
         if($start)
@@ -264,15 +271,26 @@ class Event extends Admin_Controller
             $row->end_date = mysql_datetime($end);
         }
         
-        if(!empty($row))
+        #set event begin date
+        if(!empty($row->begin_date))
         {
             $time = strtotime($row->begin_date);
-            $row->begin_time = date('H:i', $time);
-            
+            $row->begin_time = date('H:i', $time);                                
+        }
+        #set event end date
+        if(!empty($row->end_date))
+        {
             $time = strtotime($row->end_date);
-            $row->end_time = date('H:i', $time);            
+            $row->end_time = date('H:i', $time);                                  
         }
         
+        #get matter
+        $matter = $this->matter_model->get_row_by_id($this->input->get('matter_id'));
+        if(!empty($matter))
+        {
+            $row->matter_name = $matter->matter_name;
+            $row->matter_id = $matter->matter_id;
+        }
         
         if(is_ajax())
         {

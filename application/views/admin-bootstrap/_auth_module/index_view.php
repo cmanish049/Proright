@@ -1,4 +1,4 @@
-<div class="section corners">
+<div class="section">
     <div class="row">
         <div class="span12">
             <h2 class ="ico-mug"><?php echo $page_title; ?>

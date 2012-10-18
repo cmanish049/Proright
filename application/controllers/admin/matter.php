@@ -36,7 +36,8 @@ class Matter extends Admin_Controller
         $this->data['page_title'] = $row->matter_name;
 
         $this->data['dropdown_matter_types'] = $this->matter_type_model->dropdown('matter_type_id','matter_type_name');
-        
+
+        load_jqueryCalendar();
         $this->template->view_parts('content', 'matter/show_view', $this->data)
                 ->title($this->data['page_title'])
                 ->build();
@@ -50,6 +51,7 @@ class Matter extends Admin_Controller
 
         $this->data['dropdown_matter_types'] = $this->matter_type_model->dropdown('matter_type_id','matter_type_name');
         
+        load_jqueryCalendar();
         $this->template->view_parts('content', 'matter/index_view', $this->data)
                 ->title($this->data['page_title'])
                 ->build();

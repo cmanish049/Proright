@@ -1,0 +1,1140 @@
+function collapseBox(collapseBtnObj){    
+    var boxObj = collapseBtnObj.closest('.box');
+    var boxContentObj = boxObj.find('.box-content');
+
+    collapseBtnObj.removeClass('icon-chevron-down');
+    collapseBtnObj.removeClass('icon-chevron-right');
+
+    var isBoxContentVisible = boxContentObj.is(":visible");
+
+    //Content Açık ise kapat
+    if(isBoxContentVisible){
+        collapseBtnObj.attr('title','Open content');
+        collapseBtnObj.addClass('icon-chevron-right');
+        boxContentObj.slideUp();
+
+        return false;
+    }
+
+    //content kapalı ise aç
+    collapseBtnObj.attr('title','Close content');
+    collapseBtnObj.addClass('icon-chevron-down');
+    boxContentObj.slideDown();
+}
+
+function init(container){
+    
+    var collapseButtonHtml = '<i class="icon-chevron-down pull-right button-box-collapse" title="Close content"></i>';
+    var collapseButtonObj = $(collapseButtonHtml);
+    
+    collapseButtonObj.on('click', function(e){        
+		collapseBox($(this));
+    });
+    
+    
+    container.find('.box .box-header-container').not('.no-collapse')
+        .append(collapseButtonObj)
+        .on('click',function(e){
+            if (!$(e.target).hasClass('button-box-collapse')) {
+                collapseBox($(this).find('.button-box-collapse'));
+            }            
+        });
+    
+
+    container.find(".nice-select").select2({
+        placeholder: "Please select",
+        allowClear: true       
+    });
+    container.find('.chained-select').on('change',function(){
+        var thisObj = $(this);
+        var targetObj = $(thisObj.attr('data-target'));
+        var url = thisObj.attr('data-url');
+        $.ajax({
+            url : url,
+            dataType : 'json',
+            cache : false,
+            data : {
+                id: thisObj.val(),
+                result_type:'option_html'
+            },
+            success : function(json){
+                var html = '<option></option>'+json.html;
+                targetObj.html(html);
+                targetObj.trigger("liszt:updated");
+                targetObj.select2('val','');
+            }
+        });
+    }); 
+    container.find('.chained-select').trigger('change');
+    
+    container.find(".nice-remote-data-select").each(function(i,e){
+        var thisObj = $(this);
+        var url = thisObj.attr('data-url');
+        var value = thisObj.val();
+        var text = thisObj.attr('data-text');
+        var isMultiple = thisObj.attr('multiple')=='multiple';
+        
+        if (!url || url==undefined) {
+            alert('data-url attribute not found');
+            return false;
+        }
+        thisObj.select2({
+            placeholder: "Please select",
+            allowClear: true,
+            placeholder: "Search",
+            multiple : isMultiple,
+            //minimumInputLength: 1,
+            //id : {id: value, text: text},
+            ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
+                url: url,
+                dataType: 'json',
+                data: function (term, page) {               
+                    return {
+                        q: term, // search term
+                        limit: 10,
+                        result_type : 'array'
+                    };
+                },
+                results: function (data, page) { // parse the results into the format expected by Select2.
+                    // since we are using custom formatting functions we do not need to alter remote JSON data
+                    
+                    if (!data.options || data.options ==undefined) {
+                        return {
+                            results : {}
+                        }
+                    }
+                    
+                    return {
+                        results: data.options
+                    };
+                }
+            }
+        });
+        if (value) {
+            thisObj.select2('data',{id: value, text: text});
+        }
+        
+    });
+    
+    //show-current-time, $.mask.definitions['~']='[+-]';
+    var maskPlaceholder = '_';
+    container.find(".input-date").each(function(){
+        var thisObj = $(this);
+        var kendoOptions = {
+            format : 'yyyy-MM-dd'
+        }
+        if (thisObj.hasClass('show-current-time') && !thisObj.val()) {
+            kendoOptions.value = new Date()
+        }        
+        thisObj
+            .kendoDatePicker(kendoOptions)
+            .mask('9999-99-99',{
+                placeholder:maskPlaceholder
+            });
+    });
+    
+    container.find(".input-datetime").each(function(){
+        var thisObj = $(this);
+        var kendoOptions = {
+            parseFormats:['yyyy-MM-dd', 'HH:mm'],
+            format : 'yyyy-MM-dd HH:mm',
+            timeFormat: 'HH:mm',
+            interval  : 30
+        }
+        if (thisObj.hasClass('show-current-time') && !thisObj.val()) {
+            kendoOptions.value = new Date()
+        }        
+        thisObj
+            .kendoDateTimePicker(kendoOptions)
+            .mask('9999-99-99 99:99',{
+                placeholder:maskPlaceholder
+            });
+    });
+    
+    
+    container.find(".input-time").each(function(){
+        var thisObj = $(this);
+        var kendoOptions = {
+            format : 'HH:mm',
+            interval  : 30,
+            width: 70
+        }
+        if (thisObj.hasClass('show-current-time') && !thisObj.val()) {
+            kendoOptions.value = new Date()
+        }        
+        thisObj
+            .kendoTimePicker(kendoOptions)
+            .mask('99:99',{
+                placeholder:maskPlaceholder
+            });
+    });    
+    
+    container.find(".input-integer").kendoNumericTextBox({
+        format: "0",
+        min: 0,
+        //max: 10,
+        step: 1,
+        //value:0,
+        upArrowText: "İncrease value",
+        downArrowText: "Decrease value"
+    });
+    
+    container.find('.basic-tooltip').tooltip({
+        placement : 'top'
+    });        
+    
+    container.find('.form-validation-engine').validationEngine('attach', {
+        promptPosition : "bottomLeft:0,-5", 
+        scroll: true,
+        autoPositionUpdate:true
+        //binded : true
+        //showOneMessage
+    });
+    
+    /*container.on('click','.btn-form-submit',function(){
+        $(this).button('loading');
+    });*/
+    
+    container.find('input[type="submit"]').each(function(){
+        $(this).attr('data-loading-text',$(this).val()+'...');
+    });
+    
+    container.on('submit','.form-validation-engine:not(.autocomplete-ajax-form)',function(){
+        var formObj = $(this);
+        var isValid = formObj.validationEngine('validate');
+        var formAction = formObj.attr('action');
+        var isAjaxForm = formObj.hasClass('ajax-form');
+        var isAutoCompleteForm = formObj.hasClass('autocomplete-ajax-form');
+        var btnSubmitObj = formObj.find('input[type="submit"]');            
+        btnSubmitObj.button('loading');
+        
+        if (!isValid) {
+            btnSubmitObj.attr('disabled',false);
+            btnSubmitObj.button('reset');
+            return false;
+        }
+        else{            
+            btnSubmitObj.attr('disabled',true);
+        }
+        
+        if (!isAjaxForm || isAutoCompleteForm) {            
+            
+            return isValid;
+        }
+             
+        var btnSubmitObj =  formObj.find('.btn-form-submit');
+        var dataModalName = btnSubmitObj.attr('data-modal-name');
+        if (!isDialogExist(dataModalName)) {
+            return isValid;
+        }
+                
+        $.ajax({
+            type : 'POST',
+            url : formAction,
+            cache:false,
+            data : formObj.serialize(),
+            dataType : 'json',
+            success:function(data){                                
+                if(data !=null && data != undefined && data.error == 'yes'){
+                    formObj.find('.ajax-validation-errors').remove();                    
+                    formObj.prepend('<div class="ajax-validation-errors">'+data.message_html+'</div>');
+                    formObj.find('input[type="submit"]').attr('disabled',false);
+                    return false;
+                }      
+                                
+                closeDialog(dataModalName);               
+            }
+        });
+        
+        return false;
+    });
+        
+    var validator = $(".kendo-form").kendoValidator().data("kendoValidator");    
+    $(".kendo-form").find('input[type="submit"]').on('click',function(){
+
+        var isValid = validator.validate();
+        
+        if (!isValid) {
+            var errors = validator.errors();            
+            return false;
+        }
+        
+    });
+    
+    /**
+     * Delete butonuna tıklandığında çalışır
+     */
+    container.on('click','.action-ajax',function() {
+        var thisObj = $(this);
+        var showConfirm = thisObj.hasClass('show-confirm');
+        var confirmMessage = 'Are sure to continue?';
+        var isDeleteAction = thisObj.hasClass('action-delete');
+        
+        if (isDeleteAction) {
+            confirmMessage = 'Are sure to delete?';            
+        }
+        
+        if(showConfirm && !confirm(confirmMessage))
+            return false;
+        
+        $.ajax({
+            type : 'GET',
+            url : thisObj.attr('href'),
+            cache:false,
+            dataType : 'json',
+            success:function(data){
+                if(data !=null && data != undefined && data.error == 'yes'){
+                    alert(data.message);
+                    return false;
+                }
+                
+                if (isDeleteAction) {
+                    refreshGrid(getKendoGrid($(thisObj.attr('data-grid-selector'))));
+                }
+            }
+        });
+        
+        return false;
+    });
+    
+    
+    container.on('click','.action-reset-grid',function(){
+        var thisObj = $(this);
+        var url = thisObj.attr('href');
+        
+        var kendoGrid = getKendoGrid($(thisObj.attr('data-grid-selector')));
+        resetGrid(url, kendoGrid);  
+        return false;
+    });
+    
+    container.on('click','.action-quickvieww',function(){
+        var thisObj = $(this);
+        var modalSizes = thisObj.attr('data-modal-size');  
+        var kendoGrid = getKendoGrid($(thisObj.attr('data-grid-selector')));
+        var dataModalName = thisObj.attr('data-modal-name');
+        var detailsTemplateSelector = thisObj.attr('data-quickview-template-selector');        
+        var gridRowObj = thisObj.closest('tr');
+        var dataItem = kendoGrid.dataItem(gridRowObj);
+        var detailsTemplate = kendo.template($(detailsTemplateSelector).html());       
+        
+        var _dialog = {
+            title : thisObj.attr('title'),                
+            content:{
+                template : detailsTemplate(dataItem)
+            },
+            activate : function(){
+                this.element.find('.quickview-grid').kendoGrid({
+                    scrollable:false
+                });
+            }
+        };
+        
+        modalSizes = modalSizes.split('-');
+        if (modalSizes.length>0) {
+            _dialog.width = modalSizes[0];
+        }
+
+                
+        uiDialog({
+            varName:dataModalName,
+            type:'inline',
+            dialog:_dialog
+        }); 
+        return false;
+    });
+    
+    container.on('click','.btn-cancel-form',function(){
+        var thisObj = $(this);
+        var dataWindow = thisObj.attr('data-window');
+        var dataModalName = thisObj.attr('data-modal-name');
+        
+        if (isDialogExist(dataModalName) || dataWindow=='modal' || dataWindow=='ajax-modal') {
+            closeDialog(dataModalName);
+            return false;
+        }             
+    });
+        
+    container.on('click','.modal-for-grid',function(){
+        var thisObj = $(this);
+        var dataModalSize = thisObj.attr('data-modal-size');
+        var kendoGrid = getKendoGrid($(thisObj.attr('data-grid-selector')));
+        var dataModalName = thisObj.attr('data-modal-name');
+        
+        var _dialog = {
+            title : thisObj.attr('title'),
+            content : thisObj.attr('href'),
+            close:function(e){
+                refreshGrid(kendoGrid);                
+            }
+        };
+        
+        if (dataModalSize) {
+            dataModalSize = dataModalSize.split('-');
+            var width = dataModalSize[0];
+            var height = dataModalSize[1];
+            _dialog.width = width;
+            _dialog.height = height;
+        }        
+        
+        uiDialog({
+            varName : dataModalName,
+            dialog : _dialog
+        });
+        return false;
+        
+    });
+    
+    container.on('click','.open-modal',function(){
+        var thisObj = $(this);
+        var dataModalSize = $(this).attr('data-modal-size');
+        var dataModalName = $(this).attr('data-modal-name');
+
+        var _dialog = {
+            title : $(this).attr('title'),
+            content : thisObj.attr('href')
+        };
+        
+        if (dataModalSize) {
+            dataModalSize = dataModalSize.split('-');
+            var width = dataModalSize[0];
+            var height = dataModalSize[1];            
+            
+            _dialog.width = width;
+            _dialog.height = height;
+        }
+        
+        uiDialog({
+            varName : dataModalName,
+            dialog : _dialog
+        });
+        return false;        
+    });
+    
+    container.on('click','.btn-autocomplete-new',function(){
+            var thisObj = $(this);
+            var dataModalName = thisObj.attr('data-modal-name');
+            var dataModalSize = thisObj.attr('data-modal-size');
+            var targetInputObj = $(thisObj.attr('data-target-selector'));
+            var url = thisObj.attr('href');                        
+            
+            var _dialog = {
+                title : thisObj.attr('title'), 
+                content: url,
+                iframe : false,
+                modal : true,
+                open : function(e){
+                    
+                },
+                refresh  : function(e){   
+                    var windowObj = this;
+                    windowObj.center();
+                    var wrapperObj = windowObj.wrapper;
+                    wrapperObj.css('top', wrapperObj.position().top-30);
+
+                    this.element.find('form').addClass('autocomplete-ajax-form');
+                    
+                    this.element.find('form').on('submit', function(){
+                          var formObj = $(this);
+
+                          if (!formObj.validationEngine('validate')) {
+                              return false;
+                          }
+
+                          $.ajax({
+                              type : 'POST',
+                              url : formObj.attr('action'),
+                              cache:false,
+                              data : formObj.serialize(),
+                              dataType : 'json',
+                              success:function(data){                    
+                                  if(data !=null && data != undefined && data.error == 'yes'){
+                                      formObj.find('.ajax-validation-errors').remove();
+                                      formObj.prepend('<div class="ajax-validation-errors">'+data.message_html+'</div>');
+                                      formObj.find('input[type="submit"]').attr('disabled',false);
+                                      return false;
+                                  }      
+
+                                  var select2Data = {id:data.item.value, text : data.item.text};                                
+
+                                  if(targetInputObj.is('select')){
+                                      var html = '<option value="'+select2Data.id+'">' + select2Data.text +'</option>';                                    
+                                      targetInputObj.find('option:first').after(html);                                    
+                                      targetInputObj.trigger("liszt:updated");
+                                      targetInputObj.select2('val',select2Data.id);
+                                  }           
+                                  else{
+                                      targetInputObj.select2('data',select2Data);
+                                  }
+                                  windowObj.close();
+                              }
+                          });
+                          return false;
+                    });
+                    init(this.element);
+                  
+                }
+            };
+            
+            if (dataModalSize) {
+                dataModalSize = dataModalSize.split('-');
+                var width = dataModalSize[0];
+                var height = dataModalSize[1];
+                _dialog.width = width;
+                _dialog.height = height;
+            }   
+            
+            uiDialog({
+                varName:dataModalName,
+                type:'inline',
+                dialog:_dialog
+            }); 
+            
+            return false;
+        });
+}
+
+function upload(obj, options){
+    var _o = {
+        'method' : 'post',
+        'auto'   : true,
+        'swf'    : themeUrl+'/js/uploadify.swf?',
+        'preventCaching' : false,
+        'fileObjName' : 'file',
+        'removeCompleted' : false,
+        'multi'    : false,
+        'formData' : {},
+        'height'     : 30,
+        'width'      : 120,
+        'queueSizeLimit' : 1
+        //checkExisting
+    };
+    $.extend(_o, options);
+    
+    obj.uploadify(_o);
+}
+
+$(function(){  
+	
+	init($('body'));
+    $('.sf-menu').kendoMenu();
+    
+    /*$('body').on('click','.btn-grid-export',function(){
+        var thisObj = $(this);
+        var kendoGrid = getKendoGrid($(thisObj.attr('data-grid-selector')));        
+        
+        var columns = kendoGrid.columns;console.log(columns);
+        
+       var fields = {};
+       $.each(columns,function(i,e){
+            if (e.field!=undefined && e.field!='') {
+                fields[e.field] = e.title;                
+            }                                         
+       });
+       console.log(fields);
+        
+        return false;
+    });
+    */
+    });
+
+
+function isnull(a, b) {     
+    var text = a;    
+    if (a) {
+        if (a.toString().toLowerCase()=='null') {
+            text = b || '';
+        }        
+    }
+    else if(!a){
+        text = b || '';
+    }
+    
+    return text;
+}
+
+var dialogs = {};        
+function uiDialog(options){
+    var o = {
+        varName : 'dialog',
+        type : 'iframe',
+        tagAttrs : {},
+        dialog :{}
+    };
+    $.extend(o, options);
+    var _modalType = (o.type != undefined)?o.type:'inline';    
+    
+    var uiDialogOptions = {
+        title: '',
+        modal: true,
+        visible: true,
+        resizable: true,
+        width: 980,
+        scrollable: false,
+        //animation :{open: { effects: 'fadeIn' },reverse: true},
+        close: function(e){
+            
+        },
+        open : function(e){
+
+        },
+        activate : function(e){
+            var wrapperObj = this.wrapper;
+            /*console.log(wrapperObj);            
+            if (_modalType=='iframe') {
+                var iframeHeight = wrapperObj.find('iframe').outerHeight();
+                wrapperObj.height(iframeHeight);
+                console.log(wrapperObj.height());
+            }*/
+            //this.center();
+            
+        },
+        refresh : function(e){
+            this.center();
+            var wrapperObj = this.wrapper;
+            wrapperObj.css('top', wrapperObj.position().top-30);
+        },
+        deactivate: function() {
+            this.destroy();
+        },
+        //maxHeight : maxHeight,
+        //iframe:true,
+        actions: ['Minimize','Maximize', 'Close']//'Minimize', 
+    };
+    $.extend(uiDialogOptions, o.dialog);
+    if (_modalType=='iframe') {
+        uiDialogOptions.title='';
+    }
+    
+    if (uiDialogOptions.width=='max') {
+        var maxWidth = $(window).width() - 100;        
+        uiDialogOptions.width = maxWidth;
+    }
+    
+    // || _modalType=='iframe'
+    if (_modalType=='iframe' && uiDialogOptions.height!=undefined && uiDialogOptions.height=='max') {
+        var maxHeight = $(window).height() -  100;
+        uiDialogOptions.height = maxHeight;
+    }
+    
+    var contentObj,dialogContainerId = 'dialog-container' + parseInt(Math.random()*100);
+    if (o.contentObj && o.contentObj!=undefined) {
+        contentObj = o.contentObj;
+    }
+    else if ($('#' + dialogContainerId).length>0) {
+        contentObj = $('#'+dialogContainerId);
+    }else{
+        $('body').append('<div id="'+dialogContainerId+'"></div>');
+        contentObj = $('#'+dialogContainerId);
+    }    
+    
+    contentObj.kendoWindow(uiDialogOptions);//create window obj
+    var wnd = contentObj.data("kendoWindow");
+    window.top.dialogs[o.varName] = wnd;
+    wnd.center();        
+    wnd.open();
+}
+
+function getDialogObj(dialogName){
+    return window.top.dialogs[dialogName];
+}
+
+function isDialogExist(dialogName){
+    return  window.top.dialogs[dialogName] &&  window.top.dialogs[dialogName]!=undefined;
+}
+
+function closeDialog(dialogName)
+{
+    window.top.dialogs[dialogName].close();
+    window.top.dialogs[dialogName].destroy();
+}
+
+function setPositionDialog(dialogName){
+    var pos = getDialogObj(dialogName).wrapper.position();    
+    getDialogObj(dialogName).wrapper.css('top',pos.top-30 + 'px');
+}
+
+/**
+ * Pencere kapatılsınmı sorusu
+ */
+function bindAlertClosingWindow()
+{
+    jQuery(window).bind("beforeunload", function(){
+        return "Sayfadan ayrılmak istediğinize eminmisiniz";
+    });
+}
+function unbindAlertClosingWindow(selector,event)
+{
+    jQuery(selector).bind(event,function() {
+        jQuery(window).unbind("beforeunload");
+    });
+}
+
+function clean_autocomplete(selector, target)
+{
+    var element = $(selector);
+    if (element.is('input')) {
+        element.val('');
+    }
+    else{
+        element.html('');
+    }
+    
+    element = $(target);
+    if (element.is('input')) {
+        element.val('');
+    }
+    else{
+        element.html('');
+    }
+    
+    return false;
+}
+
+function bindSelect(selector, target, url)
+{
+    $(selector).on('change',function(){
+        $.ajax({
+            type: 'GET',
+            url: url,
+            dataType:'json',
+            data: {
+                value :$(this).find('option:selected').attr('value')
+            },
+            success : function(json){
+                $(target).html('');
+                var op = [];
+                $.each(json,function(i,o){
+                    op[i] = '<option value="'+o.value+'">'+o.text+'</option>';
+                });
+                $(target).append(op.join(''));
+                $(target).change();
+            }
+        });
+    });   
+}
+
+function tab(obj,options){
+    var _o = {
+        animation: { open: { effects: "fadeIn" } }
+    };
+    $.extend(_o, options);
+    
+    obj.kendoTabStrip(_o);
+}
+
+function showAlert(message){
+    if (!jQuery.isPlainObject(message)) {
+        alert(message);
+        return false;
+    }
+}
+
+function gridDataSourceReadAjax(url,options){
+    $.ajax( {
+        cache : false,
+        url : url,
+        type:'POST',
+        dataType: 'json',
+        data: options.data,
+        success: function(result) {
+            options.success(result);
+        }
+    });
+}
+
+function getKendoGrid(obj){
+    return obj.data('kendoGrid');
+}
+
+function resetGrid(url,kendoGrid){
+    //kendoGrid.dataSource.filter([]);
+    kendoGrid.dataSource.query({
+        page:1, 
+        pageSize:10,
+        skip:0, 
+        take:10
+    });
+}
+
+function refreshGrid(kendoGrid){
+    kendoGrid.dataSource.read();
+    
+    
+/*kendoGrid.dataSource.data(
+                   dataFromAjax
+    );*/
+    
+//kendoGrid.dataSource.filter({});
+//kendoGrid.dataSource.page(1);
+//kendoGrid.dataSource.sort({});
+//kendoGrid.dataSource.read();
+}
+
+function grid(gridObj,o){
+    //gridObj, url, model, o
+    var dataSource = {
+        type: 'json',
+        //autoSync: true,
+        transport: {
+            read : {
+                cache : false,
+                url : o.url,
+                type : 'post',
+                dataType : 'json'
+            }
+            /*read : function(options) {
+                gridDataSourceReadAjax(o.url,options);
+            },*/
+            /*
+             date alanları için sonradan geliştirilecek.
+             parameterMap: function (options) {
+                if (options.filter) {
+                    $.each(options.filter.filters,function(i,e){
+                        console.log(e);
+                        if (e.field=='insert_date') {
+                            options.filter.filters[i].value = kendo.toString(e.value, "MM/dd/yyyy");                
+                        }
+                    });
+
+                }
+                return options;
+            }*/
+        },
+        schema: {            
+            total : 'total',
+            data : 'rows',
+            errors: 'message',
+            groups : 'groups'
+            /*parse: function (response) {
+                console.log(response);
+                for (var currentObject in response) {
+                    //Parsing the data before its used
+                    response[currentObject].Subobject = response[currentObject].Subobject.Date;
+                };
+                
+                return response;
+            }*/
+        },
+        //filter : {}, //ajax isteği yapılırken ekstra param gibi düşün
+        pageSize: 10,
+        pageable: true,
+        serverPaging: true,
+        serverFiltering: true,
+        serverSorting: true,
+        serverGrouping:true
+    };
+    if (o.datasource != undefined) {
+        $.extend(dataSource, o.datasource);
+    }
+    dataSource.schema.model = o.model;
+    
+    var gridOptions = {
+        dataSource: new kendo.data.DataSource(dataSource),
+        //detailInit : function(e){},
+        //dataBinding : function(e){},
+        /*detailCollapse: function(e) {
+            // handle event
+        },*/
+        dataBound: function(e) {
+            //this.element.find('.grid-action-menu').kendoMenu({direction:'bottom',orientation: 'vertical'});
+            var thisObj = $(this);   
+            var rowsObj = this.element.find("tr[data-uid]");
+            //var rowsLength = rowsObj.length;
+            //rowsObj.slice(rowsLength-4, rowsLength).find('.grid-row-action-menu').addClass('dropup');
+            //console.log(this);
+            this.element.find('.basic-tooltip').tooltip({
+                placement : 'top'
+            });
+            rowsObj.dblclick(function(e) {
+                $(this).find('.action-edit').trigger('click');
+            });   
+                        
+            if (thisObj.data('isFilterMenuSetted')!=true) {
+                var dropDowns = $(".k-filter-menu").find("[data-role=dropdownlist]");
+                setTimeout(function(){
+                    dropDowns.each(function(i,e){                    
+                        $(this).data("kendoDropDownList").select(0);
+                        $(this).data("kendoDropDownList").trigger('change');
+                    });   
+                    thisObj.data('isFilterMenuSetted',true);
+                });
+            }
+            
+             var columns = this.columns;
+            rowsObj.on('click','.action-quickview',function(){
+                var thisObj = $(this);
+                var gridRowObj = thisObj.closest('tr');                
+                var modalSizes = thisObj.attr('data-modal-size');                  
+                var dataModalName = thisObj.attr('data-modal-name');                                                                
+                
+                if (isDialogExist(dataModalName)) {
+                    getDialogObj(dataModalName).close();
+                }                
+
+                var tableHtml = '<div id="quickview-container">'+
+                        '<table class="quickview-grid">'+
+                            '<thead>'+
+                                '<tr>'+
+                                    '<th class="label">Label</th>'+
+                                    '<th class="value">Value</th>'+
+                                '</tr>'+
+                            '</thead>'+
+                            '<tbody>';
+                //tableHtml = '<div id="quickview-container"><ul class="detail-list">';
+                var increaseIndex = gridRowObj.find('.k-hierarchy-cell').length>0?1:0;
+                $.each(columns,function(i,column){                       
+                    var show = column.showQuickView!=undefined?column.showQuickView:true;                                                            
+                    if (i==0 || !show) {
+                        return;
+                    }
+                    
+                    var tdObj = gridRowObj.find('td:eq('+(i+increaseIndex)+')');
+                    tableHtml +='<tr>'+
+                                    '<td><strong>'+column.title+'</strong></td>'+
+                                    '<td>'+tdObj.html()+'</td>'+
+                                '</tr>';       
+                    /*tableHtml += '<li>'+
+                                    '<label>'+column.title+'</label>'+
+                                    '<span>'+tdObj.html()+'</span>'+
+                                '</li>';*/
+                });
+                //tableHtml += '</ul></div>';
+                tableHtml += '</tbdoy></table></div>';
+                
+                var tableHtmlObj = $(tableHtml);                
+                var _dialog = {
+                    title : thisObj.attr('title'),                
+                    activate : function(){
+                        this.element.find('.quickview-grid').kendoGrid({
+                            scrollable:false,
+                            selectable:'multiple, row'
+                        });
+                    }
+                };
+
+                modalSizes = modalSizes.split('-');
+                if (modalSizes.length>0) {
+                    _dialog.width = modalSizes[0];
+                }
+
+                uiDialog({
+                    contentObj : tableHtmlObj,
+                    varName:dataModalName,
+                    type:'inline',
+                    dialog:_dialog
+                }); 
+                return false;
+            });
+        },
+        groupable:false,
+        selectable:'multiple, row',
+        scrollable: true,
+        /*height:500,*/
+        editable : false,
+        //navigatable: true,
+        reorderable: true,
+        resizable: true,
+        filterable: {
+            name: "FilterMenu",
+            extra: false, // turns on/off the second filter option
+            messages: {
+                info: "Show items with value that:",
+                isTrue: "is true",
+                isFalse: "is false",
+                filter: "Filter",
+                clear: "Clear",
+                and: "And",
+                or: "Or",
+                selectValue: "-Select value-"
+            },
+            operators: {
+                //filter menu for "string" type columns
+                string: {                    
+                    contains: "Contains",
+                    doesnotcontain: "Does not contain",
+                    eq: "Equal to",
+                    neq: "Not equal to",
+                    startswith: "Starts with",
+                    endswith: "Ends with"
+                },
+                //filter menu for "number" type columns
+                number: {
+                    eq: "Equal to",
+                    neq: "Not equal to",
+                    gte: "Is greater than or equal to",
+                    gt: "Is greater than",
+                    lte: "Is less than or equal to",
+                    lt: "Is less than"
+                },
+                //filter menu for "date" type columns
+                date: {
+                    eq: "Equal to",
+                    neq: "Not equal to",
+                    gte: "Is after or equal to",
+                    gt: "Is after",
+                    lte: "Is before or equal to",
+                    lt: "Is before"
+                }
+            }
+        },
+        //height: 100,            
+        sortable: {
+            mode: 'multiple',
+            allowUnsort: true
+        },        
+        pageable: {
+            input: true,
+            numeric: true,
+            refresh: true,
+            pageSizes: [5,10,20,30,40,50],
+            messages: {
+                display: "{0} - {1} of {2} items",
+                empty: "No items to display",
+                page: "Page",
+                of: "of {0}",
+                itemsPerPage: "items per page",
+                first: "Go to the first page",
+                previous: "Go to the previous page",
+                next: "Go to the next page",
+                last: "Go to the last page",
+                refresh: "Refresh"
+            }
+        },
+        /*groupable: {
+            messages: {
+                empty: "Drag a column header and drop it here to group by that column"
+            }
+        },*/        
+        columnMenu: {
+            messages: {
+                sortAscending: "Sort Ascending",
+                sortDescending: "Sort Descending",
+                filter: "Filter",
+                columns: "Columns"
+            }
+        }
+    };
+    if (o.gridOptions != undefined) {
+        $.extend(gridOptions, o.gridOptions);
+    }
+    
+    gridObj.kendoGrid(gridOptions);    
+}
+
+function htmlEditor(obj,options){
+    
+    var _o;
+    
+    var tools = [
+        
+        "strikethrough",
+        "fontName",
+        "formatBlock",
+        "fontSize",
+        "underline",
+        "bold",
+        "italic",
+        "foreColor",
+        "backColor",
+        "justifyLeft",
+        "justifyCenter",
+        "justifyRight",
+        "justifyFull",
+        "insertUnorderedList",
+        "insertOrderedList",
+        "indent",
+        "outdent",        
+        "createLink",
+        "unlink",
+        "insertImage",
+        "subscript",
+        "superscript",
+        "viewHtml"
+    ];
+    _o = $.extend(_o, options);
+    
+    tools = $.extend(tools, options.tools);
+    _o.tools = tools;
+    
+    obj.kendoEditor(_o);
+}
+
+var dateFormat = 'yyyy-MM-dd';
+var dateTimeFormat = 'yyyy-MM-dd HH:mm';
+var dateTimeFormatWithSecond = 'yyyy-MM-dd HH:mm:ss';
+var timeFormat = 'HH:mm';
+var timeFormatWithSecond = 'HH:mm:ss';
+$(function(){
+    /*var a = new XDate("29-05-1988");
+    console.log(a);
+    console.log(a.valid());*/
+   //console.log(moment("2011-10-10", "YYYY-MM-DD").isValid()); 
+});
+
+function getMomentJsFormatFromOriginalFormat(formatStr){
+    return formatStr
+            .replace('yyyy','YYYY')
+            .replace('dd','DD');
+}
+
+function isValidDateTime(val){    
+    if (!val) {
+        return true;
+    }
+    
+    return moment(val, getMomentJsFormatFromOriginalFormat(dateTimeFormat)).isValid();
+}
+
+function isValidDate(val){
+    if (!val) {
+        return true;
+    }
+    
+    return moment(val, getMomentJsFormatFromOriginalFormat(dateFormat)).isValid();
+}
+
+function isValidTime(val){
+    if (!val) {
+        return true;
+    }
+    return moment(val, getMomentJsFormatFromOriginalFormat(timeFormat)).isValid();
+}
+
+
+
+/*validasyon*/
+
+function validateDateTime(field, rules, i, options){    
+    if (!isValidDateTime(field.val()))
+    {
+        return options.allrules.validateDateTime.alertText;
+    }    
+}
+
+function validateDate(field, rules, i, options){    
+    if (!isValidDate(field.val()))
+    {
+        return options.allrules.validateDate.alertText;
+    }    
+}
+
+function validateTime(field, rules, i, options){
+    if (!isValidTime(field.val())) {
+        // this allows to use i18 for the error msgs
+        return options.allrules.validateTime.alertText;
+    }
+}
+
+function validateDropdownRequired(field, rules, i, options){    
+    field.val('maksat validasyona girsin diye değer attık');
+    
+    var selectObj = field.next('select');       
+    if (selectObj.length==0) {
+        selectObj = field.next('input');
+    }
+       
+    var value = selectObj.val();
+    if (!value || value=='') {
+        return options.allrules.required.alertText;
+    }
+}

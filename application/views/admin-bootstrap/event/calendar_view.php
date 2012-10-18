@@ -11,7 +11,18 @@
 <a href="#" id="renderEvent">renderEvent</a>
 <a href="#" id="render">render</a>
 
-<div class="section corners">
+<?php 
+$container_tag_selector = $this->input->get('container_tag_id'); 
+$container_tag_selector = $container_tag_selector?"#$container_tag_selector":'body';
+?>
+
+<?php if($this->input->get('show_only_grid')=='1'): ?>
+<div class="section-padding">
+    <div id="calendar"></div>
+</div>
+<?php else: ?>
+    
+<div class="section">
     <div class="row">
         <div class="span12">
             <div class="box">
@@ -33,39 +44,15 @@
     </div>
 </div>
 
+<?php endif; ?>
+
 <div id='loading' style='display:none'>loading...</div>
 <script type='text/javascript'>
-
-    $(document).ready(function() {
-	
-        $('#rerenderEvents').click(function(){
-            $('#calendar').fullCalendar( 'rerenderEvents' );
-            return false;
-        });
-        $('#refetchEvents').click(function(){
-            $('#calendar').fullCalendar( 'refetchEvents' )
-            return false;
-        });
-        $('#renderEvent').click(function(){            
-            $('#calendar').fullCalendar( 'renderEvent', 
-            {"id":252,"title":"Event1","start":"2012-10-10 13:10","end":"2012-10-10 15:10","className":"","color":"red","textColor":"white","editable":true}
-        );
-            return false;
-        });
-        
-        $('#render').click(function(){            
-            $('#calendar').fullCalendar( 'render');
-            return false;
-        });
-        
-        $('#addEventSource').click(function(){            
-            $('#calendar').fullCalendar( 'addEventSource', 
-            'https://www.google.com/calendar/embed?src=usa__en@holiday.calendar.google.com'
-        );
-            return false;
-        });
+    var containerTagObj = $('<?php echo $container_tag_selector; ?>');
+    var calendarObj = containerTagObj.find('#calendar');
     
-        var calendarObj = $('#calendar');
+    $(document).ready(function() {
+        
         calendarObj.fullCalendar({
             header: {
                 left: 'prev,next today',
@@ -143,7 +130,6 @@
 		
     });
     function openEdit(o){
-        var calendarObj = $('#calendar');
         var url = o.url;
         var mode = o.mode;
         
@@ -246,4 +232,35 @@
             dialog:_dialog
         }); 
     }
+    
+$(function(){
+    
+        containerTagObj.find('#rerenderEvents').click(function(){
+            calendarObj.fullCalendar( 'rerenderEvents' );
+            return false;
+        });
+        containerTagObj.find('#refetchEvents').click(function(){
+            calendarObj.fullCalendar( 'refetchEvents' )
+            return false;
+        });
+        containerTagObj.find('#renderEvent').click(function(){            
+            calendarObj.fullCalendar( 'renderEvent', 
+            {"id":252,"title":"Event1","start":"2012-10-10 13:10","end":"2012-10-10 15:10","className":"","color":"red","textColor":"white","editable":true}
+        );
+            return false;
+        });
+        
+        containerTagObj.find('#render').click(function(){            
+            calendarObj.fullCalendar( 'render');
+            return false;
+        });
+        
+        containerTagObj.find('#addEventSource').click(function(){            
+            calendarObj.fullCalendar('addEventSource', 
+                'https://www.google.com/calendar/embed?src=usa__en@holiday.calendar.google.com'
+            );
+            return false;
+        });
+    
+});
 </script>

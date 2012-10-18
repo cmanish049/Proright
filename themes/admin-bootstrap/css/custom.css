@@ -1,6 +1,12 @@
 .page-header-container{padding: 0 10px}
 .page-header{}
 
+iframe {
+    margin: none;
+    padding: none;
+    background: none; /* this is just to make the frames easier to see */
+    border: none;
+}
 
 table{max-width:none;}
 .help-block, .help-inline {color: #999999;font-size: 11px;}   

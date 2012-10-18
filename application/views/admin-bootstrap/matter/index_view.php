@@ -51,8 +51,8 @@ $this->template->view('templates/kendo_grid_row_actions_template', array(
 </script>
 
 <script type="text/x-kendo-template" id="matter-details-template">
-    <div class="row">
-        <div class="span12">
+    <div class="clearfix grid-row-detail-container">
+        <div class="">
             <div id="matter-#= matter_id #" class="tabstrip">
                 <ul>
                     <li class="k-state-active"><?php _e('Linked Clients'); ?></li>
@@ -62,8 +62,8 @@ $this->template->view('templates/kendo_grid_row_actions_template', array(
                     <li><?php _e('Events'); ?></li>
                     <li><?php _e('Calendar'); ?></li>
                 </ul>
-                <div class="clearfix">
-                    <iframe 
+<!--                <div class="clearfix">
+                    <iframe frameborder="0" class="k-content-frame"
                         src="<?php echo admin_url('matter_linked_client/index/window/modal?') ?>show_only_grid=1&matter_id=#= matter_id #"></iframe>
                 </div>
                 <div class="clearfix"></div>
@@ -72,7 +72,7 @@ $this->template->view('templates/kendo_grid_row_actions_template', array(
                 <div class="clearfix"></div>
                 <div class="clearfix">
                     <iframe src="<?php echo admin_url('event/calendar/window/modal?') ?>show_only_grid=1&matter_id=#= matter_id #"></iframe>
-                </div>
+                </div>-->
             </div>
         </div>
     </div>
@@ -80,21 +80,35 @@ $this->template->view('templates/kendo_grid_row_actions_template', array(
 
 <script type="text/javascript">
     var matterGrid;
+    
+    function setGridRowDetailContentWidth(){
+        var kendoGrid = getKendoGrid($('#matterGrid'));        
+        kendoGrid.content.find('.grid-row-detail-container').width(kendoGrid.content.width()-70);  
+    }
+    
+    $(function(){
+        $(window).resize(function(){
+            setGridRowDetailContentWidth();
+        });
+    });
+    
     function detailInit(e) {             
         var detailRow = e.detailRow;
+        //var containerObj = e.detailRow.closest('.k-grid-content');
+        //$('.grid-row-detail-container').width(containerObj.width()-70);        
+        setGridRowDetailContentWidth();
+        
         var containerId = detailRow.find('.tabstrip').attr('id');
         var queryString = 'container_tag_id='+containerId+'&show_only_grid=1&matter_id=' + e.data.id;
-        
+
         tab(detailRow.find(".tabstrip"),{
             contentUrls: [
-                ,
-                //'<?php echo admin_url('matter_linked_client/index?') ?>' + queryString,
+                '<?php echo admin_url('matter_linked_client/index?') ?>' + queryString,
                 '<?php echo admin_url('matter_note/index?') ?>' + queryString,              
                 '<?php echo admin_url('email/index?') ?>' + queryString,              
                 '<?php echo admin_url('matter_document/index?') ?>' + queryString,         
                 '<?php echo admin_url('event/index?') ?>' + queryString,         
-                
-                //'<?php echo admin_url('event/calendar?') ?>' + queryString          
+                '<?php echo admin_url('event/calendar?') ?>' + queryString          
             ]
         });
 

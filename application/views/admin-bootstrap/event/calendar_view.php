@@ -6,10 +6,10 @@
     }
     #calendar {background-color: #fff}
 </style>
-<a href="#" id="rerenderEvents">rerenderevents</a>
+<!--<a href="#" id="rerenderEvents">rerenderevents</a>
 <a href="#" id="refetchEvents">refetchEvents</a>
 <a href="#" id="renderEvent">renderEvent</a>
-<a href="#" id="render">render</a>
+<a href="#" id="render">render</a>-->
 
 <?php 
 $container_tag_selector = $this->input->get('container_tag_id'); 
@@ -92,8 +92,10 @@ $container_tag_selector = $container_tag_selector?"#$container_tag_selector":'bo
                 });
             },*/
             loading: function(bool) {
-                if (bool) $('#loading').show();
-                else $('#loading').hide();
+                if (bool) {$('#loading').show();}
+                else {                    
+                    $('#loading').hide();
+                }
             },
             
             selectable: true,
@@ -234,6 +236,10 @@ $container_tag_selector = $container_tag_selector?"#$container_tag_selector":'bo
     }
     
 $(function(){
+    
+        setTimeout(function(){
+            calendarObj.fullCalendar( 'render');
+        },10);
     
         containerTagObj.find('#rerenderEvents').click(function(){
             calendarObj.fullCalendar( 'rerenderEvents' );

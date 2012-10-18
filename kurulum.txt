@@ -1,0 +1,9 @@
+﻿serverında aktif olması gereken modüller
+	->rewrite_module	
+	
+php de aktif olması gereken modüller
+	->php_gettext
+	->php_zip
+
+1) application->config->database.php bu dosyadan veritabanı bilgilerini düzenle
+2) application->config->config.php satır 17 yi kendi serverandaki url ye göre düzenle

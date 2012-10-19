@@ -8,7 +8,7 @@ table{max-width:none;}
 body{background:none repeat 0 0 #EAEAEC;font-size: 13px;}
 .iframe-body{padding: 0;/*background-color: transparent;*/}
 .ajax-layout{padding: 10px 0 0 0;}
-.container{width: 90%;}
+/*.container{width: 90%;}*/
 
 .clearfix:before,.clearfix:after{content:'.';display:block;overflow:hidden;visibility:hidden;font-size:0;line-height:0;width:0;height:0;}
 .clearfix:after{clear:both;}

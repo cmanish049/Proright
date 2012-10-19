@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50516
 File Encoding         : 65001
 
-Date: 2012-10-18 12:08:16
+Date: 2012-10-19 17:00:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -36,7 +36,7 @@ CREATE TABLE `auth_modules` (
   KEY `modul_durumu` (`ACTIVE`),
   KEY `menude_goster` (`SHOW_IN_MENU`),
   KEY `formda_goster` (`SHOW_IN_FORM`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of auth_modules
@@ -73,6 +73,7 @@ INSERT INTO `auth_modules` VALUES ('37', 'event_subject', 'Event Subject', 'Even
 INSERT INTO `auth_modules` VALUES ('38', 'event_priority', 'Event Priority', 'Event Priority', 'Event Priorities', '35', 'event_priority/index', 'yes', 'yes', 'yes', null);
 INSERT INTO `auth_modules` VALUES ('39', 'event_status', 'Event Status', 'Event Status', 'Event Status', '16', 'status/index/?status_type=event_status', 'yes', 'yes', 'yes', null);
 INSERT INTO `auth_modules` VALUES ('40', 'event_calendar', 'Calendar', 'Calendar', 'Calendar', '35', 'event/calendar', 'yes', 'yes', 'yes', null);
+INSERT INTO `auth_modules` VALUES ('41', 'client', 'Client', 'Client', 'Clients', null, 'user/index?module=client', 'yes', 'yes', 'yes', null);
 
 -- ----------------------------
 -- Table structure for `auth_ug_module_relationship`
@@ -333,14 +334,14 @@ CREATE TABLE `events` (
 -- Records of events
 -- ----------------------------
 INSERT INTO `events` VALUES ('1', '3', '0', '2012-10-15 15:00:00', '2012-10-15 16:00:00', '1', 'İş görüşmesi yapılacak.', '3', '2', '9', '1', '2', '1', null, null, null, null);
-INSERT INTO `events` VALUES ('2', '3', '0', '2012-10-16 17:15:00', '2012-10-16 18:50:00', '2', null, '3', '1', '9', null, null, '0', null, '2012-10-15 17:52:54', null, '2012-10-17 12:16:29');
-INSERT INTO `events` VALUES ('3', '18', '0', '2012-10-12 08:00:00', '2012-10-13 09:15:00', '4', null, '3', '2', '10', null, null, '0', null, '2012-10-16 11:01:46', null, '2012-10-17 12:15:13');
-INSERT INTO `events` VALUES ('5', '1', '0', '2012-10-03 13:42:00', '2012-10-04 14:43:00', '1', null, null, null, null, null, null, '0', null, '2012-10-16 11:45:42', null, '2012-10-16 12:00:46');
-INSERT INTO `events` VALUES ('6', '2', '0', '2012-10-09 10:00:00', '2012-10-09 12:12:00', '2', null, null, null, null, null, null, '0', null, '2012-10-16 12:01:50', null, '2012-10-16 12:02:07');
-INSERT INTO `events` VALUES ('7', '3', '0', '2012-10-16 06:00:00', '2012-10-16 09:00:00', '1', null, null, '2', '9', null, null, '0', null, '2012-10-16 12:03:25', null, null);
-INSERT INTO `events` VALUES ('8', '18', '0', '2012-10-16 11:30:00', '2012-10-16 13:00:00', '1', null, null, '2', '9', null, null, '0', null, '2012-10-16 12:06:06', null, null);
-INSERT INTO `events` VALUES ('9', '1', '0', '2012-10-16 09:30:00', '2012-10-16 10:30:00', '3', null, null, null, null, null, null, '0', null, '2012-10-16 12:07:02', null, null);
-INSERT INTO `events` VALUES ('10', '2', '0', '2012-10-16 14:00:00', '2012-10-16 16:30:00', '1', 'asdfasdf', '3', null, null, null, null, '0', null, '2012-10-17 12:16:07', null, null);
+INSERT INTO `events` VALUES ('2', '3', '0', '2012-10-16 17:15:00', '2012-10-16 18:50:00', '2', null, '3', '1', '9', '2', '2', '0', null, '2012-10-15 17:52:54', null, '2012-10-18 16:18:19');
+INSERT INTO `events` VALUES ('3', '18', '0', '2012-10-12 08:00:00', '2012-10-13 09:15:00', '4', null, '3', '2', '10', '2', '2', '0', null, '2012-10-16 11:01:46', null, '2012-10-18 16:18:11');
+INSERT INTO `events` VALUES ('5', '1', '0', '2012-10-03 13:42:00', '2012-10-04 14:43:00', '1', null, null, null, null, '2', '1', '0', null, '2012-10-16 11:45:42', null, '2012-10-18 16:18:05');
+INSERT INTO `events` VALUES ('6', '2', '0', '2012-10-09 10:00:00', '2012-10-09 12:12:00', '2', null, null, null, null, '2', '1', '0', null, '2012-10-16 12:01:50', null, '2012-10-18 16:17:58');
+INSERT INTO `events` VALUES ('7', '3', '0', '2012-10-16 06:00:00', '2012-10-16 09:00:00', '1', null, null, '2', '9', '1', '1', '0', null, '2012-10-16 12:03:25', null, '2012-10-18 16:17:51');
+INSERT INTO `events` VALUES ('8', '18', '0', '2012-10-16 11:30:00', '2012-10-16 13:00:00', '1', null, null, '2', '9', '1', '1', '0', null, '2012-10-16 12:06:06', null, '2012-10-18 16:17:39');
+INSERT INTO `events` VALUES ('9', '1', '0', '2012-10-16 09:30:00', '2012-10-16 10:30:00', '3', null, null, null, null, '1', null, '0', null, '2012-10-16 12:07:02', null, '2012-10-18 16:17:22');
+INSERT INTO `events` VALUES ('10', '2', '0', '2012-10-16 14:00:00', '2012-10-16 16:30:00', '1', 'asdfasdf', '3', null, null, '1', '1', '0', null, '2012-10-17 12:16:07', null, '2012-10-18 16:17:30');
 
 -- ----------------------------
 -- Table structure for `event_categories`
@@ -943,7 +944,7 @@ CREATE TABLE `users` (
   `ATTORNEY_ID` bigint(20) unsigned DEFAULT NULL,
   `DATE_OF_RECORD` datetime DEFAULT NULL,
   `REFERRED_BY` varchar(100) DEFAULT NULL,
-  `ACTIVE` tinyint(1) DEFAULT NULL,
+  `IS_ACTIVE` tinyint(1) DEFAULT NULL,
   `INSERTER_ID` bigint(20) unsigned DEFAULT NULL,
   `INSERT_DATE` datetime DEFAULT NULL,
   `UPDATER_ID` bigint(20) unsigned DEFAULT NULL,
@@ -953,9 +954,9 @@ CREATE TABLE `users` (
   `HAIR_COLOR` varchar(20) DEFAULT NULL,
   `EYE_COLOR` varchar(20) DEFAULT NULL,
   `DATE_OF_BIRTH` datetime DEFAULT NULL,
-  `BIRTH_COUNTRY` varchar(100) DEFAULT NULL,
-  `BIRTH_STATE` varchar(100) DEFAULT NULL,
-  `BIRTH_CITY` varchar(100) DEFAULT NULL,
+  `BIRTH_COUNTRY_ID` varchar(100) DEFAULT NULL,
+  `BIRTH_STATE_ID` varchar(100) DEFAULT NULL,
+  `BIRTH_CITY_ID` varchar(100) DEFAULT NULL,
   `NATIONALITY` varchar(100) DEFAULT NULL,
   `RACE` varchar(100) DEFAULT NULL,
   `SSN` varchar(9) DEFAULT NULL,
@@ -968,13 +969,14 @@ CREATE TABLE `users` (
   `PLACE_MARRIED` varchar(100) DEFAULT NULL,
   `DESCRIPTION` text,
   PRIMARY KEY (`USER_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
 INSERT INTO `users` VALUES ('1', '1', '1', '0', 'F4DDB18C2477A867A8D304F7442F403E', null, 'Dr.', 'Serkan', 'Alexander', 'Dağlıoğlu', null, 'Dr. Serkan Alexander Dağlıoğlu', 'serkandaglioglu@hotmail.com', 'http://www.serkandaglioglu.com', null, '05064485669', '05064485669', '05064485669', '05064485669', '05064485669', null, null, '1', '1', '2', null, '1', null, '2012-10-04 00:00:00', null, '1', null, '2012-10-01 18:13:18', null, '2012-10-01 18:13:18', null, null, null, null, '1988-05-16 00:00:00', null, null, null, null, null, null, null, '1', '2012-10-01 13:54:00', null, '0', '2012-10-01 13:54:00', null, null);
 INSERT INTO `users` VALUES ('2', '2', null, '0', '9B7892CFABB8D8B2AA5D1B03B6F0CC0F', null, 'Şiş.', 'Burak', null, 'Okumuş', null, 'Şiş. Burak  Okumuş', 'burakokumus3@gmail.com', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '2012-10-05 15:21:42', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `users` VALUES ('3', '1', null, null, null, null, 'Dr.', 'Özkan', null, 'Özbaş', null, 'Dr. Özkan Özbaş', 'ozkanozbas@gmail.com', 'www.ozkanozbas.com', null, '0216 333 33 33', null, null, null, '5064485669', null, '28 Haziran Mah. Garaj Sok. No:1 D:1 İzmit – Kocaeli / Türkiye', '1', '1', '4', '10', '5', null, null, 'Serkan Dağlıoğlu', '1', null, '2012-10-19 14:45:37', null, '2012-10-19 15:11:37', '184', '94', 'black', null, '1988-08-15 00:00:00', '1', null, '10', 'Turkish', null, null, null, '1', '2015-06-10 00:00:00', null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for `user_notes`
@@ -1001,7 +1003,7 @@ DROP TABLE IF EXISTS `user_types`;
 CREATE TABLE `user_types` (
   `USER_TYPE_ID` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   `USER_TYPE_NAME` varchar(100) NOT NULL,
-  `ACTIVE` tinyint(4) NOT NULL,
+  `IS_ACTIVE` tinyint(4) NOT NULL,
   PRIMARY KEY (`USER_TYPE_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
@@ -1027,7 +1029,7 @@ CREATE TABLE `zip_codes` (
   PRIMARY KEY (`ZIP_CODE_ID`),
   KEY `ZIP_CODE` (`ZIP_CODE`),
   KEY `AREA_CODE` (`AREA_CODE`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zip_codes
@@ -1035,3 +1037,4 @@ CREATE TABLE `zip_codes` (
 INSERT INTO `zip_codes` VALUES ('1', '27070', '255K8', '1', '0', '4');
 INSERT INTO `zip_codes` VALUES ('2', '24510', '410', '2', '0', '6');
 INSERT INTO `zip_codes` VALUES ('4', 'gfhfgh', '', '1', '0', '0');
+INSERT INTO `zip_codes` VALUES ('5', '272', null, '1', null, '10');

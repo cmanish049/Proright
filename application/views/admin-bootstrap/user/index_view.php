@@ -32,7 +32,7 @@ $this->template->view('templates/kendo_grid_toolbar_template',array(
 <?php 
 $this->template->view('templates/kendo_grid_row_actions_template',array(
     'edit_modal_size' => 'max-max',
-    'detail_modal_size' => '600-max',
+    'quickview_modal_size' => '600-max',
     'grid_name' => 'user'
 )); 
 ?>
@@ -139,8 +139,8 @@ $this->template->view('templates/kendo_grid_row_actions_template',array(
              	</tr>
 
             	<tr>
-                    <td><strong><?php _e('Active'); ?></strong></td>
-                    <td><?php echo kendouiDataItemTemplateString('active'); ?></td>
+                    <td><strong><?php _e('Is Active'); ?></strong></td>
+                    <td><?php echo kendouiDataItemTemplateString('is_active'); ?></td>
              	</tr>
 
             	<tr>
@@ -354,11 +354,11 @@ $this->template->view('templates/kendo_grid_row_actions_template',array(
                 				template : '#= isnull(attorney_id, "") #'
             			},
             			{
-                				field:'active',
-                				title:'<?php _e('Active'); ?>',
+                				field:'is_active',
+                				title:'<?php _e('Is Active'); ?>',
                 				filterable: true,
                 				width: 200,
-                				template : '#= isnull(active, "") #'
+                				template : '#= isnull(is_active, "") #'
             			},
             			{
                 				field:'inserter_id',

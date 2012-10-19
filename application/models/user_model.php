@@ -30,17 +30,25 @@ class User_model extends MY_Model
         
         parent::add_extra_search_fields(array(
             'city_name' => 'CITIES.city_name',
-            'zip_code' => 'ZIP_CODES.zip_code'
+            'zip_code' => 'ZIP_CODES.zip_code',
+            'birth_city_name' => 'BIRTH_CITY.city_name',
+            'birth_state_name' => 'BIRTH_STATE.state_name'
         ));
     }
 
     public function add_to_extra_all_join_callbacks(&$extra)
     {
         $callbacks = array(
-            'join_cities',
-            'join_countries',
-            'join_states',
+            'join_attorney',
             'join_user_types',
+            'join_inserter',                    
+            'join_cities',
+            'join_birth_city',
+            'join_countries',
+            'join_birth_country',
+            'join_passport_country',
+            'join_states',
+            'join_birth_state',
             'join_zip_codes'
         );
         foreach($callbacks as $e)
@@ -49,6 +57,12 @@ class User_model extends MY_Model
         }
     }
 
+    public function callback_join_attorney($extra = array())
+    {
+        $this->join_select[] = "ATTORNEY.full_name attorney_name";
+        $this->db->join("$this->table ATTORNEY", "$this->as.attorney_id=ATTORNEY.user_id", 'LEFT');
+    }
+    
     protected function callback_join_user_types(&$extra)
     {
         $this->join_select[] = "USER_TYPES.USER_TYPE_ID, USER_TYPES.USER_TYPE_NAME";
@@ -60,17 +74,41 @@ class User_model extends MY_Model
         $this->join_select[] = "CITIES.CITY_NAME, CITIES.CITY_ID";
         $this->db->join("$this->cities CITIES", "$this->as.CITY_ID=CITIES.CITY_ID", 'LEFT');
     }
+    
+    protected function callback_join_birth_city(&$extra)
+    {
+        $this->join_select[] = "BIRTH_CITY.CITY_NAME birth_city_name, BIRTH_CITY.CITY_ID birth_city_id";
+        $this->db->join("$this->cities BIRTH_CITY", "$this->as.BIRTH_CITY_ID=BIRTH_CITY.CITY_ID", 'LEFT');
+    }
 
     protected function callback_join_states(&$extra)
     {
         $this->join_select[] = "STATES.STATE_NAME, STATES.STATE_ID";
         $this->db->join("$this->states STATES", "$this->as.STATE_ID=STATES.STATE_ID", 'LEFT');
     }
+    
+    protected function callback_join_birth_state(&$extra)
+    {
+        $this->join_select[] = "BIRTH_STATE.STATE_NAME birth_state_name, BIRTH_STATE.STATE_ID birth_state_id";
+        $this->db->join("$this->states BIRTH_STATE", "$this->as.BIRTH_STATE_ID=BIRTH_STATE.STATE_ID", 'LEFT');
+    }
 
     protected function callback_join_countries(&$extra)
     {        
         $this->join_select[] = "COUNTRIES.COUNTRY_NAME, COUNTRIES.COUNTRY_ID";
         $this->db->join("$this->countries COUNTRIES", "$this->as.COUNTRY_ID=COUNTRIES.COUNTRY_ID", 'LEFT');
+    }
+    
+    protected function callback_join_birth_country(&$extra)
+    {        
+        $this->join_select[] = "BIRTH_COUNTRY.COUNTRY_NAME birth_country_name, BIRTH_COUNTRY.COUNTRY_ID birth_country_id";
+        $this->db->join("$this->countries BIRTH_COUNTRY", "$this->as.BIRTH_COUNTRY_ID=BIRTH_COUNTRY.COUNTRY_ID", 'LEFT');
+    }
+    
+    protected function callback_join_passport_country(&$extra)
+    {        
+        $this->join_select[] = "PASSPORT_COUNTRY.COUNTRY_NAME passport_country_name, PASSPORT_COUNTRY.COUNTRY_ID passport_country_id";
+        $this->db->join("$this->countries PASSPORT_COUNTRY", "$this->as.PASSPORT_COUNTRY_ID=PASSPORT_COUNTRY.COUNTRY_ID", 'LEFT');
     }
     
     protected function callback_join_zip_codes(&$extra)
@@ -86,6 +124,12 @@ class User_model extends MY_Model
         $this->db->join($this->auth_user_groups, "$this->auth_ug_user_relationship.GROUP_ID=$this->auth_user_groups.GROUP_ID", 'LEFT');
     }
 
+    public function callback_join_inserter($extra = array())
+    {
+        $this->join_select[] = "INSERTER.full_name inserter_name";
+        $this->db->join("$this->table INSERTER", "$this->as.inserter_id=INSERTER.user_id", 'LEFT');
+    }
+    
     public function insert($data = array())
     {
         if(!isset($data['INSERTER_ID']))

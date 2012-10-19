@@ -1,6 +1,7 @@
 <?php
     isset($edit_modal_size) OR $edit_modal_size = 'max-max';
-    isset($detail_modal_size) OR $detail_modal_size = $edit_modal_size;
+    isset($quickview_modal_size) OR $quickview_modal_size = $edit_modal_size;
+    isset($quickview_class) OR $quickview_class = '';
     isset($edit_url_query_string) OR $edit_url_query_string = '';
     isset($delete_url_query_string) OR $delete_url_query_string = '';
 ?>
@@ -8,9 +9,9 @@
 <script type="text/x-kendo-template" id="<?php echo $grid_name; ?>-actions-template">
     <div class="btn-group grid-row-action-menu">
         <a href="<?php echo admin_url("$controller/details/id/#= id #") ?>" 
-            class="action-quickview btn btn-mini basic-tooltip"
+            class="action-quickview btn btn-mini basic-tooltip <?php echo $quickview_class; ?>"
             data-grid-selector="\#<?php echo $grid_name; ?>Grid" 
-            data-modal-size="<?php echo $detail_modal_size; ?>" 
+            data-modal-size="<?php echo $quickview_modal_size; ?>" 
             data-modal-name="<?php echo $grid_name; ?>Modal"
             data-quickview-template-selector="\#<?php echo $grid_name; ?>-quickview-template"
              title="<?php _e('Quick View'); ?>">

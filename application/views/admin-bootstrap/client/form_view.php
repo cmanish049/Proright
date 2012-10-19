@@ -1,3 +1,41 @@
+<script type="text/javascript">
+    
+    function setVisibleFieldsets(activeTabObj){
+        jQuery('#form-user').validationEngine('hide');      
+        var fieldsetsObj = $('#form-user fieldset');
+        fieldsetsObj.hide('fast',function(){
+            fieldsetsObj.fadeIn('fast',function(){
+                if (activeTabObj.data('hidden_objects')) {
+                    $.each(activeTabObj.data('hidden_objects'),function(){
+                        $(this).fadeOut('fast',function(){});                        
+                    });
+                }
+            });
+        });         
+    }
+    
+    $(function(){        
+    
+        $('#tab-basic').data('hidden_objects', [
+            //$('#fieldset-name'),
+            //$('fieldset-contact-information'),
+            //$('fieldset-phone'),
+            //$('fieldset-address'),
+            $('#fieldset-other-informations'),
+            $('#fieldset-physical-appearance'),
+            $('#fieldset-passport-informations'),
+            $('#marital-informations')
+        ]);
+        $('.fieldset-tab-item').on('shown',function(e){
+                var thisObj = $(this);
+                setVisibleFieldsets(thisObj);
+                
+        });
+        
+        setVisibleFieldsets($('#fieldset-tab li.active a'));    
+    });
+</script>
+
 <div class="section clearfix">
             <div class="box">
                 <div class="box-header-container">
@@ -8,6 +46,19 @@
 
                 <div class="box-content">
                     <div class="section-padding">
+                        
+                        <ul class="nav nav-pills" id="fieldset-tab" >
+                            <li class="active"><a id="tab-basic" href="#basic" class="fieldset-tab-item" data-toggle="tab"><?php _e('Basic'); ?></a></li>
+                            <li><a id="tab-advanced" href="#advanced" class="fieldset-tab-item" data-toggle="tab"><?php _e('Advanced') ?></a></li>
+                        </ul>
+<!--<div id="fieldset-tab">
+    <ul class="" >
+        <li id="tab-basic"><?php _e('Basic'); ?></li>
+        <li id="tab-advanced"><?php _e('Advanced') ?></li>
+    </ul>
+</div>-->
+                        
+                        
                         <?php
                         echo flash_data_alert_admin();
                         echo form_alert_admin();
@@ -16,11 +67,11 @@
                         echo alert_admin($warning, 'warning');
                         ?>
 
-                        <?php echo form_open_multipart($form_action, 'class="form-validation-engine form-vertical"'); ?>                       
+                        <?php echo form_open_multipart($form_action, 'class="form-validation-engine form-vertical" id="form-user"'); ?>                       
                         <?php echo form_hidden('redirect', $redirect); ?>                        
 
                         
-                        <fieldset class="k-state-active">
+                        <fieldset class="k-state-active" id="fieldset-name">
                             <legend class="k-header k-state-active"><?php _e('Name') ?></legend>
                             <div class="row-fluid">                            
                                     <div class="span2">
@@ -86,7 +137,7 @@
                                 </div>             
                         </fieldset>                        
 
-                        <fieldset class="k-state-active">
+                        <fieldset class="k-state-active" id="fieldset-contact-information">
                             <legend class="k-header k-state-active"><?php _e('Contact Information') ?></legend>
                             <div class="row-fluid">                                
 
@@ -128,7 +179,7 @@
                         </fieldset>                      
                                   
                         
-                        <fieldset class="k-state-active">
+                        <fieldset class="k-state-active" id="fieldset-phone">
                             <legend class="k-header k-state-active"><?php _e('Phone') ?> </legend>
                             <div class="row-fluid">
                                 <div class="control-group span2">
@@ -193,7 +244,7 @@
                             </div> 
                         </fieldset>
 
-                        <fieldset class="k-state-active">
+                        <fieldset class="k-state-active" id="fieldset-address">
                             <legend class="k-header k-state-active"><?php _e('Address') ?></legend>
                             
                             <div class="row-fluid">
@@ -279,7 +330,7 @@
                             </div> 
                         </fieldset>
                         
-                        <fieldset class="k-state-active">
+                        <fieldset class="k-state-active" id="fieldset-other-informations">
                             <legend class="k-header k-state-active"><?php _e('Other Informations') ?></legend>
                             
                             <div class="row-fluid">
@@ -359,8 +410,8 @@
                             </div>
                         </fieldset>
                         
-                        <fieldset class="k-state-active">
-                            <legend class="k-header k-state-active"><?php _e('Physical Properties'); ?></legend>
+                        <fieldset class="k-state-active" id="fieldset-physical-appearance">
+                            <legend class="k-header k-state-active"><?php _e('Physical Appearance'); ?></legend>
                             
                             <div class="row-fluid">
                                 <div class="control-group span2">
@@ -406,8 +457,8 @@
                             </div>
                         </fieldset>                
                                 
-                        <fieldset class="k-state-active">
-                            <legend class="k-header k-state-active"><?php _e('Passaport Informations') ?></legend>
+                        <fieldset class="k-state-active" id="fieldset-passport-informations">
+                            <legend class="k-header k-state-active"><?php _e('Passport Informations') ?></legend>
                             
                             <div class="row-fluid">
                                 <div class="control-group span2">
@@ -470,7 +521,7 @@
                             </div>
                         </fieldset>
                         
-                        <fieldset class="k-state-active">
+                        <fieldset class="k-state-active" id="marital-informations">
                             <legend class="k-header k-state-active"><?php _e('Marital Informations') ?></legend>
                             
                             <div class="row-fluid">
@@ -600,67 +651,3 @@
                 </div>
             </div>     
 </div>
-
-<!--                         <div class="control-group">
-                            <label class="control-label form-lbl" for="admin_type_id"><?php _e('Admin Type') ?></label>
-                            <div class="controls">
-                                <?php
-                                echo form_dropdown('admin_type_id', $dropdown_admin_type_id, 
-                                        set_value('admin_type_id', object_element('admin_type_id', $row)), 
-                                        'class="validate[funcCall[validateDropdownRequired]] input-xlarge nice-select" id="admin_type_id" tabindex="2"');
-                                ?>
-                            </div>
-                        </div> 
-                        
-                        <div class="control-group">
-                            <label class="control-label form-lbl" for="unique_key"><?php _e('Unique Key') ?></label>
-                            <div class="controls">
-                                <?php                           
-                                echo form_input('unique_key', 
-                                        set_value('unique_key', object_element('unique_key', $row)), 
-                                        'class="validate[maxSize[32],minSize[32]] input-xlarge" id="unique_key" tabindex="3" '
-                                        . 'data-url=""');                                
-                                ?>    
-                                <a href="<?php echo admin_url('ajax/generate_unique_key_for_customer'); ?>"
-                                   class="basic-tooltip btn btn-success btn-mini" id="btn-generate-customer-key"
-                                   title="<?php _e('Generate key'); ?>">
-                                    <i class="icon-random"></i>
-                                </a>
-<script type="text/javascript">
-$(function(){
-    $('body').on('click','#btn-generate-customer-key',function(){
-        var thisObj = $(this);
-        $.ajax({
-            url : thisObj.attr('href'),
-            dataType : 'html',
-            success : function(data){
-                $('#unique_key').val(data);
-            }
-        });
-        return false;
-    });
-});
-</script>
-                            </div>
-                        </div>                
-
-                        <div class="control-group">
-                            <label class="control-label form-lbl" for="is_admin"><?php _e('Is Admin') ?></label>
-                            <div class="controls">
-                                <?php
-                                echo form_dropdown('is_admin', yes_no_dropdown_items(), 
-                                        set_value('is_admin', object_element('is_admin', $row)), 
-                                        'class="validate[funcCall[validateDropdownRequired]] input-xlarge nice-select" id="is_admin" tabindex="2"');
-                                ?>
-                            </div>
-                        </div>                
-
-                        <div class="control-group">
-                            <label class="control-label form-lbl" for="username"><?php _e('Username') ?></label>
-                            <div class="controls">
-                                <?php
-                                echo form_input('username', set_value('username', object_element('username', $row)), 'class="validate[maxSize[20]] input-xlarge " id="username" tabindex="5" ');
-                                ?>
-                            </div>
-                        </div>-->
-                 

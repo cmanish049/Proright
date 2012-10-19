@@ -218,7 +218,7 @@ class Auth
 
         $extra = array(
             'select' => 'user_id,username,email, first_name, last_name, is_admin,full_name',
-            'active' => 'yes'
+            'is_active' => 1
         );
 
         $kullanici = $this->CI->user_model->get_row_by_id($user_id, $extra);

@@ -41,10 +41,18 @@ function init(container){
         });
     
 
-    container.find(".nice-select").select2({
-        placeholder: "Please select",
-        allowClear: true       
+    container.find(".nice-select").each(function(){
+        var thisObj = $(this);
+        var placeHolder = "Please Select";
+        if (thisObj.attr('placeholder')!=undefined && thisObj.attr('placeholder')) {
+            placeHolder = thisObj.attr('placeholder');
+        }
+        thisObj.select2({
+            placeholder: placeHolder,
+            allowClear: true       
+        });
     });
+    
     container.find('.chained-select').on('change',function(){
         var thisObj = $(this);
         var targetObj = $(thisObj.attr('data-target'));
@@ -62,6 +70,14 @@ function init(container){
                 targetObj.html(html);
                 targetObj.trigger("liszt:updated");
                 targetObj.select2('val','');
+                
+                var value = targetObj.attr('data-value');
+                //var text = targetObj.attr('data-text');
+                
+                if (value) {
+                    targetObj.select2('val',value);
+                    //targetObj.select2('data',{id: value, text: text});
+                }
             }
         });
     }); 
@@ -175,6 +191,7 @@ function init(container){
         //max: 10,
         step: 1,
         //value:0,
+        width: '50px',
         upArrowText: "İncrease value",
         downArrowText: "Decrease value"
     });
@@ -307,8 +324,13 @@ function init(container){
         return false;
     });
     
-    container.on('click','.action-quickvieww',function(){
+    container.on('click','.action-quickview',function(){
         var thisObj = $(this);
+        
+        if (!thisObj.hasClass('show-with-template')) {
+            return false;
+        }
+        
         var modalSizes = thisObj.attr('data-modal-size');  
         var kendoGrid = getKendoGrid($(thisObj.attr('data-grid-selector')));
         var dataModalName = thisObj.attr('data-modal-name');
@@ -324,7 +346,8 @@ function init(container){
             },
             activate : function(){
                 this.element.find('.quickview-grid').kendoGrid({
-                    scrollable:false
+                    scrollable:false,
+                    selectable : 'row'
                 });
             }
         };
@@ -332,7 +355,7 @@ function init(container){
         modalSizes = modalSizes.split('-');
         if (modalSizes.length>0) {
             _dialog.width = modalSizes[0];
-        }
+        }       
 
                 
         uiDialog({
@@ -861,7 +884,7 @@ function grid(gridObj,o){
             }
             
              var columns = this.columns;
-            rowsObj.on('click','.action-quickview',function(){
+            rowsObj.on('click','.action-quickview:not(.show-with-template)',function(){
                 var thisObj = $(this);
                 var gridRowObj = thisObj.closest('tr');                
                 var modalSizes = thisObj.attr('data-modal-size');                  

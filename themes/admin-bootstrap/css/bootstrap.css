@@ -163,8 +163,8 @@ pre.prettyprint{margin-bottom:20px}
 pre code{padding:0;color:inherit;background-color:transparent;border:0}
 .pre-scrollable{max-height:340px;overflow-y:scroll}
 form{margin:0 0 20px}
-fieldset{padding:0;margin:0;border:0}
-legend{display:block;width:100%;padding:0;margin-bottom:20px;font-size:21px;line-height:40px;color:#333;border:0;border-bottom:1px solid #e5e5e5}
+fieldset{padding:10px;margin:0 0 20px 0;border:1px solid #e5e5e5;/*background-color: #eee;*/display: block}
+legend{/*display:block;width:100%;*/padding:5px;margin-bottom:0px;font-size:21px;line-height:24px;/*border:1px solid #e5e5e5;background-color: #333;color:#fff*/}
 legend small{font-size:15px;color:#999}
 label,input,button,select,textarea{font-size:13px;font-weight:normal;line-height:20px}
 input,button,select,textarea{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}

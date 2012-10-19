@@ -91,7 +91,7 @@ class User_type extends Admin_Controller
         {
             $db_data = array(
                 'user_type_name' => $this->input->post('user_type_name', TRUE),
-                'active' => $this->input->post('active', TRUE),
+                'is_active' => $this->input->post('is_active', TRUE),
             );
 
             use_try_catch();
@@ -204,8 +204,8 @@ class User_type extends Admin_Controller
                 'rules' => 'trim|max_length[100]|required'
             ),
             array(
-                'field' => 'active',
-                'label' => __('Active'),
+                'field' => 'is_active',
+                'label' => __('Is Active'),
                 'rules' => 'trim|numeric|required'
             ),
         );

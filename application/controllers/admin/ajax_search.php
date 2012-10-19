@@ -56,7 +56,7 @@ class Ajax_search extends Admin_Controller
 
         foreach($rows as $e)
         {
-            $output .= '<option value="' . $value . '">' . $text . '</option>';
+            $output .= '<option value="' . $e->$value . '">' . $e->$text . '</option>';
         }
 
         return $output;

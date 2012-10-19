@@ -332,7 +332,7 @@ $config['db_tables'] = array(
 	'user_types' => array(
 		'USER_TYPE_ID',
 		'USER_TYPE_NAME',
-		'ACTIVE'
+		'IS_ACTIVE'
 	),
 	'users' => array(
 		'USER_ID',
@@ -365,7 +365,7 @@ $config['db_tables'] = array(
 		'ATTORNEY_ID',
 		'DATE_OF_RECORD',
 		'REFERRED_BY',
-		'ACTIVE',
+		'IS_ACTIVE',
 		'INSERTER_ID',
 		'INSERT_DATE',
 		'UPDATER_ID',
@@ -375,9 +375,9 @@ $config['db_tables'] = array(
 		'HAIR_COLOR',
 		'EYE_COLOR',
 		'DATE_OF_BIRTH',
-		'BIRTH_COUNTRY',
-		'BIRTH_STATE',
-		'BIRTH_CITY',
+		'BIRTH_COUNTRY_ID',
+		'BIRTH_STATE_ID',
+		'BIRTH_CITY_ID',
 		'NATIONALITY',
 		'RACE',
 		'SSN',

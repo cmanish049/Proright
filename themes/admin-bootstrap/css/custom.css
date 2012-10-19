@@ -1,20 +1,14 @@
 .page-header-container{padding: 0 10px}
 .page-header{}
 
-iframe {
-    margin: none;
-    padding: none;
-    background: none; /* this is just to make the frames easier to see */
-    border: none;
-}
-
 table{max-width:none;}
 .help-block, .help-inline {color: #999999;font-size: 11px;}   
 .tooltip{z-index: 1032;}
 
 body{background:none repeat 0 0 #EAEAEC;font-size: 13px;}
-.iframe-body{padding: 0;background-color: transparent;}
+.iframe-body{padding: 0;/*background-color: transparent;*/}
 .ajax-layout{padding: 10px 0 0 0;}
+.container{width: 90%;}
 
 .clearfix:before,.clearfix:after{content:'.';display:block;overflow:hidden;visibility:hidden;font-size:0;line-height:0;width:0;height:0;}
 .clearfix:after{clear:both;}
@@ -33,21 +27,25 @@ body{background:none repeat 0 0 #EAEAEC;font-size: 13px;}
 .center-inner{text-align: center;}
 .center{margin: 0 auto;}
 .radius{-webkit-border-radius: 3px 3px 3px 3px;border-radius: 3px 3px 3px 3px;border-width: 0px 0px 0px 0px;}
-    
-.form-lbl{font-weight:bold;}
-.input-date{width:70px;}
-.input-time{width:40px;}
+  
 .tooltip-resim{cursor:pointer;}
 .child-list{margin-left:50px;list-style: none;}
 /*buttons*/
 .btn{font-weight: normal}
-.btn-autocomplete-new{margin-left: 5px;vertical-align: middle;padding-top: 5px;}
+.btn-autocomplete-new{margin-left: 5px;vertical-align: middle;padding-top: 5px;/*position: absolute*/}
 .btn-autocomplete-new:hover{text-decoration: none;}
 .btn-autocomplete-new span{display: none}
 /*form*/
 .form-container{background-color: transparent;padding: 20px 0 0 0;}
 .form-actions{background-color:transparent;}
+  
+.controls:before,.controls:after{content:'.';display:block;overflow:hidden;visibility:hidden;font-size:0;line-height:0;width:0;height:0;}
+.controls:after{clear:both;}
+.controls{zoom:1;}
 
+.form-lbl{font-weight:normal;}
+.input-date{width:110px;}
+.input-time{width:70px;}
 /*image-div*/
 .image-div{*zoom:1;}.image-div:before,.image-div:after{display:table;content:"";}
 .image-div:after{clear:both;}
@@ -148,7 +146,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dbdbdb', end
 .k-link input[type="checkbox"]{vertical-align: inherit;margin-right: 3px}
 div.k-grid-header .k-header{font-weight: normal}
 .k-filename{line-height: 1.9em}
-
+.k-formatted-value[readonly="readonly"]{background-color: #fff;}
 .k-tabstrip-items .k-link, .k-panelbar .k-tabstrip-items .k-link{color:#2E2E2E}
 
 /*silver theme*/

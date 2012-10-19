@@ -2,15 +2,18 @@
 
 class User extends Admin_Controller
 {
+    private $view_dir;
+    
     public function __construct()
     {
         parent::__construct();
 
-        $module = 'user';
+        $module = $this->input->get('module');                
         $this->auth->is_authorized($module);
         $this->load->model(array('user_model','user_type_model','country_model','state_model'));
 
-        $this->data['module'] = $this->auth->get_module($module);
+        $this->view_dir = $module;
+        $this->data['module'] = $this->auth->get_module($module);                
         $this->data['page_title'] = $this->data['module']['module_plural_label'];
         $this->data['index_url'] = admin_url('user/index/');
         $this->data['limit'] = 10;
@@ -18,15 +21,15 @@ class User extends Admin_Controller
 
     public function index()
     {        
-        $this->data['edit_url'] = admin_url("user/edit/window/modal");
+        $this->data['edit_url'] = admin_url("user/edit/window/modal") . query_string();
         $this->data['page_title'] = $this->data['module']['module_plural_label'];
         
-        $this->data['dropdown_user_types'] = $this->user_type_model->dropdown('user_type_id','user_type_name',array('active' => 1));
+        $this->data['dropdown_user_types'] = $this->user_type_model->dropdown('user_type_id','user_type_name',array('is_actives' => 1));
         $this->data['dropdown_genders'] = config_item('genders');
         $this->data['dropdown_countries'] = $this->country_model->dropdown('country_id','country_name',array());
         $this->data['dropdown_states'] = $this->state_model->dropdown('state_id','state_name',array());
         
-        $this->template->view_parts('content', 'user/index_view', $this->data)
+        $this->template->view_parts('content', "$this->view_dir/index_view", $this->data)
                 ->title($this->data['page_title'])
                 ->build();
     }
@@ -39,13 +42,13 @@ class User extends Admin_Controller
         try
         {
             $extra = array(
-                'limit' => $this->data['limit'],                
+                'limit' => $this->data['limit'],   
             );            
             add_language_param($extra);
             $this->user_model->add_to_extra_all_join_callbacks($extra);
-            $this->user_model->set_extra_from_url($extra);            
+            $this->user_model->set_extra_from_url($extra);
             $json['rows'] = $this->user_model->get_rows($extra);
-
+//pre($this->db->last_query());
             unset($extra['limit'], $extra['offset']);
             $json['total'] = $this->user_model->get_count($extra);
         }
@@ -124,19 +127,15 @@ class User extends Admin_Controller
                 'attorney_id' => $this->input->post('attorney_id', TRUE),
                 'date_of_record' => $this->input->post('date_of_record', TRUE),
                 'referred_by' => $this->input->post('referred_by', TRUE),
-                'active' => $this->input->post('active', TRUE),
-                'inserter_id' => $this->logged_in_user->user_id,
-                'insert_date' => mysql_now(),
-                'updater_id' => $this->input->post('updater_id', TRUE),
-                'update_date' => $this->input->post('update_date', TRUE),
+                'is_active' => $this->input->post('is_active', TRUE),
                 'height' => $this->input->post('height', TRUE),
                 'weight' => $this->input->post('weight', TRUE),
                 'hair_color' => $this->input->post('hair_color', TRUE),
                 'eye_color' => $this->input->post('eye_color', TRUE),
                 'date_of_birth' => $this->input->post('date_of_birth', TRUE),
-                'birth_country' => $this->input->post('birth_country', TRUE),
-                'birth_state' => $this->input->post('birth_state', TRUE),
-                'birth_city' => $this->input->post('birth_city', TRUE),
+                'birth_country_id' => $this->input->post('birth_country_id', TRUE),
+                'birth_state_id' => $this->input->post('birth_state_id', TRUE),
+                'birth_city_id' => $this->input->post('birth_city_id', TRUE),
                 'nationality' => $this->input->post('nationality', TRUE),
                 'race' => $this->input->post('race', TRUE),
                 'ssn' => $this->input->post('ssn', TRUE),
@@ -218,10 +217,15 @@ class User extends Admin_Controller
                 exit;
             }
         }
-        $this->data['row'] = $this->user_model->get_row_by_id($this->id, array());
-
-
-        $this->template->view_parts('content', 'user/form_view', $this->data)
+        $row = $this->user_model->get_row_by_id($this->id, array(
+                'callback' => array(                    
+                    //'join_cities',
+                    //'join_birth_city'                    
+                )
+        ));
+        
+        $this->data['row'] =& $row;
+        $this->template->view_parts('content', "$this->view_dir/form_view", $this->data)
                 ->title($this->data['page_title'])
                 ->build();
     }
@@ -244,7 +248,7 @@ class User extends Admin_Controller
         $this->data['dropdown_zip_code_id'] = $this->zip_code_model->dropdown('zip_code_id','zip_code',array('order_by' => 'zip_code ASC'));
         $this->data['dropdown_company_id'] =array('' => '');
         $this->data['dropdown_attorney_id'] = $this->user_model->dropdown('user_id', 'full_name', array(
-            'active' => 1,
+            'is_active' => 1,
             'is_admin' => 1
         ));
         $this->data['dropdown_marital_status_id'] = array(''=>'');
@@ -289,7 +293,7 @@ class User extends Admin_Controller
             array(
                 'field' => 'first_name',
                 'label' => __('First Name'),
-                'rules' => 'trim|max_length[30]'
+                'rules' => 'trim|max_length[30]|required'
             ),
             array(
                 'field' => 'last_name',
@@ -392,8 +396,8 @@ class User extends Admin_Controller
                 'rules' => 'trim|max_length[100]'
             ),
             array(
-                'field' => 'active',
-                'label' => __('Active'),
+                'field' => 'is_active',
+                'label' => __('Is Active'),
                 'rules' => 'trim|numeric'
             ),
             array(
@@ -442,17 +446,17 @@ class User extends Admin_Controller
                 'rules' => 'trim'
             ),
             array(
-                'field' => 'birth_country',
+                'field' => 'birth_country_id',
                 'label' => __('Birth Country'),
                 'rules' => 'trim|max_length[100]'
             ),
             array(
-                'field' => 'birth_state',
+                'field' => 'birth_state_id',
                 'label' => __('Birth State'),
                 'rules' => 'trim|max_length[100]'
             ),
             array(
-                'field' => 'birth_city',
+                'field' => 'birth_city_id',
                 'label' => __('Birth City'),
                 'rules' => 'trim|max_length[100]'
             ),

@@ -32,7 +32,7 @@ $this->template->view('templates/kendo_grid_toolbar_template',array(
 <?php 
 $this->template->view('templates/kendo_grid_row_actions_template',array(
     'edit_modal_size' => 'max-max',
-    'detail_modal_size' => '600-max',
+    'quickview_modal_size' => '600-max',
     'grid_name' => 'matter_linked_client_type'
 )); 
 ?>

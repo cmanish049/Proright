@@ -32,7 +32,7 @@ $this->template->view('templates/kendo_grid_toolbar_template',array(
 <?php 
 $this->template->view('templates/kendo_grid_row_actions_template',array(
     'edit_modal_size' => 'max-max',
-    'detail_modal_size' => '600-max',
+    'quickview_modal_size' => '600-max',
     'grid_name' => 'status',
     'edit_url_query_string' => query_string(array('status_type' => $status_type), NULL, FALSE),
     'delete_url_query_string' => query_string(array('status_type' => $status_type), NULL, FALSE)

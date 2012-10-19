@@ -51,7 +51,7 @@
             </div>
 
 
-        <div class="container">
+        <div class="center container">
             <?php
             if(isset($content))
             {
